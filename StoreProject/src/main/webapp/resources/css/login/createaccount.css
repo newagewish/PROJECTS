@@ -1,0 +1,175 @@
+@charset "UTF-8";
+body{
+	position:absolute;
+	width:100%;
+	height:100%;
+	margin:0;
+}
+p{
+	letter-spacing:-0.03em;
+	margin:0;
+}
+h1{
+	margin:0;
+}
+input{
+	margin:0;
+}
+button{
+	padding:0;
+}
+button:focus{
+	outline: none;
+}
+#createaccount_box{
+	display:table;
+	width:100%;
+	height:calc(100% - 67px);
+	padding-top:67px;
+}
+#createaccount_hold_box{
+	position:absolute;
+	display:none;
+	top:0;
+	width:100%;
+	height:100%;
+	background-color:rgba(124, 124, 124, 0.5);
+	z-index:10;
+}
+	#createaccount_hold_agreement_age_box{
+		display:none;
+		vertical-align:middle;
+	}
+		#createaccount_hold_agreement_age_box > div{
+			position:relative;
+			width:320px;
+			padding:30px 40px;
+			margin:0 auto;
+			background:white;
+		}
+			#createaccount_hold_agreement_age_box > div > h3{
+				font-size:18px;
+				color:#404040;
+			}
+			#createaccount_hold_agreement_age_box > div > p{
+				font-size:14px;
+				color:#7c7c7c;
+				margin-bottom:30px;
+			}
+			#createaccount_hold_agreement_age_box > div > button{
+				width:100%;
+				height:50px;
+				border:0;
+				border-radius:4px;
+				font-size:15px;
+				font-weight:bold;
+				margin-top:8px;
+				cursor:pointer;
+			}
+				#createaccount_hold_agreement_age_box > div > button:nth-child(3){
+					background:#ffe500;
+				}
+					#createaccount_hold_agreement_age_box > div > button:nth-child(3):hover{
+						background:#efd600;
+					}
+					#createaccount_hold_agreement_age_box > div > button:nth-child(4){
+						background:#f6f6f6;
+					}
+					#createaccount_hold_agreement_age_box > div > button:nth-child(4):hover{
+						background:#e8e8e8;
+					}
+				#createaccount_hold_agreement_age_box > div > div:nth-child(5) > button{
+					position:absolute;
+					display:table-cell;
+					top:0;
+					right:0;
+					width:25px;
+					height:25px;
+					font-size:25px;
+					color:#7c7c7c;
+					border:0;
+					background:none;
+					margin:10px;
+					cursor:pointer;
+				}
+	#createaccount_hold_agreement_required_box{
+		display:none;
+		vertical-align:middle;
+	}
+		#createaccount_hold_agreement_required_box > div{
+			width:320px;
+			padding:30px 40px;
+			margin:0 auto;
+			background:white;
+		}
+		#createaccount_hold_agreement_required_box > div > p{
+			font-size:14px;
+			color:#7c7c7c;
+			margin-bottom:30px;
+		}
+		#createaccount_hold_agreement_required_box > div > button:nth-child(2){
+			width:100%;
+			height:50px;
+			border:0;
+			border-radius:4px;
+			font-size:15px;
+			font-weight:bold;
+			margin-top:8px;
+			cursor:pointer;
+			background:#f6f6f6;
+		}
+					#createaccount_hold_agreement_required_box > div > button:nth-child(2):hover{
+						background:#e8e8e8;
+					}
+	#createaccount_hold_information_email_box{
+		display:none;
+		vertical-align:middle;
+	}
+		#createaccount_hold_information_email_box > div{
+			position:relative;
+			width:320px;
+			padding:30px 40px;
+			margin:0 auto;
+			background:white;
+			border-radius:5px;
+		}
+			#createaccount_hold_information_email_box > div > p:nth-child(1){
+				font-size:18px;
+				font-weight:bold;
+				margin-bottom:20px;
+			}
+			#createaccount_hold_information_email_box > div > p:nth-child(2){
+				font-size:13px;
+				color:#7c7c7c;
+				margin-bottom:30px;
+			}
+			#createaccount_hold_information_email_box > div > button{
+				width:100%;
+				height:50px;
+				border:0;
+				border-radius:4px;
+				font-size:15px;
+				font-weight:bold;
+				margin-top:8px;
+				cursor:pointer;
+			}
+				#createaccount_hold_information_email_box > div > button:nth-child(3){
+					background:#ffe500;
+				}
+				#createaccount_hold_information_email_box > div > button:nth-child(4){
+					background:#f6f6f6;
+				}
+			#createaccount_hold_information_email_box > div> div > button{
+					position:absolute;
+					display:table-cell;
+					top:0;
+					right:0;
+					width:25px;
+					height:25px;
+					font-size:25px;
+					color:#7c7c7c;
+					border:0;
+					background:none;
+					margin:10px;
+					cursor:pointer;
+			}

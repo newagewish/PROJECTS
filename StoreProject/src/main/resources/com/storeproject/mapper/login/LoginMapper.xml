@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storeproject.mapper.login.LoginMapper">
+	<select id="selectEmailCheck" resultType="int">
+		<![CDATA[
+			select count(*) from account_tb where ac_ID="${email}";
+		]]>
+	</select>
+	<insert id="InsertInformation">
+		<![CDATA[
+			insert into account_tb(ac_ID, ac_PW, ac_NNM, ac_Year, ac_Month, ac_Day, ac_Gender) 
+				values(#{ac_ID}, #{ac_PW}, #{ac_NNM}, #{ac_Year}, #{ac_Month}, #{ac_Day}, #{ac_Gender});
+		]]>
+	</insert>
+	<insert id="InsertAuthority">
+		<![CDATA[
+			insert into account_auth_tb(ac_ID, ac_Auth) 
+				values(#{ac_ID}, "ROLE_MEMBER");
+		]]>
+	</insert>
+	
+	<insert id="InsertProvision">
+		<![CDATA[
+			insert into account_agree_tb(ac_ID, ac_Uses_Agree)
+				values(#{ac_ID}, 0);
+		]]>
+	</insert>
+</mapper>

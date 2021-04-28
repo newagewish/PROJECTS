@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storeproject.mapper.admin.CategoryMapper">
+	<select id="getMainCategory" resultType="com.storeproject.domain.header.MainCategoryVO">
+		<![CDATA[
+			select distinct main_column_NM, main_category_NM from category_relation_tb order by (substring_index(main_column_NM, "_", -1)+0);
+		]]>
+	</select>
+	<select id="getSubCategory" resultType="com.storeproject.domain.header.SubCategoryVO">
+		<![CDATA[
+			select sub_column_NM, sub_category_NM from category_relation_tb where main_column_NM=#{main_column_NM} and main_category_NM=#{main_category_NM} order by (substring_index(sub_column_NM, "_", -1)+0);
+		]]>
+	</select>
+	<update id="updateMainCategory">
+		<![CDATA[
+			update category_relation_tb set main_category_NM=#{main_category_NM} where main_column_NM=#{main_column_NM};
+		]]>
+	</update>
+	<update id="updateSubCategory">
+		<![CDATA[
+			update category_relation_tb set main_category_NM=#{main_category_NM}, main_column_NM=#{main_column_NM}, sub_category_NM=#{sub_category_NM} where sub_column_NM=#{sub_column_NM};
+		]]>
+	</update>
+	<select id="findMainColumnCNT" resultType="int">
+		<![CDATA[
+			select column_CNT from autoincrement_tb where column_tb_NM = "category_main_tb";
+		]]>
+	</select>
+	<select id="findSubColumnCNT" resultType="int">
+		<![CDATA[
+			select column_CNT from autoincrement_tb where column_tb_NM = "category_sub_tb";
+		]]>
+	</select>
+	<insert id="addMainCategory">
+		<![CDATA[
+			insert into category_relation_tb values(#{main_column_NM}, #{main_category_NM}, #{subColumnNM}, "설정", 1);
+		]]>
+	</insert>
+	<insert id="addSubCategory">
+		<![CDATA[
+			insert into category_relation_tb values(#{main_column_NM}, #{main_category_NM}, #{sub_column_NM}, #{sub_category_NM}, 1);
+		]]>
+	</insert>
+	<update id="updateMainColumnCNT">
+		<![CDATA[
+			update autoincrement_tb set column_CNT = column_CNT+1 where column_tb_NM = "category_main_tb";
+		]]>
+	</update>
+	<update id="updateSubColumnCNT">
+		<![CDATA[
+			update autoincrement_tb set column_CNT = column_CNT+1 where column_tb_NM = "category_sub_tb";
+		]]>
+	</update>
+	<update id="updateProductsMainCategory">
+		<![CDATA[
+			alter table products_main_category_tb add ${mc_colum_NM} boolean default 0;
+		]]>
+	</update>
+	<update id="updateProductsSubCategory">
+		<![CDATA[
+			alter table products_sub_category_tb add ${sc_colum_NM} boolean default 0;
+		]]>
+	</update>
+	<select id="getCategoryImg" resultType="String">
+		<![CDATA[
+			select category_Img from category_img_tb where cateogry_column_NM = #{column};
+		]]>
+	</select>
+	<insert id="insertCategoryImg">
+		<![CDATA[
+			insert into category_img_tb values(#{column_NM}, #{fileNM});
+		]]>
+	</insert>
+	<update id="updateCategoryImg">
+		<![CDATA[
+			update category_img_tb set category_Img = #{fileNM} where cateogry_column_NM = #{column_NM};
+		]]>
+	</update>
+</mapper>

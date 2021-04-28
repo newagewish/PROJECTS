@@ -1,0 +1,230 @@
+@charset "UTF-8";
+html{
+	scroll-behavior:smooth;
+}
+button:focus{
+	outline:none;
+}
+p{
+	margin:0;
+}
+#list_box{
+	padding-top:67px;
+	width:1080px;
+	margin:0 auto;
+}
+	#list_banner_img_box{
+		position:relative;
+		width:1080px;
+		height:220px;
+	}
+		#list_banner_NM{
+			position: absolute;
+		    display: block;
+		    line-height: 220px;
+		    font-size: 40px;
+		    font-weight: bold;
+		    margin-left: 40px;
+		    color: white;
+		    z-index:1;
+		}
+		#list_banner_Img{
+			position:absolute;
+			top:0;
+			background-size: cover;
+			display:block;
+			width:1080px;
+			height:220px;
+		}
+	#list_menu_box{
+	}
+		#list_menu{
+			
+		}
+			.list_menu_btn{
+				line-height:60px;
+				border:0;
+				background:none;
+				font-size:17px;
+				font-weight:bold;
+				text-align:center;
+				color:rgb(154, 154, 158);
+				border-bottom:1px solid #cccccc;
+				padding:0 20px 0 20px;
+				cursor:pointer;
+			}
+			
+	
+	
+	
+	
+/* ----------------------------------------------------------- */
+/* home 에서 가져온 css */
+	/* 미니메뉴 전체  */
+	#list_contents{
+		position:relative;
+		margin:20px 0 20px 0;
+	}
+		#list_contents > span:nth-child(1){
+			color:rgb(154, 154, 158);
+			line-height:35px;
+		}
+		#serch_count{
+			font-size:16px;
+			font-weight:bold;
+			line-height:35px;
+		}
+		#list_contents > span:nth-child(3){
+			color:rgb(154, 154, 158);
+			line-height:35px;
+		}
+		
+		#list_option{
+			float:right;
+			width:185px;
+			height:35px;
+			font-size:16px;
+			padding: 5px 10px 5px 10px;
+			background:none;
+			border:1px solid rgb(227, 229, 232);
+		}
+			#list_option > span:nth-child(1){
+				float:left;
+				line-height:23px;
+			}
+			#list_option > span:nth-child(2){
+				float:right;
+				width:23px;
+				height:23px;
+				background:url("/resources/svg/home/down_icon.svg");
+				background-size:cover;
+			}
+		#list_charater{
+			float:right;
+			width:185px;
+			height:35px;
+			font-size:16px;
+			padding: 5px 10px 5px 10px;
+			background:none;
+			border:1px solid rgb(227, 229, 232);
+		}
+				#list_charater > span:nth-child(1){
+					float:left;
+					line-height:23px;
+				}
+				#list_charater > span:nth-child(2){
+					float:right;
+					width:23px;
+					height:23px;
+					background:url("/resources/svg/home/down_icon.svg");
+					background-size:cover;
+				}
+			#list_charater_box{
+				position:absolute;
+				top:35px;
+				right:0;
+				clear:both;
+				float:right;
+				display:none;
+				padding:15px;
+				border:1px solid rgb(227, 229, 232);
+				background:white;
+				z-index: 1;
+			}
+				#list_charater_box > button {
+					width:80px;
+					height:100px;
+					text-align:center;
+					float:left;
+					cursor:pointer;
+					background:none;
+					border:0;
+				}
+					#list_charater_box > button:nth-child(11){
+						margin-left:80px;
+					}
+					#list_charater_box > button > img {
+						width:60px;
+						margin:7px 4px 7px 4px;
+					}
+					#list_charater_box > button > span {
+						line-height:20px;
+					}
+				
+			#list_option_box{
+				position:absolute;
+				top: 35px;
+				right:185px;
+				clear:both;
+				float:right;
+				display:none;
+				width:183px;
+				border:1px solid rgb(227, 229, 232);
+				background:white;
+				z-index: 1;
+			}
+				#list_option_box > button{
+					width:185px;
+					height:35px;
+					font-size:16px;
+					padding: 5px 10px 5px 10px;
+					background:none;
+					border:0;
+					text-align:left;
+				}
+		#list_select_box{
+			margin-top:50px;
+			overflow:auto;
+		}
+			.list_contents_div{
+				float:left;
+				width:255px;
+				height:360px;
+				margin-right:20px;
+				margin-bottom:15px;
+				cursor:pointer;
+			}
+				.list_contents_div > a > span{
+					display:flex;
+				}
+				.list_contents_div:nth-of-type(4n){
+					margin-right:0;
+				}
+			.list_contents_div > a > span > img {
+				width:255px;
+				height:255px;
+			}
+			
+			.mini_name{
+				font-size:16px;
+				line-height:20px;
+				margin:10px 0px 5px;
+				letter-spacing: -0.2px;
+				color:rgb(119, 119, 119);
+			}
+			.mini_price{
+				clear:both;
+				font-size: 16px;
+				font-weight:bold;
+   				letter-spacing: -0.25px;
+			}
+			.mini_percent{
+				float:left;
+				color: rgb(255, 68, 127);
+				font-weight:bold;
+				font-size:18px;
+			}
+			.mini_sale{
+				float:left;
+				color: rgb(255, 68, 127);
+				font-weight:bold;
+				font-size:18px;
+				margin-left:10px;
+			}
+			.img_cover{
+				position:absolute;
+				width:255px;
+				height:255px;
+				background:rgba(0, 0, 0, 0.05);
+				border-radius:15px;
+			}

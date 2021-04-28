@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storeproject.mapper.InfoMapper">
+	
+	<select id="getFindStore" resultType="com.storeproject.domain.StoreinfoVO">
+		<![CDATA[
+			select * from store_info_tb where st_NM = "${st_NM}"
+		]]>
+	</select>
+	
+	<select id="getList" resultType="com.storeproject.domain.StoreinfoVO">
+		<![CDATA[
+			select * from store_info_tb where st_NO > 0
+		]]>
+	</select>
+	
+</mapper>

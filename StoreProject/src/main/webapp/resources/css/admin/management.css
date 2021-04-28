@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+button:focus{
+	outline: none;
+}
+#management_box{
+	max-width:1080px;
+	width:1080px;
+	margin:0 auto;
+	padding-top:67px;
+}
+	#management_header_box{
+		height:140px;
+		background:#FFDC00;
+		padding:30px;
+		margin-bottom:10px;
+	}
+		#management_header_box > h1{
+			line-height:140px;
+			margin:0;
+		}
+		
+	#management_content_box{
+		margin-bottom:10px;
+		
+	}
+		.management_content_btn{
+			width:200px;
+			height:200px;
+			border:0;
+			background:none;
+			font-size:17px;
+			cursor:pointer;
+			background-color:#F7F7F7;
+		}
+			.management_content_btn > span:nth-child(1){
+			}
+			.management_content_btn > span:nth-child(2){
+				background:url("/resources/img/admin/arrow_right_icon.png");
+				background-size:cover;
+				width:9px;
+				height:14px;
+				display:inline-block;
+			}

@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+figure{
+	margin:0;
+}
+img{
+	margin:0;
+}
+#card_box{
+	padding-top:67px;
+}
+
+	#card_contents_box{
+		position:relative;
+		margin:0 auto;
+	}
+		#card_contents_box > pre{
+			width:100%;
+		}
+			#card_contents_box > pre > figure > img{
+				object-fit: cover;
+    			width: 100%;
+    			min-width:1080px;
+				margin: 0 auto;
+			}
+			#card_contents_box > pre > figure > oembed{
+    			width: 1080px;
+			}
+				#card_contents_box > pre > figure > oembed > div{
+	    			width: 1080px;
+					margin: 0 auto;
+				}
+		.card_title{
+			width:1080px;
+			font-size:24px;
+			margin:0 auto;
+			margin-bottom:50px;
+		}
+		
+		
+		
+			#card_products_ul{
+				clear:both;
+				display:flex;
+				flex-wrap: wrap;
+				width:1080px;
+				list-style:none;
+				padding:30px 0 0 0;
+				margin:0 auto;
+			}
+				#card_products_ul > li{
+					width:255px;
+					margin-right:20px;
+					margin-bottom:55px;
+					cursor:pointer;
+				}
+				#card_products_ul > li:nth-child(4n){
+					margin-right:0px;
+				}
+					#card_products_ul > li > a{
+						display:block;
+					}
+						#card_products_ul > li > a > span{
+							display:inline-flex;
+						}
+							#card_products_ul > li > a > span > img{
+								width:255px;
+								height:255px;
+							}
+
+							.mini_name{
+								font-size:16px;
+								line-height:20px;
+								margin:10px 0px 5px;
+								letter-spacing: -0.2px;
+							}
+							.mini_price{
+								clear:both;
+								font-size: 16px;
+								font-weight:bold;
+			    				letter-spacing: -0.25px;
+							}
+							.mini_percent{
+								float:left;
+								color: rgb(255, 68, 127);
+								font-weight:bold;
+								font-size:18px;
+							}
+							.mini_sale{
+								float:left;
+								color: rgb(255, 68, 127);
+								font-weight:bold;
+								font-size:18px;
+								margin-left:10px;
+							}
+							.img_cover{
+								position:absolute;
+								width:255px;
+								height:255px;
+								background:rgba(0, 0, 0, 0.05);
+								border-radius:15px;
+							}

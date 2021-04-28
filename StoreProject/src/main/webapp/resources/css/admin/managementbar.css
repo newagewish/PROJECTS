@@ -1,0 +1,153 @@
+@charset "UTF-8";
+button:focus{
+	outline:none;
+}
+#managementbar_box{
+	position:fixed;
+	width:200px;
+	top:0;
+	height:100%;
+	left:-200px;
+	z-index:10;
+}
+	#mb_box{
+		width:199px;
+		height:100%;
+		background:rgba(46, 46, 46, 1);
+		float:left;
+		border-right: 1px solid white;
+		overflow:auto;
+		transition:1s;
+	}
+		#mb_title_btn{
+			width:100%;
+			height:66px;
+			border:0;
+			border-bottom:1px solid white;
+			color:white;
+			font-size:30px;
+			text-align:left;
+			line-height:66px;
+			padding-left:10px;
+			font-family: 'Pacifico', cursive;
+			background:none;
+		}
+			#mb_title_btn:hover{
+				color:rgba(255, 30, 144, 0.8);
+			}
+		.mb_btn{
+			width:100%;
+			height:50px;
+			border:0;
+			padding:0;
+			background:none;
+			font-size:14px;
+		}
+		.mb_btn:hover{
+			background:rgba(255, 30, 144, 0.8);
+		}
+			#mb_dashboard_btn > span:nth-child(1){
+				background-image:url("/resources/svg/managementbar/dashboard_icon.svg");
+			}
+			#btn_card_icon{
+				background-image:url("/resources/svg/managementbar/card_icon.svg");
+			}
+			#btn_products_icon{
+				background-image:url("/resources/svg/managementbar/products_icon.svg");
+			}
+			#mb_user_btn > span:nth-child(1){
+				background-image:url("/resources/svg/managementbar/user_icon.svg");
+			}
+			.mb_icons{
+				float:left;
+				background-size:cover;
+				width:25px;
+				height:25px;
+				margin:12.5px;
+			}
+			.mb_names{
+				float:left;
+				line-height:50px;
+				color:white;
+			}
+			
+				.mb_in_box{
+					display:none;
+				} 
+				
+					.mb_in_btn{
+						width:100%;
+						height:40px;
+						border:0;
+						padding:0;
+						background:none;
+						font-size:12px;
+					}
+					.mb_in_btn:hover{
+						background:rgba(255, 30, 144, 0.8);
+					}
+						
+						#btn_products_add_icon{
+							background-image:url("/resources/svg/managementbar/plus_square_icon.svg");
+						}
+						#btn_products_remove_icon{
+							background-image:url("/resources/svg/managementbar/minus_square_icon.svg");
+						}
+						#btn_card_add_icon{
+							background-image:url("/resources/svg/managementbar/plus_square_icon.svg");
+						}
+						#btn_card_remove_icon{
+							background-image:url("/resources/svg/managementbar/minus_square_icon.svg");
+						}
+						.mb_in_btn_signs{
+							float:left;
+							width:20px;
+							height:20px;
+							margin:10px 0px 10px 20px;
+							font-weight:bold;
+							color:white;
+						}
+						.mb_in_btn_icons{
+							float:left;
+							background-size:cover;
+							width:20px;
+							height:20px;
+							margin:10px 10px 10px 0px;
+						}
+						.mb_in_btn_names{
+							float:left;
+							line-height:40px;
+							color:white;
+						}
+						
+	#mb_open_box{
+		position: fixed;
+		left:0px;
+	    top: calc(100% - 56px);
+	    width: 50px;
+	    height: 50px;
+	    background: #2e2e2e;
+	    border-radius: 0px 10px 10px 0;
+	    float: left;
+	    transition:1s;
+	}
+		#mb_open_box > button{
+		    background: none;
+		    border: 0;
+		    padding: 0;
+		    width:50px;
+		    height:50px;
+		    
+		}
+			#mb_open_box > button > img{
+				width: 30px;
+			    height: 30px;
+			    padding: 10px;
+			    background: none;
+			    transition-duration:1s;
+			}
+			#mb_open_box > button > img:hover{
+				transition-duration:1s;
+			}
+	
+		

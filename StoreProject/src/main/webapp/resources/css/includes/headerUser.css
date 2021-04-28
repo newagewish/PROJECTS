@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+button{
+	cursor:pointer;
+}
+button:disabled {
+  cursor:not-allowed;
+}
+#header_user_box{
+	display:none;
+	position:absolute;
+	top:66px;
+	right:0;
+	background:white;
+	box-shadow: rgba(0, 0, 0, 0.08) 0px 12px 20px 0px;
+	z-index:9999;
+}
+	#header_user_box > ul{
+		padding:0;
+	}
+	#header_user_box > ul > li{
+		list-style:none;
+	}
+	#header_user_box > ul > li > button{
+		display:block;
+		line-height:1.5;
+		width:208px;
+		font-size:14px;
+		text-align:left;
+		outline:none;
+		padding:6.5px 32px;
+		border:0;
+		background:none;
+	}
+	#header_user_box > ul > li > form > input{
+		display:block;
+		line-height:1.5;
+		width:208px;
+		font-size:14px;
+		text-align:left;
+		outline:none;
+		padding:6.5px 32px;
+		border:0;
+		background:none;
+		cursor:pointer;
+	}

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storeproject.mapper.admin.ProductsMapper">
+	<insert id="insertProductsInfo" useGeneratedKeys="true" keyProperty="pds_NO">
+		<![CDATA[
+			insert into products_info_tb(pds_NM, pds_Price, pds_Image, pds_Contents, pds_Detail, pds_Vogue_Image, pds_Delivery, pds_Reg_Date)
+			values(#{pds_NM}, #{pds_Price}, #{pds_Image}, #{pds_Contents}, #{pds_Detail}, #{pds_Vogue_Image}, #{pds_Delivery}, #{pds_Reg_Date});
+		]]>
+	</insert>
+	<insert id="insertProductsMainCategory">
+		<![CDATA[
+			insert into products_main_category_tb
+		]]>
+			<foreach collection='maincategory' index='index' item='mc' open='(pds_NO,' close=')' separator=','>
+			${mc}
+			</foreach>
+		<![CDATA[
+			values (${no}, 
+		]]>
+			<foreach collection='maincategory' index='index' item='mc' open='' close='' separator=','>
+			1
+			</foreach>
+		<![CDATA[
+			);
+		]]>
+	</insert>
+	<insert id="insertProductsSubCategory">
+		<![CDATA[
+			insert into products_sub_category_tb
+		]]>
+			<foreach collection='subcategory' index='index' item='sc' open='(pds_NO,' close=')' separator=','>
+			${sc}
+			</foreach>
+		<![CDATA[
+			values (${no}, 
+		]]>
+			<foreach collection='subcategory' index='index' item='sc' open='' close='' separator=','>
+			1
+			</foreach>
+		<![CDATA[
+			);
+		]]>
+	</insert>
+	<insert id="insertProductsCharater">
+		<![CDATA[
+			insert into products_charater_tb
+		]]>
+			<foreach collection='charater' index='index' item='charater' open='(pds_NO,' close=')' separator=','>
+			${charater}
+			</foreach>
+		<![CDATA[
+			values (${no}, 
+		]]>
+			<foreach collection='charater' index='index' item='charater' open='' close='' separator=','>
+			1
+			</foreach>
+		<![CDATA[
+			);
+		]]>
+	</insert>
+	<insert id="insertProductsColor">
+		<![CDATA[
+			insert into products_color_tb
+		]]>
+			<foreach collection='colorArray' index='index' item='color' open='(pds_NO,' close=')' separator=','>
+			${color}
+			</foreach>
+		<![CDATA[
+			values (${no}, 
+		]]>
+			<foreach collection='colorArray' index='index' item='color' open='' close='' separator=','>
+			1
+			</foreach>
+		<![CDATA[
+			);
+		]]>
+	</insert>
+	
+	<insert id="insertProductsNullOption">
+		<![CDATA[
+			insert into products_option_tb(pds_NO, op_Choice, op_Stock) values (${no}, #{pds_op.op_Choice}, ${pds_op.op_Stock});
+		]]>
+	</insert>
+	<insert id="insertProductsArrayOption">
+		<![CDATA[
+			insert into products_option_tb(pds_NO, op_Choice, op_NM, op_Stock) values (${no}, 
+		]]>
+			<foreach collection='optionArray' index='index' item='oa' separator=','>
+			<if test="index==0 || index==1">
+			#{oa}
+			</if>
+			<if test="index==2">
+		   ${oa}
+		   </if>
+			</foreach>
+		<![CDATA[
+			);
+		]]>
+	</insert>
+	<insert id="insertArrange">
+		<![CDATA[
+			insert into products_arrange_tb(pds_NO, main_Category, sub_Category, charater, color) 
+				values (${no}, #{maintext}, #{subtext}, #{chartertext}, #{colortext});
+		]]>
+	</insert>
+	<insert id="insertProductsCharaterNull">
+		<![CDATA[
+			insert into products_charater_tb(pds_NO) values (${no});
+		]]>
+	</insert>
+	<insert id="insertProductsColorNull">
+		<![CDATA[
+			insert into products_color_tb(pds_NO) values (${no});
+		]]>
+	</insert>
+	
+	<update id="updateProductsContentsUrl">
+		<![CDATA[
+			update products_info_tb set pds_Contents = #{str} where pds_NO = ${no};
+		]]>
+	</update>
+</mapper>

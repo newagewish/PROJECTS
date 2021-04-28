@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storeproject.mapper.account.AccountMapper">
+	
+	<resultMap type="com.storeproject.domain.AccountVO" id="accountMap">
+		<id property="ac_ID" column="ac_ID"/>
+		<result property="ac_NO" column="ac_NO"/>
+		<result property="ac_PW" column="ac_PW"/>
+		<result property="ac_NNM" column="ac_NNM"/>
+		<result property="ac_Year" column="ac_Year"/>
+		<result property="ac_Month" column="ac_Month"/>
+		<result property="ac_Day" column="ac_Day"/>
+		<result property="ac_Gender" column="ac_Gender"/>
+		<result property="ac_Reg_Date" column="ac_Reg_Date"/>
+		<result property="ac_Up_Date" column="ac_Up_Date"/>
+		<collection property="authorityList" resultMap="authorityMap">
+		</collection>
+	</resultMap>
+	
+	<resultMap type="com.storeproject.domain.AuthorityVO" id="authorityMap">
+		<result property="ac_ID" column="ac_ID"/>
+		<result property="ac_Auth" column="ac_Auth"/>
+	</resultMap>
+	
+	<select id="read" resultMap="accountMap">
+	<![CDATA[
+		select ac_NO, ac.ac_ID, ac_PW, ac_NNM, ac_enabled, ac_Year, ac_Month, ac_Day, ac_Gender, ac_Reg_Date, ac_Up_Date, ac_Auth
+			from account_tb ac left outer join account_auth_tb au on ac.ac_ID = au.ac_ID where ac.ac_ID = #{ac_ID}
+	]]>
+	</select>
+</mapper>

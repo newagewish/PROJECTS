@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.storeproject.mapper.HomeMapper">
+	<select id="selectProductsCard"  resultType="com.storeproject.domain.admin.CardVO">
+		<![CDATA[
+			select card_NO, card_Type, card_Img, card_Title, card_Intro, card_Choice, card_Url, card_Products, card_Reg_Date from card_tb 
+				where card_Active=1 ORDER BY card_Reg_Date DESC, card_NO DESC Limit #{count}, 10;
+		]]>
+	</select>
+	<select id="selectProductsNew"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date from products_info_tb 
+				where pds_Active=1 ORDER BY pds_Reg_Date DESC, pds_NO DESC Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectProductsVogue"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO,pds_Vogue_Image,date_format(pds_Reg_Date, '%Y-%m-%d') 'pds_Reg_Date' 
+				from products_info_tb where pds_Active=1 ORDER BY pds_Vogue DESC, pds_NO DESC Limit #{count}, 18;
+		]]>
+	</select>
+	<select id="selectProductsSale"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date 
+				from products_info_tb where pds_Active=1 and pds_Sale is not null ORDER BY pds_NO DESC Limit #{count}, 20;
+		]]>
+	</select>
+	<!-- 전체 메뉴 -->
+	<select id="selectProductsAllall"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+				from products_info_tb f 
+					join (select pds_NO from products_option_tb where pds_Active=1 GROUP BY pds_NO order by sum(op_Completed) DESC, pds_NO DESC) s
+				ON f.pds_NO = s.pds_NO Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectProductsAllallcharater"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+				from products_info_tb f 
+					join (select pds_NO from products_option_tb where pds_NO in (select pds_NO from products_charater_tb where ${charater} = 1 and pds_Active=1) GROUP BY pds_NO order by sum(op_Completed) DESC, pds_NO DESC) s
+				ON f.pds_NO = s.pds_NO and pds_Active=1 Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectProductsAllnew"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date 
+				from products_info_tb where pds_Active=1 ORDER BY pds_Reg_Date DESC, pds_NO DESC Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectProductsAllnewcharater"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+				from products_info_tb f join (select pds_NO from products_charater_tb where ${charater} = 1 and pds_Active=1) s
+				ON f.pds_NO = s.pds_NO ORDER BY pds_Reg_Date DESC, pds_NO DESC Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectProductsAlllow"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date 
+				from products_info_tb where pds_Active=1 ORDER BY IFNULL(pds_Sale, pds_Price) ASC Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectProductsAlllowcharater"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+				from products_info_tb f join (select pds_NO from products_charater_tb where ${charater} = 1 and pds_Active=1) s
+				ON f.pds_NO = s.pds_NO ORDER BY IFNULL(pds_Sale, pds_Price) ASC Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectProductsAllhigh"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date 
+				from products_info_tb where pds_Active=1 ORDER BY IFNULL(pds_Sale, pds_Price) DESC Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectProductsAllhighcharater"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+				from products_info_tb f join (select pds_NO from products_charater_tb where ${charater} = 1 and pds_Active=1) s
+				ON f.pds_NO = s.pds_NO ORDER BY IFNULL(pds_Sale, pds_Price) DESC Limit #{count}, 20;
+		]]>
+	</select>
+			
+
+			
+			
+			
+	<!-- 뒤로가기 hash 쿼리 -->
+	<select id="selectHashCard"  resultType="com.storeproject.domain.admin.CardVO">
+		<![CDATA[
+			select card_NO, card_Type, card_Img, card_Title, card_Intro, card_Choice, card_Contents, card_Url, card_Products, card_Reg_Date from card_tb 
+				where card_Active=1 ORDER BY card_Reg_Date DESC, card_NO DESC Limit 0, #{count};
+		]]>
+	</select>
+	<select id="selectHashNew"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date from products_info_tb 
+				where pds_Active=1 ORDER BY pds_Reg_Date DESC, pds_NO DESC Limit 0, #{count};
+		]]>
+	</select>
+	<select id="selectHashVogue"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO,pds_Vogue_Image,date_format(pds_Reg_Date, '%Y-%m-%d') 'pds_Reg_Date' 
+				from products_info_tb where pds_Active=1 ORDER BY pds_Vogue DESC, pds_NO DESC Limit 0, #{count};
+		]]>
+	</select>
+	<select id="selectHashSale"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date 
+				from products_info_tb where pds_Active=1 and pds_Sale is not null ORDER BY pds_NO DESC Limit 0, #{count};
+		]]>
+	</select>
+	<!-- 전체 메뉴 -->
+		<select id="selectHashAllall"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+			<![CDATA[
+				select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+					from products_info_tb f 
+						join (select pds_NO from products_option_tb where pds_Active=1 GROUP BY pds_NO order by sum(op_Completed) DESC, pds_NO DESC) s
+					ON f.pds_NO = s.pds_NO Limit 0, #{count};
+			]]>
+		</select>
+		<select id="selectHashAllallcharater"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+			<![CDATA[
+				select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+					from products_info_tb f 
+						join (select pds_NO from products_option_tb where pds_NO in (select pds_NO from products_charater_tb where ${charater} = 1 and pds_Active=1) GROUP BY pds_NO order by sum(op_Completed) DESC, pds_NO DESC) s
+					ON f.pds_NO = s.pds_NO and pds_Active=1 Limit 0, #{count};
+			]]>
+		</select>
+		<select id="selectHashAllnew"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+			<![CDATA[
+				select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date 
+					from products_info_tb where pds_Active=1 ORDER BY pds_Reg_Date DESC, pds_NO DESC Limit 0, #{count};
+			]]>
+		</select>
+		<select id="selectHashAllnewcharater"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+			<![CDATA[
+				select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+					from products_info_tb f join (select pds_NO from products_charater_tb where ${charater} = 1 and pds_Active=1) s
+					ON f.pds_NO = s.pds_NO ORDER BY pds_Reg_Date DESC, pds_NO DESC Limit 0, #{count};
+			]]>
+		</select>
+		<select id="selectHashAlllow"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+			<![CDATA[
+				select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date 
+					from products_info_tb where pds_Active=1 ORDER BY IFNULL(pds_Sale, pds_Price) ASC Limit 0, #{count};
+			]]>
+		</select>
+		<select id="selectHashAlllowcharater"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+			<![CDATA[
+				select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+					from products_info_tb f join (select pds_NO from products_charater_tb where ${charater} = 1 and pds_Active=1) s
+					ON f.pds_NO = s.pds_NO ORDER BY IFNULL(pds_Sale, pds_Price) ASC Limit 0, #{count};
+			]]>
+		</select>
+		<select id="selectHashAllhigh"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+			<![CDATA[
+				select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date 
+					from products_info_tb where pds_Active=1 ORDER BY IFNULL(pds_Sale, pds_Price) DESC Limit 0, #{count};
+			]]>
+		</select>
+		<select id="selectHashAllhighcharater"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+			<![CDATA[
+				select f.pds_NO, f.pds_NM, f.pds_Price, f.pds_Sale, f.pds_Image, f.pds_Reg_Date 
+					from products_info_tb f join (select pds_NO from products_charater_tb where ${charater} = 1 and pds_Active=1) s
+					ON f.pds_NO = s.pds_NO ORDER BY IFNULL(pds_Sale, pds_Price) DESC Limit 0, #{count};
+			]]>
+		</select>
+		
+		
+		
+		
+		
+	<!-- 전체 메뉴 조건 별 조회수 -->
+	<select id="selectProductsAllCount"  resultType="int">
+		<![CDATA[
+			select count(pds_NO) from products_info_tb where pds_Active = 1;
+		]]>
+	</select>
+	<select id="selectProductsAllCountCharater"  resultType="int">
+		<![CDATA[
+			select count(f.pds_NO) from products_info_tb f join (select pds_NO from products_charater_tb where ${charater} = 1) s
+				ON f.pds_NO = s.pds_NO and pds_Active = 1;
+		]]>
+	</select>
+</mapper>

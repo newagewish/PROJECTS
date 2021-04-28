@@ -1,0 +1,352 @@
+@charset "UTF-8";
+
+body{
+	
+}
+p{
+	margin:0;
+}
+h1{
+	margin:0;
+}
+button:focus{
+	outline: none;
+}
+input:focus{
+	outline: none;
+}
+select:focus{
+	outline: none;
+}
+ul{
+	list-style:none;
+	padding:0;
+}
+
+	#mypage_modify_box{
+		min-width:1080px;
+		max-width:1080px;
+		width:100%;
+		margin:0 auto;
+		padding-top:67px;
+	}
+		#modify_head_box{
+			padding:45px 0;
+			font-size:36px;
+			font-weight:bold;
+			border-bottom:1px solid black;
+		}
+		#modify_content_box{
+			overflow:hidden;
+		}
+			#modify_content_edit_box{
+				float:left;
+				width:630px;
+				padding:30px 0;
+			}
+				.modify_content_edit_box{
+					overflow:hidden;
+					margin:6px 0;
+					padding:5px 0;
+				}
+				#modify_conetnt_edit_birth{
+					
+				}
+					.modify_content_edit_box > span{
+						width:100px;
+						height:50px;
+						font-size:13px;
+						line-height:50px;
+						float:left;
+					}
+					.modify_content_edit_box > label{
+						position:absolute;
+						height:24px;
+						font-size:15px;
+						line-height:24px;
+						padding:12px;
+						margin:1px 0;
+						float:left;
+					}
+					.modify_content_edit_box > input{
+						width:calc(100% - 126px);
+						height:24px;
+						font-size:15px;
+						line-height:35px;
+						padding:12px;
+						margin:0;
+						border:1px solid #e3e5e8;
+						border-radius:4px;
+						float:left;
+					}
+					/* ↓생년월일(연도) */
+					#modify_content_birth_year_box{
+						float:left;
+					}
+						#modify_content_btn_year{
+							border:0;
+							width:118px;
+							height:50px;
+							color:#4c4c4c;
+							line-height:48px;
+							background:none;
+							cursor:pointer;
+							font-size:16px;
+							font-weight:bold;
+							text-align:left;
+						}
+							#modify_content_input_year{
+							}
+							.modify_content_input_birth{
+								float:left;
+								margin-left:12px;
+								height:40px;
+								width:70px;
+								border:0;
+								font-size:14px;
+								font-weight:bold;
+								background:none;
+								cursor:pointer;
+							}
+							.modify_content_span_arrow{
+								float:left;
+								display:inline-block;
+								width:12px;
+								height:12px;
+								margin:17px 0 0 -5px;
+								background:url("/resources/img/mypage/mypage_icons.png");
+								background-position:-180px -30px;
+							}
+						#modify_content_year_ul{
+							position:absolute;
+							display:none;
+							width:90px;
+							max-height:160px;
+							overflow-y:auto;
+							border:1px solid #eee;
+							background-color:#fff;
+							font-size:13px;
+							font-weight:bold;
+							box-shadow:0 0 20px 0 rgba(0,0,0,0.2);
+						}
+							#modify_content_year_ul > li{
+								cursor:pointer;
+								padding:10px;
+							}
+								#modify_content_year_ul > li:hover{
+									background:#d6d6d6;
+								}
+								#modify_content_year_ul > li > a{
+									
+								}
+					/* ↑생년월일(연도) */			
+					/* ↓생년월일(월)	 */	
+					#modify_content_birth_month_box{
+						float:left;
+						margin-left:5px;
+					}
+						#modify_content_btn_month{
+							border:0;
+							width:118px;
+							height:50px;
+							color:#4c4c4c;
+							line-height:48px;
+							background:none;
+							cursor:pointer;
+							font-size:16px;
+							font-weight:bold;
+							text-align:left;
+						}
+							#modify_content_input_month{
+								float:left;
+							}
+						#modify_content_month_ul{
+							position:absolute;
+							display:none;
+							width:90px;
+							max-height:160px;
+							overflow-y:auto;
+							border:1px solid #eee;
+							background-color:#fff;
+							font-size:13px;
+							font-weight:bold;
+							box-shadow:0 0 20px 0 rgba(0,0,0,0.2);
+						}
+							#modify_content_month_ul > li{
+								cursor:pointer;
+								padding:10px;
+							}
+								#modify_content_month_ul > li:hover{
+									background:#d6d6d6;
+								}
+								#modify_content_month_ul > li > a{
+									
+								}
+					/* ↑생년월일(월) */		
+					/* ↓생년월일(일) */				
+					#modify_content_birth_day_box{
+						float:left;
+						margin-left:5px;
+					}
+						#modify_content_btn_day{
+							border:0;
+							width:118px;
+							height:50px;
+							color:#4c4c4c;
+							line-height:48px;
+							background:none;
+							cursor:pointer;
+							font-size:16px;
+							font-weight:bold;
+							text-align:left;
+						}
+							#modify_content_input_day{
+								float:left;
+							}
+						#modify_content_day_ul{
+							position:absolute;
+							display:none;
+							width:90px;
+							height:160px;
+							overflow-y:auto;
+							border:1px solid #eee;
+							background-color:#fff;
+							font-size:13px;
+							font-weight:bold;
+							box-shadow:0 0 20px 0 rgba(0,0,0,0.2);
+						}
+							#modify_content_day_ul > li{
+								cursor:pointer;
+								padding:10px;
+							}
+								#modify_content_day_ul > li:hover{
+									background:#d6d6d6;
+								}
+								#modify_content_day_ul > li > a{
+									
+								}
+					/* ↑생년월일(일) */
+					/* ↓성별 */			
+					#modify_content_gender_box{
+						width:100%;
+						height:50px;
+						line-height:48px;
+					}
+						#modify_content_gender_none{
+							display:none;
+						}
+						#modify_content_gender_man{
+							display:none;
+						}
+						#modify_content_gender_woman{
+							display:none;
+						}
+						.modify_content_gender_label{
+							cursor:pointer;
+							float:left;
+						}
+							.modify_content_gender_label:nth-of-type(2){
+								margin-left:50px;
+							}
+							.modify_content_gender_label:nth-of-type(3){
+								margin-left:50px;
+							}
+						.modify_content_span_select_circle_off{
+							display:block;
+							width:20px;
+							height:20px;
+							background:url("/resources/img/mypage/mypage_icons.png");
+							background-position:-90px -30px;
+							margin:13px 5px;
+							float:left;
+						}
+							.modify_content_span_select_circle_on{
+								display:block;
+								width:20px;
+								height:20px;
+								background:url("/resources/img/mypage/mypage_icons.png");
+								background-position:-60px -30px;
+								margin:13px 5px;
+								float:left;	
+							}
+							
+						.modify_content_span_select_text{
+							display:block;
+							line-height:48px;
+							float:left;
+							margin-left:5px;
+						}
+					/* ↑성별 */			
+			
+			
+			
+			#modify_content_check_box{
+				float:left;
+				width:400px;
+				padding:30px 0;
+				margin-left:50px;
+			}
+				#modify_content_check_provision_input{
+					display:none;
+					float:left;
+				}
+				#modify_content_check_provision_img{
+					float:left;
+					display:block;
+					width:25px;
+					height:25px;
+					background:url("/resources/img/mypage/ico_checked_off.png");
+					background-size:cover;
+					margin-right:10px;
+				}
+				#modify_content_check_box > label{
+					float:left;
+					line-height:25px;
+					font-size:15px;
+					font-weight:bold;
+					cursor:pointer;
+				}
+				#modify_content_check_box > span:nth-child(3){
+					font-size:12px;
+					color:#9b9b9f;
+					line-height:25px;
+					margin:0px 0px 0px 10px;
+				}
+				#modify_content_check_box > p:nth-child(4){
+					padding-left:35px;
+					font-size:15px;
+					letter-spacing:-0.23px;
+					margin-top:8px;
+				}
+		#modify_foot_box{
+			padding:50px 0 170px 0;
+			border-top:1px solid black;
+		}
+			#modify_foot_btn_box{
+				display:flex;
+				justify-content:center;
+			}
+				#modify_content_cancel_btn{
+					width:270px;
+					height:60px;
+					border-radius:4px;
+					font-size:16px;
+					font-weight:bold;
+					color:black;
+					background:white;
+					border:1px solid #e3e5e8;
+					line-height: 60px;
+				    text-align: center;
+				    margin-right: 10px;
+				}
+				#modify_content_save_btn{
+					width:270px;
+					height:60px;
+					border-radius:4px;
+					font-size:16px;
+					font-weight:bold;
+					color:white;
+					background:#3c404b;
+					border:1px solid #3c404b;
+				}
+		

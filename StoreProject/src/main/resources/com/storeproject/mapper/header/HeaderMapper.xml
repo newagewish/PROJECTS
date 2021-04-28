@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storeproject.mapper.header.HeaderMapper">
+	<select id="selectMainCategory" resultType="com.storeproject.domain.header.MainCategoryVO">
+		<![CDATA[
+			select distinct main_column_NM, main_category_NM from category_relation_tb order by (substring_index(main_column_NM, "_", -1)+0);
+		]]>
+	</select>
+	
+	<select id="selectSubCategory" resultType="com.storeproject.domain.header.SubCategoryVO">
+		<![CDATA[
+			select sub_column_NM, sub_category_NM from category_relation_tb where main_column_NM=#{main_column_NM} and main_category_NM=#{main_category_NM} order by (substring_index(sub_column_NM, "_", -1)+0);
+		]]>
+	</select>
+</mapper>

@@ -1,0 +1,452 @@
+@charset "UTF-8";
+html{
+	scroll-behavior: smooth;
+}
+button:focus{
+	outline:none;
+}
+p{
+	margin:0;
+}
+#home_box{
+	margin-top: 134px;
+}
+	#ghost_box{
+		width: 1080px;
+	    height: 100px;
+	    margin: 0 auto;
+	    margin-top: 134px;
+	}
+#mini_bar_box{
+	position:fixed;
+	top:67px;
+	width:100%;
+	height:56px;
+	border-bottom:1px solid rgb(227, 229, 232);
+	background:white;
+	z-index:1;
+}
+	#mini_bar{
+		margin:0 auto;
+		max-width:1080px;
+		text-align:center;
+		font-size:0px;
+		transition-duration: 1s;
+	}
+		#mini_bar > button{
+			width:106px;
+			height:54px;
+			margin:0px;
+			padding:0px;
+			border:0px;
+			background:none;
+			font-size:16px;
+			font-weight:bold;
+			cursor:pointer;
+		}
+		#mini_bar > button:nth-child(1){
+			border-bottom:2px solid black;
+		}
+		#mini_bar > button:nth-child(2){
+		
+		}
+		#mini_bar > button:nth-child(3){
+		
+		}
+		#mini_bar > button:nth-child(4){
+		
+		}
+		#mini_bar > button:nth-child(5){
+		
+		}
+	#home_contents_cover{
+		width:1080px;
+		margin:0 auto;
+		overflow:hidden;
+		padding-top: 50px;
+	}
+		#home_contents_box{
+			position:relative;
+			left:0px;
+			display:inline-flex;
+			width:5400px;
+			transition:1s;
+		}
+			.mini_contents_box{
+				min-width:1080px;
+			}
+					#contents_home_box > div{
+						float:left;
+						width:360px;
+						min-height: 10px;
+						overflow:hidden;
+					}
+		.box_info1{
+			display:block;
+			margin:0;
+			color:rgb(154, 154, 158);
+			font-size:15px;
+		}
+		.box_info2{
+			display:block;
+			margin:0;
+			font-size:22px;
+			font-weight:bold;
+			margin-bottom:20px;
+		}
+/* ------------------------------------------------------------------------------------- */
+				/* 미니메뉴 홈  */	
+				#contents_home_box{
+					display: block;
+				}
+/* ------------------------------------------------------------------------------------- */
+				/* 미니메뉴 신규  */	
+				#contents_new_box{
+				
+				}
+				.contents_new_div{
+					float:left;
+					width:255px;
+					height:360px;
+					margin-right:20px;
+					margin-bottom:15px;
+					cursor:pointer;
+				}
+					.contents_new_div > a > span{
+						display:flex;
+					}
+					.contents_new_div:nth-of-type(4n){
+						margin-right:0;
+					}
+				.contents_new_div > a > span > img {
+					width:255px;
+					height:255px;
+				}
+/* ------------------------------------------------------------------------------------- */			
+				/* 미니메뉴 인기  */
+				#contents_vogue_box{
+					display: block;
+				}
+					.contents_vogue_div{
+						float:left;
+						width:350px;
+						height:350px;
+						margin:0px 5px 12px;
+						cursor:pointer;
+					}
+						.contents_vogue_div > a > span > img{
+							width:100%;
+							height:100%;
+							border-radius:15px;
+						}
+						
+/* ------------------------------------------------------------------------------------- */	
+				/* 미니메뉴 세일  */	
+				#contents_sale_box{
+					display: block;
+				}
+				.contents_sale_div{
+					float:left;
+					width:255px;
+					margin-right:20px;
+					margin-bottom:55px;
+					cursor:pointer;
+				}
+					.contents_sale_div > a > span{
+							display:flex;
+						}
+						.contents_sale_div:nth-of-type(4n){
+							margin-right:0;
+						}
+					.contents_sale_div > a > span > img {
+						width:255px;
+						height:255px;
+					}
+					
+					.mini_name{
+						font-size:16px;
+						line-height:20px;
+						margin:10px 0px 5px;
+						letter-spacing: -0.2px;
+						color:rgb(119, 119, 119);
+					}
+					.mini_price{
+						clear:both;
+						font-size: 16px;
+						font-weight:bold;
+	    				letter-spacing: -0.25px;
+					}
+					.mini_percent{
+						float:left;
+						color: rgb(255, 68, 127);
+						font-weight:bold;
+						font-size:18px;
+					}
+					.mini_sale{
+						float:left;
+						color: rgb(255, 68, 127);
+						font-weight:bold;
+						font-size:18px;
+						margin-left:10px;
+					}
+					.img_cover{
+						position:absolute;
+						width:255px;
+						height:255px;
+						background:rgba(0, 0, 0, 0.05);
+						border-radius:15px;
+					}
+/* ------------------------------------------------------------------------------------- */
+				/* 미니메뉴 전체  */
+				#contents_all_box{
+					
+				}
+					.contents_all_div{
+						float:left;
+						width:255px;
+						height:360px;
+						margin-right:20px;
+						margin-bottom:15px;
+						cursor:pointer;
+					}
+						.contents_all_div > a > span{
+							display:flex;
+						}
+						.contents_all_div:nth-of-type(4n){
+							margin-right:0;
+						}
+					.contents_all_div > a > span > img {
+						width:255px;
+						height:255px;
+					}
+					#contents_all_box > span:nth-child(1){
+						color:rgb(154, 154, 158);
+					}
+					#contents_all_box > span:nth-child(3){
+						color:rgb(154, 154, 158);
+					}
+					
+					#serch_count{
+						font-size:16px;
+						font-weight:bold;
+					}
+					#all_select_option{
+						float:right;
+						width:185px;
+						height:35px;
+						font-size:16px;
+						padding: 5px 10px 5px 10px;
+						background:none;
+						border:1px solid rgb(227, 229, 232);
+					}
+						#all_select_option > span:nth-child(1){
+								float:left;
+								line-height:23px;
+							}
+							#all_select_option > span:nth-child(2){
+								float:right;
+								width:23px;
+								height:23px;
+								background:url("/resources/svg/home/down_icon.svg");
+								background-size:cover;
+							}
+					#all_select_charater{
+						float:right;
+						width:185px;
+						height:35px;
+						font-size:16px;
+						padding: 5px 10px 5px 10px;
+						background:none;
+						border:1px solid rgb(227, 229, 232);
+					}
+							#all_select_charater > span:nth-child(1){
+								float:left;
+								line-height:23px;
+							}
+							#all_select_charater > span:nth-child(2){
+								float:right;
+								width:23px;
+								height:23px;
+								background:url("/resources/svg/home/down_icon.svg");
+								background-size:cover;
+							}
+						#all_select_charater_box{
+							position:absolute;
+							top:35px;
+							right:0;
+							clear:both;
+							float:right;
+							display:none;
+							padding:15px;
+							border:1px solid rgb(227, 229, 232);
+							background:white;
+							z-index: 1;
+						}
+							#all_select_charater_box > button {
+								width:80px;
+								height:100px;
+								text-align:center;
+								float:left;
+								cursor:pointer;
+								background:none;
+								border:0;
+							}
+								#all_select_charater_box > button:nth-child(11){
+									margin-left:80px;
+								}
+								#all_select_charater_box > button > img {
+									width:60px;
+									margin:7px 4px 7px 4px;
+								}
+								#all_select_charater_box > button > span {
+									line-height:20px;
+								}
+							
+						#all_select_option_box{
+							position:absolute;
+							top: 35px;
+							right:185px;
+							clear:both;
+							float:right;
+							display:none;
+							width:183px;
+							border:1px solid rgb(227, 229, 232);
+							background:white;
+							z-index: 1;
+						}
+							#all_select_option_box > button{
+								width:185px;
+								height:35px;
+								font-size:16px;
+								padding: 5px 10px 5px 10px;
+								background:none;
+								border:0;
+								text-align:left;
+							}
+					#all_select_box{
+						margin-top:50px;
+						overflow:auto;
+					}
+					
+/* ------------------------------------------------------------------------------------- */
+/* 미니 메뉴 카드 */
+.contents_card_div{
+	float: left;
+	width: 329px;
+	margin:14px;
+	border:1px solid #cccccc;
+	border-radius: 11px;
+	overflow:hidden;
+}
+.card_img_btn{
+	position:relative;
+	width: 329px;
+	height: 247px;
+	padding:0;
+	border:0;
+}
+	.card_img_btn > img{
+		width: 329px;
+	    height: 247px;
+	    padding:0;
+	}
+.contents_card_title{
+	font-size: 27px;
+    font-weight: bold;
+    font-family: malgun Gothic;
+    word-break: keep-all;
+    margin: 10px;
+}
+.contents_card_intro{
+	font-size: 15px;
+    font-family: malgun Gothic;
+    word-break: keep-all;
+    color: rgb(102, 102, 102);
+    margin: 10px;
+}
+.contents_card_Choice{
+	overflow:hidden;
+}
+
+
+
+.choice_box{
+		position: relative;
+		float:left;
+		width:141px;
+		height:200px;
+		margin: 11.75px;
+	}
+		.choice_a_tag{
+			position:relative;
+		}
+		.choice_box > a > span{
+			display:flex;
+		}
+	.choice_box > a > span > img {
+		width:141px;
+		height:141px;
+	}
+	
+		.choice_mini_name{
+			font-size:10px;
+			line-height:12px;
+			margin:10px 0px 5px;
+			letter-spacing: -0.2px;
+			color:rgb(119, 119, 119);
+		}
+		.choice_mini_price{
+			clear:both;
+			font-size: 10px;
+			font-weight:bold;
+	 				letter-spacing: -0.25px;
+		}
+		.choice_mini_percent{
+			float:left;
+			color: rgb(255, 68, 127);
+			font-weight:bold;
+			font-size:11px;
+		}
+		.choice_mini_sale{
+			float:left;
+			color: rgb(255, 68, 127);
+			font-weight:bold;
+			font-size:11px;
+			margin-left:10px;
+		}
+		.choice_img_cover{
+			position:absolute;
+			width:141px;
+			height:141px;
+			background:rgba(0, 0, 0, 0.05);
+			border-radius:15px;
+		}
+		.choice_remove_btn{
+			position:absolute;
+			right: 0px;
+			width:25px;
+			height:25px;
+			z-index:1;
+			border:0;
+			background: none;
+		    background-image:url("/resources/svg/card/x_icon.svg");
+		    background-size: cover;
+		    padding:0;
+		}
+		#card_editor_box{
+			display:none;
+		}
+		#card_editor_btn{
+			height: 30px;
+			width: 100%;
+			padding:0;
+		}
+			#card_editor_btn > span{
+				display:block;
+				height:30px;
+				width:30px;
+				background-image:url("/resources/svg/managementbar/products/chevrons_down_icon.svg");
+				background-size: cover;
+				padding:0;
+				margin:0 auto;
+			}

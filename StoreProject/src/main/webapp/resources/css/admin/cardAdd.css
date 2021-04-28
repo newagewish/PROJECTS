@@ -1,0 +1,622 @@
+@charset "UTF-8";
+
+h3{
+	margin:0;
+}
+p{
+	margin:0;
+}
+textarea:focus{
+	outline:none;
+}
+button:focus{
+	outline:none;
+}
+#card_box{
+	width:1080px;
+	margin:0 auto;
+	padding-top: 67px;
+	margin-bottom:30px;
+}
+	.card_box_name{
+		clear:both;
+		font-size:20px;
+		font-weight:bold;
+		line-height:40px;
+	}
+	.card_radio_box{
+		width:1080px;
+		overflow:auto;
+		padding:10px 0;
+		border-bottom:1px solid #cccccc;
+		margin-bottom:10px;
+	}
+		.card_radio_box > input{
+			float:left;
+			width: 15px;
+   			height: 15px;
+   			margin:10px 5px 10px 20px;
+   			cursor:pointer;
+		}
+		.card_radio_box > label{
+			float:left;
+			height:35px;
+			font-weight:bold;
+			line-height:35px;
+			cursor:pointer;
+		}
+	#card_view_box{
+		
+	}
+		#card_view{
+			float:left;
+			width:378px;
+			padding-bottom:30px;
+			overflow:auto;
+		}
+		#card_list_box{
+			
+		}
+		#card_create_box{
+			width: 329px;
+			margin: 0 23px;
+			border:1px solid #cccccc;
+			border-radius:10px;
+		}
+			#card_list_img{
+				position:relative;
+				width:329px;
+				min-height:247px;
+				border-bottom:1px solid #cccccc;
+			}
+				#card_list_img > div:nth-child(1){
+					text-align:center;
+					height:247px;
+					line-height:247px;
+					color:#959595;
+				}
+					#card_list_img > div > img{
+						width:329px;
+						height:247px;
+						border-radius:10px 10px 0 0;
+					}
+				#card_list_img_btn{
+					position:absolute;
+					top:0;
+					width:100%;
+					height:100%;
+					border-radius:10px 10px 0 0;
+					cursor:pointer;
+				}
+					#card_list_img_btn:hover{
+						background:rgba(0, 0, 0, 0.2);
+					}
+					#card_list_img_input{
+						display:none;
+					}
+			#card_list_title_box{
+				border-bottom:1px solid #cccccc;
+			}
+				#card_list_title_box > textarea{
+					width:auto;
+					padding:0;
+					border:0;
+					font-size:27px;
+					font-weight:bold;
+					font-family:malgun Gothic;
+					margin:10px;
+					overflow-y:hidden;
+					resize:none;
+				}
+			#card_list_intro_box{
+				border-bottom:1px solid #cccccc;
+			}
+				#card_list_intro_box > textarea{
+					width:auto;
+					padding:0;
+					border:0;
+					font-size:15px;
+					font-family:malgun Gothic;
+					color:rgb(102, 102, 102);
+					margin:10px;
+					overflow-y:hidden;
+					resize:none;
+				}
+			#card_list_choice_box{
+				min-height:100px;
+				max-height:820px;
+				overflow:auto;
+			}
+				#card_list_choice_box > div:nth-child(1){
+					color: rgb(117, 117, 117);
+					text-align:center;
+					line-height:100px;
+				}
+		
+		
+		
+		
+		#card_Img_img{
+				position:relative;
+				width:329px;
+				min-height:247px;
+			}
+				#card_Img_img > div:nth-child(1){
+					text-align:center;
+					height:247px;
+					line-height:247px;
+					color:#959595;
+				}
+					#card_Img_img > div > img{
+						width:329px;
+						height:247px;
+						border-radius:10px;
+					}
+				#card_Img_img_btn{
+					position:absolute;
+					top:0;
+					width:100%;
+					height:100%;
+					border-radius:10px 10px 0 0;
+					cursor:pointer;
+				}
+					#card_Img_img_btn:hover{
+						background:rgba(0, 0, 0, 0.2);
+					}
+					#card_Img_img_input{
+						display:none;
+					}
+					
+					
+					
+					
+		#card_Intro_img{
+				position:relative;
+				width:329px;
+				min-height:247px;
+				border-bottom:1px solid #cccccc;
+			}
+				#card_Intro_img > div:nth-child(1){
+					text-align:center;
+					height:247px;
+					line-height:247px;
+					color:#959595;
+				}
+					#card_Intro_img > div > img{
+						width:329px;
+						height:247px;
+						border-radius:10px 10px 0 0;
+					}
+				#card_Intro_img_btn{
+					position:absolute;
+					top:0;
+					width:100%;
+					height:100%;
+					border-radius:10px 10px 0 0;
+					cursor:pointer;
+				}
+					#card_Intro_img_btn:hover{
+						background:rgba(0, 0, 0, 0.2);
+					}
+					#card_Intro_img_input{
+						display:none;
+					}
+			#card_Intro_title_box{
+				border-bottom:1px solid #cccccc;
+			}
+				#card_Intro_title_box > textarea{
+					width:auto;
+					padding:0;
+					border:0;
+					font-size:27px;
+					font-weight:bold;
+					font-family:malgun Gothic;
+					margin:10px;
+					overflow-y:hidden;
+					resize:none;
+				}
+			#card_Intro_intro_box{
+			
+			}
+				#card_Intro_intro_box > textarea{
+					width:auto;
+					padding:0;
+					border:0;
+					font-size:15px;
+					font-family:malgun Gothic;
+					color:rgb(102, 102, 102);
+					margin:10px;
+					overflow-y:hidden;
+					resize:none;
+				}
+	#card_viewpage_title{
+		border-top:1px solid #cccccc;
+	}
+	#card_viewpage_box{
+		clear: both;
+	}
+		#card_viewpage_url{
+			display:none;
+			padding-bottom:20px;
+			border-bottom:1px solid #cccccc;
+		}
+			#card_url_nm{
+				width:50%;
+				border: 0;
+			    font-size: 20px;
+			    font-weight: bold;
+			}
+		#card_viewpage_contents{
+			padding-bottom:20px;
+			border-bottom:1px solid #cccccc;
+		}
+			#editor_card{
+				height:700px;
+				border:1px solid black;
+			}
+	
+	
+	
+	
+	#card_choice_box{
+		position:relative;
+		float:left;
+		width:700px;
+		height:619px;
+	}
+		#card_choice_list{
+			width:700px;
+			height:calc(100% - 40px);
+			min-height:549px;
+			overflow:auto;
+		}
+		.contents_card_div{
+			float:left;
+			position:relative;
+			width:150px;
+			height:230px;
+			margin-right:20px;
+			margin-bottom:15px;
+			background:rgba(0, 0, 0, 0.05);
+			border-radius:15px;
+		}
+			.card_a_tag{
+				position:relative;
+				border-radius:15px 15px 0 0;
+			}
+			.contents_card_div > a > span{
+				display:flex;
+			}
+			.contents_card_div:nth-of-type(4n){
+				margin-right:0;
+			}
+		.contents_card_div > a > span > img {
+			width:150px;
+			height:150px;
+			border-radius: 15px 15px 0 0;
+		}
+		
+			.mini_name{
+				font-size:10px;
+				line-height:12px;
+				margin:10px 0px 5px;
+				letter-spacing: -0.2px;
+				color:rgb(119, 119, 119);
+			}
+			.mini_price{
+				clear:both;
+				font-size: 10px;
+				font-weight:bold;
+		 				letter-spacing: -0.25px;
+			}
+			.mini_percent{
+				float:left;
+				color: rgb(255, 68, 127);
+				font-weight:bold;
+				font-size:11px;
+			}
+			.mini_sale{
+				float:left;
+				color: rgb(255, 68, 127);
+				font-weight:bold;
+				font-size:11px;
+				margin-left:10px;
+			}
+			.img_cover{
+				position:absolute;
+				width:150px;
+				height:150px;
+				background:rgba(0, 0, 0, 0.05);
+				border-radius:15px 15px 0 0;
+			}
+			
+			
+			.card_btn_off{
+				position:relative;
+				width:20px;
+				height:20px;
+				border:0;
+				margin-left:50px;
+				margin-right:15px;
+				background-image:url("/resources/svg/card/card_plus_icon.svg");
+				background-size:cover;
+				border-radius:50%;
+				z-index:2;
+				padding:0;
+			}
+			.choice_btn_off{
+				position:relative;
+				width:20px;
+				height:20px;
+				border:0;
+				margin-right:15px;
+				background-image:url("/resources/svg/card/choice_plus_icon.svg");
+				background-size:cover;
+				border-radius:50%;
+				z-index:2;
+				padding:0;
+			}
+			.url_btn_off{
+				position:relative;
+				width:20px;
+				height:20px;
+				border:0;
+				background-image:url("/resources/svg/card/url_off_icon.svg");
+				background-size:cover;
+				border-radius:50%;
+				z-index:2;
+				padding:0;
+			}
+			.card_btn_on{
+				position:relative;
+				width:20px;
+				height:20px;
+				border:0;
+				margin-left:50px;
+				margin-right:15px;
+				background-image:url("/resources/svg/card/card_minus_icon.svg");
+				background-size:cover;
+				border-radius:50%;
+				z-index:2;
+				padding:0;
+			}
+			.choice_btn_on{
+				position:relative;
+				width:20px;
+				height:20px;
+				border:0;
+				margin-right:15px;
+				background-image:url("/resources/svg/card/choice_minus_icon.svg");
+				background-size:cover;
+				border-radius:50%;
+				z-index:2;
+				padding:0;
+			}
+			.url_btn_on{
+				position:relative;
+				width:20px;
+				height:20px;
+				border:0;
+				background-image:url("/resources/svg/card/url_on_icon.svg");
+				background-size:cover;
+				border-radius:50%;
+				z-index:2;
+				padding:0;
+			}
+			
+			
+			.urlCover{
+				display:none;
+				position:absolute;
+				top:0;
+				left:0;
+				width:100%;
+				height:100%;
+				background:rgba(0,0,0,0.5);
+				z-index:1;
+				border-radius:15px;
+				color: white;
+			    font-size: 55px;
+			    text-align: center;
+			    line-height: 230px;
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+	.choice_box{
+		position: relative;
+		float:left;
+		width:141px;
+		height:200px;
+		margin: 11.75px;
+	}
+		.choice_a_tag{
+			position:relative;
+		}
+		.choice_box > a > span{
+			display:flex;
+		}
+	.choice_box > a > span > img {
+		width:141px;
+		height:141px;
+	}
+	
+		.choice_mini_name{
+			font-size:10px;
+			line-height:12px;
+			margin:10px 0px 5px;
+			letter-spacing: -0.2px;
+			color:rgb(119, 119, 119);
+		}
+		.choice_mini_price{
+			clear:both;
+			font-size: 10px;
+			font-weight:bold;
+	 				letter-spacing: -0.25px;
+		}
+		.choice_mini_percent{
+			float:left;
+			color: rgb(255, 68, 127);
+			font-weight:bold;
+			font-size:11px;
+		}
+		.choice_mini_sale{
+			float:left;
+			color: rgb(255, 68, 127);
+			font-weight:bold;
+			font-size:11px;
+			margin-left:10px;
+		}
+		.choice_img_cover{
+			position:absolute;
+			width:141px;
+			height:141px;
+			background:rgba(0, 0, 0, 0.05);
+			border-radius:15px;
+		}
+		.choice_remove_btn{
+			position:absolute;
+			right: 0px;
+			width:25px;
+			height:25px;
+			z-index:1;
+			border:0;
+			background: none;
+		    background-image:url("/resources/svg/card/x_icon.svg");
+		    background-size: cover;
+		    padding:0;
+		}
+		#card_editor_box{
+			display:none;
+		}
+		#card_editor_btn{
+			height: 30px;
+			width: 100%;
+			padding:0;
+		}
+			#card_editor_btn > span{
+				display:block;
+				height:30px;
+				width:30px;
+				background-image:url("/resources/svg/managementbar/products/chevrons_down_icon.svg");
+				background-size: cover;
+				padding:0;
+				margin:0 auto;
+			}
+	
+	#card_viewpage_promotion{
+		margin-bottom:10px;
+	}
+		#promotion_list{
+			overflow:auto;
+		}
+			.promotion_box{
+				position:relative;
+				float:left;
+				width:255px;
+				height:330px;
+				margin-right:20px;
+			}
+				.promotion_a_tag{
+					position:relative;
+				}
+				.promotion_box > a > span{
+					display:flex;
+				}
+				.promotion_box > a > span > img {
+					width:255px;
+					height:255px;
+				}
+				.promotion_box:nth-of-type(4n+1){
+					margin-right:0;
+				}
+		
+				.promotion_mini_name{
+					font-weight: bold;
+					font-size:14px;
+					line-height:16px;
+					margin:10px 0px 5px;
+					letter-spacing: -0.2px;
+					color:rgb(119, 119, 119);
+				}
+				.promotion_mini_price{
+					clear:both;
+					font-size: 14px;
+					font-weight:bold;
+			 				letter-spacing: -0.25px;
+				}
+				.promotion_mini_percent{
+					float:left;
+					color: rgb(255, 68, 127);
+					font-weight:bold;
+					font-size:11px;
+				}
+				.promotion_mini_sale{
+					float:left;
+					color: rgb(255, 68, 127);
+					font-weight:bold;
+					font-size:14px;
+					margin-left:10px;
+				}
+				.promotion_img_cover{
+					position:absolute;
+					width:255px;
+					height:255px;
+					background:rgba(0, 0, 0, 0.05);
+					border-radius:15px;
+				}
+				.promotion_remove_btn{
+					position:absolute;
+					right: 0px;
+					width:35px;
+					height:35px;
+					z-index:1;
+					border:0;
+					background: none;
+				    background-image:url("/resources/svg/card/x_icon.svg");
+				    background-size: cover;
+				    padding:0;
+				}
+			
+			
+	#card_btn_box{
+		border-top:1px solid #cccccc;
+		padding:20px 0;
+		width:1080px;
+		height:50px;
+		text-align:center;
+	}
+		#card_btn_box > button{
+			width: 537px;
+		    height: 50px;
+		    border-radius: 10px;
+		    font-size: 20px;
+		    font-weight: bold;
+		    padding: 0;
+		}
+			#card_btn_box > button:nth-child(2){
+				background: #444444;
+				color:white;
+			}
+			#card_btn_box > button:hover{
+				background-color: rgba(255, 30, 144, 0.8);
+			}
+			
+#blind_box{
+	display:none;
+	position:absolute;
+	top:0;
+	width:100%;
+	height:100%;
+	z-index:11;
+	cursor:wait;
+	background:rgba(0, 0, 0, 0.5);
+}

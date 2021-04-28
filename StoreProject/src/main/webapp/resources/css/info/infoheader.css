@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+#management_cover_box{
+	transition-duration:1s;
+}
+
+a{
+	text-decoration:none;
+}
+#info_header_box{
+	position: relative;
+	width:1080px;
+	height:70px;
+	margin:0 auto;
+	z-index:1;
+}
+	#info_header_box > a{
+		font-size:17px;
+		color:white;
+	}
+		#info_header_box > a > img{
+			width:200px;
+			padding-top:15px;
+		}
+		#info_header_title{
+			float:left;
+		}
+		#info_header_box > a:nth-child(2){
+			padding-top:25px;
+			float:right;
+		}
+		#info_header_box > a:nth-child(3){
+			padding-top:25px;
+			margin-right:30px;
+			float:right;
+		}

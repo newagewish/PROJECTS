@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storeproject.mapper.CrawlerMapper">
+	
+	<insert id="insertStoreinfo">
+		<![CDATA[
+		insert into store_info_tb (st_Img, st_NM, st_Tel, st_Open, st_Address, st_Map_Uri, st_Lat, st_Lng, st_Country)
+		values(#{st_Img}, #{st_NM}, #{st_Tel}, #{st_Open}, #{st_Address}, #{st_Map_Uri}, #{st_Lat}, #{st_Lng}, #{st_Country})
+		]]>
+	</insert>
+	
+</mapper>

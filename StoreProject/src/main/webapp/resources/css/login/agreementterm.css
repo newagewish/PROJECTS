@@ -1,0 +1,76 @@
+@charset "UTF-8";
+h2{
+	margin:0;
+}
+h3{
+}
+p{
+	margin:0;
+}
+ul{
+	margin:0;
+}
+#createaccount_hold_agreement_term_box{
+	display:none;
+	vertical-align:middle;
+}
+	#createaccount_hold_agreement_term_box > div{
+		position: relative;
+		width:540px;
+		height:696px;
+		margin:0 auto;
+		background:#ffffff;
+		padding:30px 40px;
+	}
+		#createaccount_hold_agreement_term_box > div > h2{
+			font-size:24px;
+			color:#404040;
+			padding-bottom:30px;
+		}
+		#agreement_term_body_box{
+			width:540px;
+			height:644px;
+			overflow:auto;
+			padding:0 40px;
+			margin-left:-40px;
+			margin-bottom:20px;
+		}
+			.term_big_title{
+				font-size:18px;
+				color:#333;
+			}
+			.term_small_title{
+				margin-top:15px;
+				font-weight:bold;
+				font-size:14px;
+				color:#333;
+			}
+			.term_text{
+				margin-top:15px;
+				font-size:13px;
+				color:#7c7c7c;
+			}
+			.term_ul{
+				margin-top:15px;
+				padding-left:30px;
+				font-size:13px;
+			}
+				.term_ul > li{
+					list-style-type:disc;
+					color:#7c7c7c;
+				}	
+			
+			#createaccount_hold_agreement_term_box > div > div:nth-child(3) > button{
+				position:absolute;
+					display:table-cell;
+					top:0;
+					right:0;
+					width:25px;
+					height:25px;
+					font-size:25px;
+					color:#7c7c7c;
+					border:0;
+					background:none;
+					margin:10px;
+					cursor:pointer;
+			}

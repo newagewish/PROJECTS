@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+body{
+	width:100%;
+	margin:0;
+}
+
+#charinfo_box{
+	width:100%;
+}
+	#charinfo_visual_box{
+		position:relative;
+		top:-70px;
+		max-width:1920px;
+		min-width:1080px;
+		width:100%;
+		height:782px;
+		margin:auto;
+		background-image: url( "/resources/img/info/charinfo/charInfo_bg.png");
+		background-size:1920px 810px; 
+		background-position:center center;
+	}
+	#charinfo_type_box{
+		position:relative;
+		max-width:1080px;
+		min-width:1080px;
+		width:100%;
+		top:-70px;
+		margin:auto;
+		margin-top:25px;
+	}
+	#charinfo_language_box{
+		margin-bottom:110px;
+		overflow:hidden;
+	}
+		#charinfo_language_box > span{
+			border:0;
+			background:none;
+			float:right;
+			cursor:pointer;
+			line-height:25px;
+			font-size: 15px;
+	   		font-weight: bold;
+	   		border-bottom:3px solid black;
+		}
+	.charinfo_type_content{
+		position:relative;
+		width:1080px;
+		clear:both;
+		border-bottom:1px solid #eee;
+	}
+		.charinfo_type_content:nth-of-type(2){height:368px;}
+		.charinfo_type_content:nth-of-type(3){height:310px;}
+		.charinfo_type_content:nth-of-type(4){height:393px;}
+		.charinfo_type_content:nth-of-type(5){height:364px;}
+		.charinfo_type_content:nth-of-type(6){height:365px;}
+		.charinfo_type_content:nth-of-type(7){height:396px;}
+		
+		.charinfo_type_content_img{
+			width:365px;
+			height:413px;
+			float:left;
+		}
+			.charinfo_type_content_img_icon{
+				
+			}
+				.charinfo_type_content_img_icon.ryan{
+					position:absolute;
+					width:205px;
+					height:361px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: 0 0;
+					margin:52px 0 0 160px;
+				}
+				.charinfo_type_content_img_icon.apeach{
+					position:absolute;
+					width:280px;
+					height:199px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -220px 0;
+					margin:156px 0 0 116px;
+				}
+				.charinfo_type_content_img_icon.muzicon{
+					position:absolute;
+					width:229PX;
+					height:359px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -480px -200px;
+					margin:79px 0 0 155px;
+				}
+				.charinfo_type_content_img_icon.frodoneo{
+					position:absolute;
+					width:356px;
+					height:306px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: 0 -677px;
+					margin:103px 0 0 94px;
+				}
+				.charinfo_type_content_img_icon.tube{
+					position:absolute;
+					width:194px;
+					height:290px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: 0 -380px;
+					margin:120px 0 0 208px;
+				}
+				.charinfo_type_content_img_icon.jayg{
+					position:absolute;
+					width:255px;
+					height:397px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -215px -200px;
+					margin:44px 0 0 128px;
+				}
+		.charinfo_type_content_text{
+			position:absolute;
+			right:0;
+    		bottom:20px;
+			width:475px;
+			height:238px;
+			float:right;
+		}
+			.charinfo_type_content_text_title{
+				height:24px;
+				font-size:0;
+			}
+				.charinfo_type_content_text_title.ryan{
+					width:85px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -510px 0;
+				}
+				.charinfo_type_content_text_title.apeach{
+					width:131px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -510px -29px;
+				}
+				.charinfo_type_content_text_title.muzicon{
+					width:178px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -510px -58px;
+				}
+				.charinfo_type_content_text_title.frodoneo{
+					width:208px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -510px -88px;
+				}
+				.charinfo_type_content_text_title.tube{
+					width:89px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -510px -120px;
+				}
+				.charinfo_type_content_text_title.jayg{
+					width:97px;
+					background-image: url( "/resources/img/info/charinfo/charInfo_type.png");
+					background-position: -510px -153px;
+				}
+			.charinfo_type_content_text_header{
+				display:block;
+				font-style:normal;
+				font-weight:bold;
+				margin-top:11px;
+			}
+			.charinfo_type_contetn_text_body{
+				color:#949494;
+				font-size:14px;
+				line-height:24px;
+				margin-top:18px;
+			}
+			.charinfo_type_contetn_text_link{
+				font-size:13px;
+				font-weight:bold;
+				line-height:17px;
+				float:right;
+			}
+#charinfo_banner_storeinfo_box{
+	width:1080px;
+	margin:auto;
+	padding-top:10px;
+	padding-bottom:120px;
+}
+	#charinfo_banner_storeinfo_box > a{
+	}
+	#charinfo_banner_storeinfo_box > a > img{
+		width:1080px;
+	}

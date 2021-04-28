@@ -1,0 +1,255 @@
+@charset "UTF-8";
+button:focus{
+	outline: none;
+}
+p{
+	margin:0;
+}
+#help_box{
+	width:100%;
+	padding-top:67px;
+}
+	#help_banner_box{
+		width:1080px;
+		height:220px;
+		background-image: url("/resources/img/help/help_banner.png");
+		background-size:1080px 220px;
+		background-position:center center;
+		margin:auto;
+	}
+		#help_banner_box > span{
+			font-size:36px;
+			font-weight:bold;
+			line-height:220px;
+			color:white;
+			margin-left:30px;
+		}
+	#help_tab_box{
+		width:1080px;
+		margin:auto;
+		border-bottom:1px solid black;
+	}
+		#help_tab_box > button{
+			font-size:17px;
+			font-weight:bold;
+			line-height:90px;
+			border:0;
+			background:none;
+			cursor:pointer;
+		}
+		#help_tab_box > button:nth-child(1){
+		}
+		#help_tab_box > button:nth-child(2){
+			color:#9A9A9E;
+			margin-left:30px;
+		}
+	#help_content_box{
+		width:1080px;
+		margin:auto;
+	}
+		.help_notice_content{
+			width:1080px;
+			margin:auto;
+			padding:35px 0;
+			border-bottom:1px solid #F2F2F2;
+		}
+			.help_notice_content_btn{
+				cursor:pointer;
+				overflow:hidden;
+			}
+				.help_notice_title{
+					font-size:17px;
+					float:left;
+				}
+				.help_notice_date{
+					font-size:13px;
+					color:#9A9A9E;
+					float:right;
+				}
+					#help_notice_date_off::after{
+						display:inline-block;
+						content:"";
+						width:18px;
+						height:18px;
+						background:url("/resources/img/help/help_dropdown_down.png");
+						background-size:18px 18px;
+						float:right;
+						margin-left:12px;
+					}
+					#help_notice_date_on::after{
+						display:inline-block;
+						content:"";
+						width:18px;
+						height:18px;
+						background:url("/resources/img/help/help_dropdown_up.png");
+						background-size:18px 18px;
+						background-repeat:no-repeat;
+						float:right;
+						margin-left:12px;
+					}
+			.help_notice_text_box{
+				display:none;
+			}
+				.help_notice_text{
+					background-color: rgb(249, 249, 249);
+					margin-top: 25px;
+					padding: 16.5px 21.5px 22.5px 57px;
+				}
+				.help_notice_text:before{
+					content: "";
+					width: 26.8px;
+					height: 24.8px;
+					margin-left: -40px;
+					position: absolute;
+					background:url("/resources/img/help/help_contact_ryan.png");
+					background-size:26.8px;
+					background-repeat:no-repeat;
+				}
+				.help_notice_text > img{
+					width: 100%;
+					height: auto;
+				}
+		.help_faq_content{
+			width:1080px;
+			margin:auto;
+			padding:35px 0;
+			border-bottom:1px solid #F2F2F2;
+		}
+			.help_faq_content_btn{
+				cursor:pointer;
+				overflow:hidden;
+			}
+				.help_faq_title{
+					font-size:17px;
+					float:left;
+				}
+				.help_faq_category{
+					font-size:13px;
+					color:#9A9A9E;
+					float:right;
+				}
+					#help_faq_category_off::after{
+						display:inline-block;
+						content:"";
+						width:18px;
+						height:18px;
+						background:url("/resources/img/help/help_dropdown_down.png");
+						background-size:18px 18px;
+						float:right;
+						margin-left:12px;
+					}
+					#help_faq_category_on::after{
+						display:inline-block;
+						content:"";
+						width:18px;
+						height:18px;
+						background:url("/resources/img/help/help_dropdown_up.png");
+						background-size:18px 18px;
+						background-repeat:no-repeat;
+						float:right;
+						margin-left:12px;
+					}
+			.help_faq_text_box{
+				display:none;
+			}
+				.help_faq_text{
+					background-color: rgb(249, 249, 249);
+					margin-top: 25px;
+					padding: 16.5px 21.5px 22.5px 57px;
+				}
+				.help_faq_text:before{
+					content: "";
+					width: 26.8px;
+					height: 24.8px;
+					margin-left: -40px;
+					position: absolute;
+					background:url("/resources/img/help/help_contact_ryan.png");
+					background-size:26.8px;
+					background-repeat:no-repeat;
+				}
+		#help_paging_box{
+			width:1080px;
+			margin:auto;
+			overflow:hidden;
+			margin-top:25px;
+			margin-bottom:25px;
+		}
+			#help_paging_arrow_box{
+				max-width:584px;
+				margin:0 auto;
+				overflow:hidden;
+			}
+				#help_paging_arrow_left{
+					width:30px;
+					height:30px;
+					border-radius:15px;
+					border:1px solid #EDEDED;
+					float:left;
+					display:flex;
+					justify-content:center;
+					align-items:center;
+					cursor:pointer;
+				}
+					#help_paging_arrow_left > div{
+						width:6px;
+						height:6px;
+						transform:rotate(45deg);
+						border:1px solid #9A9A9E;
+						margin:0 0 0 3px;
+						
+					}
+						#help_paging_arrow_left > div:after{
+							content:"";
+							position: absolute;
+						    width: 0px;
+						    height: 0px;
+						    top: -2px;
+						    border-width: 4px;
+						    border-style: solid;
+						    border-color: white;
+						    border-image: initial;
+						}
+				#help_paging_arrow_right{
+					width:30px;
+					height:30px;
+					border-radius:15px;
+					border:1px solid #EDEDED;
+					float:left;
+					display:flex;
+					justify-content:center;
+					align-items:center;
+					cursor:pointer;
+				}
+					#help_paging_arrow_right > div{
+						width:6px;
+						height:6px;
+						transform:rotate(45deg);
+						border:1px solid #9A9A9E;
+						margin:0 3px 0 0;
+					}
+						#help_paging_arrow_right > div:after{
+							content:"";
+							position: absolute;
+						    width: 0px;
+						    height: 0px;
+						    left: -2px;
+						    border-width: 4px;
+						    border-style: solid;
+						    border-color: white;
+						    border-image: initial;
+						}
+				#help_paging_num_box{
+					overflow:hidden;
+					float:left;
+				}
+					.help_paging_num_btn{
+						width:32px;
+						height:32px;
+						font-weight:bold;
+						color:#D4D7E1;
+						text-align:center;
+						line-height:32px;
+						float:left;
+						cursor:pointer;
+						margin:0 10px 0 10px;
+					}			

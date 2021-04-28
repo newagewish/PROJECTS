@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.storeproject.mapper.CardMapper">
+	<select id="selectCard"  resultType="com.storeproject.domain.admin.CardVO">
+		<![CDATA[
+			select * from card_tb where card_NO = #{card_NO};
+		]]>
+	</select>
+	<select id="selectCardProducts"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select * from products_info_tb where pds_NO = #{NO};
+		]]>
+	</select>
+</mapper>

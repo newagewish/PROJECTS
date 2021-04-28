@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.storeproject.mapper.mypage.MypageModifyMapper">
+	<select id="selectPassword" resultType="String">
+		<![CDATA[
+			select ac_PW from account_tb where ac_ID="${ac_ID}";
+		]]>
+	</select>
+	
+	<update id="updateInformation">
+		<![CDATA[
+			update account_tb set ac_NNM="${ac_NNM}", ac_Year="${ac_Year}", ac_Month="${ac_Month}", ac_Day="${ac_Day}", ac_Gender="${ac_Gender}" where ac_ID="${ac_ID}";
+		]]>
+	</update>
+	
+	<insert id="insertProvision">
+		<![CDATA[
+			insert into account_agree_tb(ac_ID, ac_Uses_Agree)
+				values(#{ac_ID}, #{ac_Uses_Agree})
+				on duplicate key update ac_Uses_Agree = #{ac_Uses_Agree};
+		]]>
+	</insert>
+	
+	<select id="selectProvision" resultType="boolean">
+		<![CDATA[
+			select ac_Uses_Agree from account_agree_tb where ac_ID = #{ac_ID};
+		]]>
+	</select>
+</mapper>

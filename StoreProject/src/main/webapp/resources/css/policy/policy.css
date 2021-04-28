@@ -1,0 +1,135 @@
+@charset "UTF-8";
+button:focus{
+	outline: none;
+}
+p{
+	margin:0;
+	font-size:15px;
+	letter-spacing:-0.2px;
+	line-height:1.5;
+}
+strong{
+	display:block;
+	font-size:15px;
+	letter-spacing:-0.2px;
+	line-height:1.5;
+	margin:25px 0 0 0;
+}
+ul{
+	list-style:none;
+	padding:0;
+	padding-top:4px;
+	padding-bottom:4px;
+	font-size:15px;
+	line-height:1.5;
+	letter-spacing:-0.2px;
+}
+li{
+	list-style:none;
+	padding:0;
+	padding-top:4px;
+	padding-bottom:4px;
+	font-size:15px;
+	line-height:1.5;
+	letter-spacing:-0.2px;
+}
+colgroup{
+	
+}
+col{
+}
+
+
+#policy_box{
+	width:100%;
+	padding-top:67px;
+}
+	#policy_banner_box{
+		width:1080px;
+		height:220px;
+		background-image: url("/resources/img/policy/banner_policy.png");
+		background-size:1080px 220px;
+		background-position:center center;
+		margin:auto;
+	}
+		#policy_banner_box > span{
+			font-size:36px;
+			font-weight:bold;
+			line-height:220px;
+			color:white;
+			margin-left:30px;
+		}
+	#policy_tab_box{
+		width:1080px;
+		margin:auto;
+		border-bottom:1px solid black;
+	}
+		#policy_tab_box > a{
+			font-size:17px;
+			font-weight:bold;
+			color:#9A9A9E;
+			line-height:90px;
+			border:0;
+			background:none;
+			cursor:pointer;
+			
+		}
+		#policy_tab_box > a:nth-child(1){
+		}
+		#policy_tab_box > a:nth-child(2){
+			margin-left:30px;
+		}
+		#policy_tab_box > a:nth-child(3){
+			margin-left:30px;
+		}
+	#policy_content_box{
+		width:1080px;
+		margin:auto;
+		padding-top:27.5px;
+	}
+		#policy_content_box > p{
+		}
+		#policy_content_box > ul{
+		}
+			#policy_content_box > ul > li{
+			}
+				#policy_content_box ul > li > ul{
+					margin-top:15px;
+				}
+					#policy_content_box ul > li > ul > li{
+					}
+		.policy_table_div{
+			width:1080px;
+			margin:25px 0;
+		}
+			.policy_table_div > table{
+				width:100%;
+				font-size:14px;
+				border-collapse: collapse;
+				border-spacing: 0px;
+			}
+				.policy_table_div > table > caption{
+					width:0px;
+					height:0px;
+					line-height:0;
+					text-indent: -9999px;
+				}
+				#policy_table_thead_tr_1{
+					width:50%;
+				}
+				.policy_table_div > table > thead > tr > th{
+					height:54px;
+					text-align:center;
+					border:1px solid black;
+				}
+				.policy_table_div > table > tbody > tr > td{
+					height:54px;
+					padding:0px 12px;
+					border:1px solid black;
+					line-height:1.5;
+				}
+	#footer_btn_box{
+		width:1080px;
+		height:100px;
+		margin:auto;
+	}

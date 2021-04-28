@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security 
+						http://www.springframework.org/schema/security/spring-security.xsd
+						http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="customAccessDenied" class="com.storeproject.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customLoginSuccess" class="com.storeproject.security.CustomLoginSuccessHandler"></bean>
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	<bean id="customUserDetailsService" class="com.storeproject.security.CustomUserDetailsService"></bean>
+	
+	<security:http>
+		<!-- 홈페이지 url 권한 -->
+		<security:intercept-url pattern="/" access="permitAll"/>
+		<security:intercept-url pattern="/info/**" access="permitAll"/>
+		<security:intercept-url pattern="/home/**" access="permitAll"/>
+		<security:intercept-url pattern="/view/**" access="permitAll"/>
+		<security:intercept-url pattern="/help/**" access="permitAll"/>
+		<security:intercept-url pattern="/login/**" access="permitAll"/>
+		<security:intercept-url pattern="/mypage/**" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/admin/**" access="permitAll"/>
+		<security:intercept-url pattern="/api/**" access="hasRole('ROLE_ADMIN')"/>
+		<!-- 크롤링 url 권한 -->
+		<security:intercept-url pattern="/crawler/storeinfo" access="hasRole('ROLE_ADMIN')"/>
+		<!-- 시큐리티 테스트 url 권한 -->
+		<security:intercept-url pattern="/security/all" access="permitAll"/>
+		<security:intercept-url pattern="/security/account" access="hasRole('ROLE_MEMBER')"/>
+		<security:intercept-url pattern="/security/administer" access="hasRole('ROLE_ADMIN')"/>
+		<!-- 시큐리티 커스텀 설정 -->
+		<security:access-denied-handler ref="customAccessDenied"/>
+		<security:form-login login-page="/login/loginPage" username-parameter="email" password-parameter="password" authentication-success-handler-ref="customLoginSuccess"/>
+		<security:logout logout-success-url="/login/loginPage" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID"/>
+		<!-- <security:form-login
+			login-page="/login/loginPage"
+			default-target-url="/"
+			authentication-failure-url="/login/loginPage?error"
+			username-parameter="email"
+			password-parameter="password"
+		/> -->
+		<!-- <security:access-denied-handler error-page="/security/accessDeniedError"/> -->
+		
+	</security:http>
+    
+	<security:authentication-manager>
+ 		<security:authentication-provider user-service-ref="customUserDetailsService">
+			<!-- <security:jdbc-user-service 
+				data-source-ref="dataSource"
+				users-by-username-query="select ac_ID username, ac_PW password, ac_enabled from account_tb where ac_ID = ? "
+				authorities-by-username-query="select ac_ID username, ac_Auth authority from account_auth_tb where ac_ID = ? "
+			/> -->
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
+			
+			<!-- <security:user-service>
+				<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER"/>
+				<security:user name="admin" password="{noop}admin" authorities="ROLE_MEMBER, ROLE_ADMIN"/>
+			</security:user-service> -->
+			
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

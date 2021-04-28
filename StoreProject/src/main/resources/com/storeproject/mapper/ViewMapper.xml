@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.storeproject.mapper.ViewMapper">
+	<update id="viewUpdateVogue">
+		<![CDATA[
+			update products_info_tb set pds_Vogue = pds_Vogue+1 where pds_NO = #{pds_NO};
+		]]>
+	</update>
+	<select id="viewSelectProductsInfo"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select * from products_info_tb where pds_NO = #{pds_NO};
+		]]>
+	</select>
+	<select id="viewSelectProductsOption"  resultType="com.storeproject.domain.admin.ProductsOpVO">
+		<![CDATA[
+			select * from products_option_tb where pds_NO = #{pds_NO};
+		]]>
+	</select>
+	<select id="viewStarPoint"  resultType="String">
+		<![CDATA[
+			select CONCAT_WS(',', COALESCE(round(avg(re_Star), 1), 0), count(re_Star)) as result from review_tb where pds_NO = #{pds_NO};
+		]]>
+	</select>
+		<select id="productsArrange"  resultType="com.storeproject.domain.admin.ProductsArrangeVO">
+			<![CDATA[
+				select * from products_arrange_tb where pds_NO = #{pds_NO};
+			]]>
+		</select>
+		
+		<select id="productsPush"  resultType="int">
+			<![CDATA[
+				select a.pds_NO from products_sub_category_tb AS a join products_charater_tb AS b join products_color_tb AS c 
+					ON a.pds_NO = b.pds_NO = c.pds_NO
+						where
+			]]>
+						<foreach collection='column' index='index' item='arr' separator='or'>
+								${arr} 
+						</foreach>
+			<![CDATA[
+					order by rand() limit 8;
+			]]>
+		</select>
+	
+	<select id="reviewcount" resultType="int">
+		<![CDATA[
+			select column_CNT from autoincrement_tb where column_tb_NM = "review_tb";
+		]]>
+	</select>
+	<insert id="reviewInsert">
+		<![CDATA[
+			insert into review_tb(pds_NO, ac_NO, re_NO, re_Writer, re_Contents, re_Star, re_Reg_Date, re_Active) values(#{pds_NO}, ${ac_NO}, ${re_NO}, #{re_Writer}, #{re_Contents}, #{re_Star}, #{re_Reg_Date}, 1);
+		]]>
+	</insert>
+	<update id="reviewcountplus">
+		<![CDATA[
+			update autoincrement_tb set column_CNT = column_CNT+1 where column_tb_NM = "review_tb";
+		]]>
+	</update>
+	<select id="reviewSelect" resultType="com.storeproject.domain.review.ReviewInfoVO">
+		<![CDATA[
+			SELECT * FROM storeproject.review_tb where pds_NO = ${pds_NO} and re_Active = 1 order by re_NO DESC;
+		]]>
+	</select>
+	<select id="reviewOrderLike" resultType="com.storeproject.domain.review.ReviewInfoVO">
+		<![CDATA[
+			SELECT * FROM storeproject.review_tb where pds_NO = ${pds_NO} and re_Active = 1 order by re_Like DESC, re_NO DESC;
+		]]>
+	</select>
+	<update id="reviewLikePlus">
+		<![CDATA[
+			update review_tb set re_Like = re_Like+1, re_Like_List = #{str} where re_NO = ${re_NO};
+		]]>
+	</update>
+	<update id="reviewLikeMinus">
+		<![CDATA[
+			update review_tb set re_Like = re_Like-1, re_Like_List = #{cut_str} where re_NO = ${re_NO};
+		]]>
+	</update>
+	<select id="reviewLikeList" resultType="String">
+		<![CDATA[
+			select re_Like_List from review_tb where re_NO = ${re_NO};
+		]]>
+	</select>
+</mapper>

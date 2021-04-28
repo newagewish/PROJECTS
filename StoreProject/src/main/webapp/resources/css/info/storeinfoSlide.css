@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+#storeinfo_slide_box{
+	position: relative;
+    top: -70px;
+	max-width:1920px;
+	min-width:1080px;
+	width:100%;
+	height:700px;
+	margin:auto;
+	overflow:hidden;
+}
+	#storeinfo_slide_movebox{
+		width:700%;
+		height:700px;
+		will-change:transform;
+		overflow:hidden;
+	}
+		.storeinfo_slide_content{
+			width:calc(100%/7);
+			height:100%;
+			background-size: 1920px 700px;
+			background-position:center center;
+			float:left;
+		}
+			.storeinfo_slide_content:nth-of-type(1){
+				background-image: url( "/resources/img/info/storeinfo/bg_storeInfo_05.jpg" );
+			}
+			.storeinfo_slide_content:nth-of-type(2){
+				background-image: url( "/resources/img/info/storeinfo/bg_storeInfo_01.jpg" );
+			}
+			.storeinfo_slide_content:nth-of-type(3){
+				background-image: url( "/resources/img/info/storeinfo/bg_storeInfo_02.jpg" );
+			}
+			.storeinfo_slide_content:nth-of-type(4){
+				background-image: url( "/resources/img/info/storeinfo/bg_storeInfo_03.jpg" );
+			}
+			.storeinfo_slide_content:nth-of-type(5){
+				background-image: url( "/resources/img/info/storeinfo/bg_storeInfo_04.jpg" );
+			}
+			.storeinfo_slide_content:nth-of-type(6){
+				background-image: url( "/resources/img/info/storeinfo/bg_storeInfo_05.jpg" );
+			}
+			.storeinfo_slide_content:nth-of-type(7){
+				background-image: url( "/resources/img/info/storeinfo/bg_storeInfo_01.jpg" );
+			}
+	#storeinfo_slide_btn_box{
+		display:none;
+	}
+	
+	.storeinfo_slide_pagination {
+		position:relative;
+		top:-50px;
+		text-align:center;
+		list-style: none; 
+		margin: 0; 
+		padding: 0;
+		opacity:70%;
+	}
+    .storeinfo_slide_pagination > li { 
+    	display: inline-block; 
+    	width: 15px; 
+    	height: 15px; 
+    	margin: 0 5px; 
+    	overflow: hidden; 
+    	background: #ddd; 
+    	border-radius: 50%; 
+    	transition: 300ms; 
+    }
+    .storeinfo_slide_pagination > li:nth-child(1) { 
+    	background: #333; 
+    }
+    .storeinfo_slide_pagination >li a { 
+    	display: block; 
+    	width: 100%; 
+    	height: 100%; 
+    }

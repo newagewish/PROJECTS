@@ -1,0 +1,382 @@
+@charset "UTF-8";
+button:focus{
+	outline: none;
+}
+input:focus{
+	outline: none;
+}
+select:focus{
+	outline: none;
+}
+#createaccount_information_box{
+	display:none;
+	vertical-align:middle;
+}
+	#createaccount_information_content_box{
+		width:440px;
+		margin:40px auto;
+		padding:58px 69px;
+		border:1px solid #e5e5e5;
+	}
+		#createaccount_information_content_know{
+		}
+			#createaccount_information_content_know > h2{
+				display:inline-block;
+				font-weight:600;
+				margin-bottom:15px;
+			}
+			#createaccount_information_content_body{
+				position: relative;
+			}
+				.createaccount_information_content_body_stepbox{
+					position:relative;
+					margin-top:30px;
+				}
+				#createaccount_information_email_box{
+					overflow:hidden;
+				}
+					.createaccount_information_strong{
+						display:block;
+						font-size:12px;
+						clear:both;
+					}
+					.createaccount_information_label{
+						position:absolute;
+						display:block;
+						width:100%;
+						height:50px;
+						line-height:50px;
+						font-size:15px;
+						font-weight:bold;
+						color:#adadad;
+						cursor:pointer;
+					}
+					.createaccount_information_input{
+						width:100%;
+						height:49px;
+						border:0;
+						border-bottom:2px solid #ebebeb;
+						font-size:18px;
+						font-weight:bold;
+						caret-color:#f7e317;
+					}
+					.createaccount_information_xbtn{
+						display:none;
+						width:20px;
+						height:20px;
+						border:0;
+						background:url("/resources/img/login/signin/account_icons.png");
+						background-position:-120px -30px;
+						cursor:pointer;
+					}
+						#createaccount_information_email_xbtn{
+							position:absolute;
+							top:33px;
+							right:5px;
+						}
+						#createaccount_information_certifyemail_xbtn{
+							position:absolute;
+							top:16px;
+							right:5px;
+						}
+						#createaccount_information_password1_xbtn{
+							position:absolute;
+							top:32px;
+							right:5px;
+						}
+						#createaccount_information_password2_xbtn{
+							position:absolute;
+							top:85px;
+							right:5px;
+						}
+					.createaccount_information_vspan{
+						display:none;
+						width:20px;
+						height:20px;
+						border:0;
+						background:url("/resources/img/login/signin/account_icons.png");
+						background-position:-150px -30px;
+						cursor:pointer;
+					}
+						#createaccount_information_email_vspan{
+							position:absolute;
+							top:33px;
+							right:5px;
+						}
+					
+						#createaccount_information_email_sendbtn{
+							display:inline-block;
+							height:42px;
+							padding:0 30px;
+							border:1px solid #adadad;
+							border-radius:30px;
+							font-weight:bold;
+							color:#252525;
+							float:right;
+							margin:15px 0;
+							background-color:transparent;
+							cursor:pointer;
+						}
+					#createaccount_information_certifyemail_box{
+						display:none;
+						margin:0;
+						overflow:hidden;
+					}
+						#createaccount_information_certifyemail_errorbtn{
+							font-size:13px;
+							text-decoration:underline;
+							color:#999;
+							border:0;
+							background:none;
+							cursor:pointer;
+						}
+						#createaccount_information_certifyemail_sendbtn{
+							height:42px;
+							padding:0 30px;
+							border:1px solid #adadad;
+							border-radius:30px;
+							font-weight:bold;
+							color:#252525;
+							float:right;
+							margin:15px 0;
+							background-color:transparent;
+							cursor:pointer;
+						}
+						#createaccount_information_nickname_xbtn{
+							position:absolute;
+							top:35px;
+							right:45px;
+							float:right;
+						}
+						#createaccount_information_nickname_span{
+							position:absolute;
+							top:33px;
+							right:5px;
+							margin-left:10px;
+							float:right;
+						}
+				#createaccount_information_content_body_profile_box{
+					display:none;
+				}
+					#createaccount_information_birth_box{
+						height:48px;
+						border-bottom:2px solid #ebebeb;
+					}
+						/* ↓생년월일(연도) */
+						#createaccount_information_birth_year_box{
+							float:left;
+						}
+							#createaccount_information_btn_year{
+								border:0;
+								width:118px;
+								height:50px;
+								color:#4c4c4c;
+								line-height:48px;
+								background:none;
+								cursor:pointer;
+								font-size:16px;
+								font-weight:bold;
+								text-align:left;
+							}
+								#createaccount_information_input_year{
+								}
+								.createaccount_information_input_birth{
+									float:left;
+									margin-left:12px;
+									height:40px;
+									width:70px;
+									border:0;
+									font-size:14px;
+									font-weight:bold;
+									background:none;
+									cursor:pointer;
+								}
+								.createaccount_information_span_arrow{
+									float:left;
+									display:inline-block;
+									width:12px;
+									height:12px;
+									margin:17px 0 0 -5px;
+									background:url("/resources/img/login/signin/account_icons.png");
+									background-position:-180px -30px;
+								}
+							#createaccount_information_year_ul{
+								position:absolute;
+								display:none;
+								width:90px;
+								max-height:160px;
+								overflow-y:auto;
+								border:1px solid #eee;
+								background-color:#fff;
+								font-size:13px;
+								font-weight:bold;
+								box-shadow:0 0 20px 0 rgba(0,0,0,0.2);
+								padding:0;
+								list-style:none;
+							}
+								#createaccount_information_year_ul > li{
+									cursor:pointer;
+									padding:10px;
+								}
+									#createaccount_information_year_ul > li:hover{
+										background:#d6d6d6;
+									}
+									#createaccount_information_year_ul > li > a{
+										
+									}
+						/* ↑생년월일(연도) */			
+						/* ↓생년월일(월)	 */	
+						#createaccount_information_birth_month_box{
+							float:left;
+							margin-left:5px;
+						}
+							#createaccount_information_btn_month{
+								border:0;
+								width:118px;
+								height:50px;
+								color:#4c4c4c;
+								line-height:48px;
+								background:none;
+								cursor:pointer;
+								font-size:16px;
+								font-weight:bold;
+								text-align:left;
+							}
+								#createaccount_information_input_month{
+									float:left;
+								}
+							#createaccount_information_month_ul{
+								position:absolute;
+								display:none;
+								width:90px;
+								max-height:160px;
+								overflow-y:auto;
+								border:1px solid #eee;
+								background-color:#fff;
+								font-size:13px;
+								font-weight:bold;
+								box-shadow:0 0 20px 0 rgba(0,0,0,0.2);
+								padding:0;
+								list-style:none;
+							}
+								#createaccount_information_month_ul > li{
+									cursor:pointer;
+									padding:10px;
+								}
+									#createaccount_information_month_ul > li:hover{
+										background:#d6d6d6;
+									}
+									#createaccount_information_month_ul > li > a{
+										
+									}
+						/* ↑생년월일(월) */		
+						/* ↓생년월일(일) */				
+						#createaccount_information_birth_day_box{
+							float:left;
+							margin-left:5px;
+						}
+							#createaccount_information_btn_day{
+								border:0;
+								width:118px;
+								height:50px;
+								color:#4c4c4c;
+								line-height:48px;
+								background:none;
+								cursor:pointer;
+								font-size:16px;
+								font-weight:bold;
+								text-align:left;
+							}
+								#createaccount_information_input_day{
+									float:left;
+								}
+							#createaccount_information_day_ul{
+								position:absolute;
+								display:none;
+								width:90px;
+								height:160px;
+								overflow-y:auto;
+								border:1px solid #eee;
+								background-color:#fff;
+								font-size:13px;
+								font-weight:bold;
+								box-shadow:0 0 20px 0 rgba(0,0,0,0.2);
+								padding:0;
+								list-style:none;
+							}
+								#createaccount_information_day_ul > li{
+									cursor:pointer;
+									padding:10px;
+								}
+									#createaccount_information_day_ul > li:hover{
+										background:#d6d6d6;
+									}
+									#createaccount_information_day_ul > li > a{
+										
+									}
+						/* ↑생년월일(일) */			
+						/* ↓성별 */			
+						#createaccount_information_gender_box{
+							width:100%;
+							height:50px;
+							line-height:48px;
+						}
+							#createaccount_information_gender_none{
+								display:none;
+							}
+							#createaccount_information_gender_man{
+								display:none;
+							}
+							#createaccount_information_gender_woman{
+								display:none;
+							}
+							.createaccount_information_gender_label{
+								cursor:pointer;
+								float:left;
+							}
+								.createaccount_information_gender_label:nth-of-type(2){
+									margin-left:50px;
+								}
+								.createaccount_information_gender_label:nth-of-type(3){
+									margin-left:50px;
+								}
+							.createaccount_information_span_select_circle_off{
+								display:block;
+								width:20px;
+								height:20px;
+								background:url("/resources/img/login/signin/account_icons.png");
+								background-position:-90px -30px;
+								margin:13px 5px;
+								float:left;
+							}
+								.createaccount_information_span_select_circle_on{
+									display:block;
+									width:20px;
+									height:20px;
+									background:url("/resources/img/login/signin/account_icons.png");
+									background-position:-60px -30px;
+									margin:13px 5px;
+									float:left;	
+								}
+							.createaccount_information_span_select_text{
+								display:block;
+								line-height:48px;
+								float:left;
+								margin-left:5px;
+							}
+						/* ↑성별 */
+						/* 다음 버튼*/
+						#createaccount_information_next_btn{
+							width:100%;
+							height:50px;
+							border:0;
+							border-radius:4px;
+							font-size:15px;
+							font-weight:bold;
+							background:#f6f6f6;
+							margin-top:50px;
+							cursor:pointer;
+						}
+						#createaccount_information_next_btn:hover{
+							background:#e8e8e8;
+						}									

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.storeproject.mapper.admin.CardAddMapper">
+	<select id="selectProductsCard"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date from products_info_tb 
+				where pds_Active=1 ORDER BY pds_Reg_Date DESC, pds_NO DESC Limit #{count}, 20;
+		]]>
+	</select>
+	<select id="selectChoiceCard"  resultType="com.storeproject.domain.admin.ProductsInfoVO">
+		<![CDATA[
+			select pds_NO, pds_NM, pds_Price, pds_Sale, pds_Image, pds_Reg_Date from products_info_tb 
+				where pds_NO=#{no} and pds_Active=1;
+		]]>
+	</select>
+	<insert id="insertCard" useGeneratedKeys="true" keyProperty="card_NO">
+		<![CDATA[
+			insert into card_tb(card_Type, card_Img, card_Title, card_Intro, card_Choice, card_Contents, card_Url, card_Products, card_Reg_Date, card_Active)
+			values(#{card_Type}, #{card_Img}, #{card_Title}, #{card_Intro}, #{card_Choice}, #{card_Contents}, #{card_Url}, #{card_Products}, #{card_Reg_Date}, 1);
+		]]>
+	</insert>
+	<update id="updateCardContents">
+		<![CDATA[
+			update card_tb set card_Contents = #{str} where card_NO = ${no};
+		]]>
+	</update>
+</mapper>
