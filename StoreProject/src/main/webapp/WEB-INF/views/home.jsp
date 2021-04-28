@@ -66,7 +66,7 @@
 						<span></span>
 					</button>
 					<div id="all_select_charater_box">
-						<button onclick="allcharater(this)" value="all" disabled><span>캐릭터전체 테스트</span></button>
+						<button onclick="allcharater(this)" value="all" disabled><span>캐릭터전체</span></button>
 						<button onclick="allcharater(this)" value="ryan">
 							<img src="/resources/img/includes/header/category_ryan_off.png" alt="라이언 캐릭터 아이콘">
 							<span>라이언</span>
