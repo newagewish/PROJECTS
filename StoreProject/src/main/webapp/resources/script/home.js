@@ -7,7 +7,7 @@ window.onload = function(){
 			/*location.href = "/"+str_hash;*/
 			/*window.scrollBy(0, -134);*/
 			hashscroll();
-    	}, 1000);
+    	}, 1500);
 		
 	}
 }
@@ -17,38 +17,53 @@ $(document).ready(function(){
 
 $(window).scroll(function(){
 	clearTimeout(timeout);  //이전 휠 이벤트 제거
-    pagingeffect(99);	//스크롤이 일정 수준에 도달하면 작동
+	scrolleffect();	//소메뉴 스크롤 위치 기억
+    pagingeffect();	//스크롤이 일정 수준에 도달하면 작동
 });
 
-function hashscroll(){
-	
+function scrollmove(){
 	var str_hash = document.location.hash;
 	var index_num = str_hash.indexOf("_");
 	var a_name = str_hash.substring(1);
 	var menu_name = a_name.substring(0, index_num-1);
+	
 	if(menu_name=='home'){
-		//window.scrollTo(0, sessionStorage.getItem('home_scroll'));
+		window.scrollTo(0, sessionStorage.getItem('card_scroll'));
+	}else if(menu_name=='new'){
+		window.scrollTo(0, sessionStorage.getItem('new_scroll'));
+	}else if(menu_name=='vogue'){
+		window.scrollTo(0, sessionStorage.getItem('vogue_scroll'));
+	}else if(menu_name=='sale'){
+		window.scrollTo(0, sessionStorage.getItem('sale_scroll'));
+	}else if(menu_name=='all'){
+		window.scrollTo(0, sessionStorage.getItem('all_scroll'));
+	}
+};
+function hashscroll(){
+	var str_hash = document.location.hash;
+	var index_num = str_hash.indexOf("_");
+	var a_name = str_hash.substring(1);
+	var menu_name = a_name.substring(0, index_num-1);
+	
+	if(menu_name=='home'){
 		var no = document.location.href.split("?");
 		location.href = no;
 	}else if(menu_name=='new'){
-		//window.scrollTo(0, sessionStorage.getItem('new_scroll'));
 		var no = document.location.href.split("?");
 		location.href = no;
 	}else if(menu_name=='vogue'){
-		//window.scrollTo(0, sessionStorage.getItem('vogue_scroll'));
 		var no = document.location.href.split("?");
 		location.href = no;
 	}else if(menu_name=='sale'){
-		//window.scrollTo(0, sessionStorage.getItem('sale_scroll'));
 		var no = document.location.href.split("?");
 		location.href = no;
 	}else if(menu_name=='all'){
-		//window.scrollTo(0, sessionStorage.getItem('all_scroll'));
 		var no = document.location.href.split("?");
 		location.href = no;
 	}
 	
-}
+};
+
 /* --------------------------------------------------------- */
 /* 전역 변수 */
 var timeout;	//스크롤 이벤트 변수
@@ -56,6 +71,23 @@ var timeout;	//스크롤 이벤트 변수
 
 function checkhash(){
 	if(location.hash){
+		//history pushstate 활용
+	    //alert("location: " + document.location + ", state: " + JSON.stringify(history.state));
+		//console.log(history.state.card_count);
+		
+		sessionStorage.setItem("card_count", history.state.card_count); //홈 조회 시 불러온 제품 개수
+		sessionStorage.setItem("new_count", history.state.new_count); //신규 조회 시 불러온 제품 개수
+		sessionStorage.setItem("vogue_count", history.state.vogue_count); //인기도 순 조회 시 불러온 제품 개수
+		sessionStorage.setItem("sale_count", history.state.sale_count); //세일 조회 시 불러온 제품 개수
+		sessionStorage.setItem("all_count", history.state.all_count); //전체 조회 시 불러온 제품 개수
+		sessionStorage.setItem("all_select", history.state.all_select); //전체 조회 시 처음 불러온 옵션들 판매량순+캐릭터전체
+		//미니 메뉴의 각 항목별 스크롤 위치
+		sessionStorage.setItem("card_scroll", history.state.card_scroll);
+		sessionStorage.setItem("new_scroll", history.state.new_scroll);
+		sessionStorage.setItem("vogue_scroll", history.state.vogue_scroll);
+		sessionStorage.setItem("sale_scroll", history.state.sale_scroll);
+		sessionStorage.setItem("all_scroll", history.state.all_scroll);
+		
 		//뒤로가기로 불러와서 해시가 있을 경우
 		var str_hash = document.location.hash;
 		var index_num = str_hash.indexOf("_");
@@ -98,6 +130,10 @@ function checkhash(){
 			
 		}
 		
+		
+
+	
+		
 	}else{
 		//페이지를 새로 불러오거나 해시가 없는 경우
 		//불러온 제품 개수
@@ -108,26 +144,25 @@ function checkhash(){
 		sessionStorage.setItem("all_count", 0); //전체 조회 시 불러온 제품 개수
 		sessionStorage.setItem("all_select", ["sales", "all"]); //전체 조회 시 처음 불러온 옵션들 판매량순+캐릭터전체
 		//미니 메뉴의 각 항목별 스크롤 위치
-		sessionStorage.setItem("home_scroll", 0); //홈 조회 시 불러온 제품 개수
-		sessionStorage.setItem("new_scroll", 0); //신규 조회 시 불러온 제품 개수
-		sessionStorage.setItem("vogue_scroll", 0); //인기도 순 조회 시 불러온 제품 개수
-		sessionStorage.setItem("sale_scroll", 0); //세일 조회 시 불러온 제품 개수
-		sessionStorage.setItem("all_scroll", 0); //전체 조회 시 불러온 제품 개수
+		sessionStorage.setItem("card_scroll", 0);
+		sessionStorage.setItem("new_scroll", 0);
+		sessionStorage.setItem("vogue_scroll", 0);
+		sessionStorage.setItem("sale_scroll", 0);
+		sessionStorage.setItem("all_scroll", 0);
 		
-		selectcard();
-		pagingnew();
-		pagingvogue();
-		pagingsale();
-		selectall();
+		loadcards();
+		loadnew();
+		loadvogue();
+		loadsale();
+		loadall();
 	}
 }
 
 
 /* ------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------ */
 /* 페이지를 처음 혹은 메인으로 돌아왔을때 제품 정보 호출 */
 /* hash 부분과 비슷하지만 sql 쿼리에서 달라지기 때문에 따로 설정 */
-function selectcard(){
+function loadcards(){
 	carddata = { "count" : sessionStorage.getItem("card_count") }
 	$.ajax({
 		type:"get",
@@ -257,6 +292,7 @@ function selectcard(){
 					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
 					var img_hei = ($('#home_div1').children('a').length) * 247;
 					div1_hei = (Number(str.replace("px", ""))+img_hei);
+					
 				}else if(div2_hei < div1_hei && div2_hei <= div3_hei){
 					//두번째 div에 넣어준다.
 					div = $('#contents_home_box').children('div:nth-child(2)');
@@ -365,6 +401,7 @@ function selectcard(){
 					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
 					var img_hei = ($('#home_div2').children('a').length) * 247;
 					div2_hei = (Number(str.replace("px", ""))+img_hei);
+					
 				}else if(div3_hei < div1_hei && div3_hei < div2_hei){
 					//세번째 div에 넣어준다.
 					div = $('#contents_home_box').children('div:nth-child(3)');
@@ -481,7 +518,7 @@ function selectcard(){
 	});
 }
 
-function pagingnew(){
+function loadnew(){
 	newdata = { "count" : sessionStorage.getItem("new_count") };
 	$.ajax({
 		type:"get",
@@ -532,7 +569,7 @@ function pagingnew(){
 		}
 	})
 }
-function pagingvogue(){
+function loadvogue(){
 	voguedata = { "count" : sessionStorage.getItem("vogue_count") };
 	$.ajax({
 		type:"get",
@@ -565,7 +602,7 @@ function pagingvogue(){
 		}
 	})
 }
-function pagingsale(){
+function loadsale(){
 	saledata = { "count" : sessionStorage.getItem("sale_count") };
 	$.ajax({
 		type:"get",
@@ -608,7 +645,7 @@ function pagingsale(){
 	})
 }
 
-function selectall(){
+function loadall(){
 	alloption();
 }
 
@@ -815,20 +852,41 @@ function pagingall(here){
 	}
 /* ------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------ */
+//여기
 function inserthashcard(here){
 	var no = $(here).attr('name');
-	var str_hash = no;
-	window.location.hash = str_hash;
+	
+	var state = { 
+		'card_count': sessionStorage.getItem('card_count'), 'card_scroll': sessionStorage.getItem('card_scroll'),
+		'new_count': sessionStorage.getItem('new_count'), 'new_scroll': sessionStorage.getItem('new_scroll'),
+		'vogue_count': sessionStorage.getItem('vogue_count'), 'vogue_scroll': sessionStorage.getItem('vogue_scroll'),
+		'sale_count': sessionStorage.getItem('sale_count'), 'sale_scroll': sessionStorage.getItem('sale_scroll'),
+		'all_count': sessionStorage.getItem('all_count'), 'all_scroll': sessionStorage.getItem('all_scroll'),
+		'all_select': sessionStorage.getItem('all_select')
+	};
+	//var title = null;
+	var url = '#'+no;
+	history.pushState(state, null, url);
+
 }
 
 function inserthash(here){
 	var pro_str = $(here).attr('name');
-	var contents_name = $(here).attr('id');
-	var str_hash = "#" + contents_name;
 	
-	var no = pro_str.substring( pro_str.indexOf("_", 0), pro_str.length );
+	var no = pro_str.substring( pro_str.indexOf("_", 0)+1, pro_str.length );
+	var state = { 
+		'card_count': sessionStorage.getItem('card_count'), 'card_scroll': sessionStorage.getItem('card_scroll'),
+		'new_count': sessionStorage.getItem('new_count'), 'new_scroll': sessionStorage.getItem('new_scroll'),
+		'vogue_count': sessionStorage.getItem('vogue_count'), 'vogue_scroll': sessionStorage.getItem('vogue_scroll'),
+		'sale_count': sessionStorage.getItem('sale_count'), 'sale_scroll': sessionStorage.getItem('sale_scroll'),
+		'all_count': sessionStorage.getItem('all_count'), 'all_scroll': sessionStorage.getItem('all_scroll'),
+		'all_select': sessionStorage.getItem('all_select')
+	};
+	//var title = null;
+	var url = '#'+pro_str;
 	
-	window.location.hash = str_hash;
+	history.pushState(state, null, url);
+	
 	location.href = "/view?NO="+no;
 }
 
@@ -841,7 +899,7 @@ function selecthash(){
 }
 
 function hashcard(){
-	carddata = { "count" : sessionStorage.getItem("card_count") }
+	carddata = { "count" : history.state.card_count }
 	$.ajax({
 		type:"get",
 		url:"/home/hash/card",
@@ -1190,7 +1248,7 @@ function hashcard(){
 
 //신규 목록의 뷰페이지에서 뒤로가기 했을 때
 function hashnew(){
-	alldata = { "count" : sessionStorage.getItem("new_count") };
+	alldata = { "count" : history.state.new_count };
 	$.ajax({
 		type:"get",
 		url:"/home/hash/new",
@@ -1235,7 +1293,7 @@ function hashnew(){
 }
 //인기 목록의 뷰페이지에서 뒤로가기 했을 때
 function hashvogue(){
-	alldata = { "count" : sessionStorage.getItem("vogue_count") };
+	alldata = { "count" : history.state.vogue_count };
 	$.ajax({
 		type:"get",
 		url:"/home/hash/vogue",
@@ -1264,7 +1322,7 @@ function hashvogue(){
 }
 //세일 목록의 뷰페이지에서 뒤로가기 했을 때
 function hashsale(){
-	saledata = { "count" : sessionStorage.getItem("sale_count") };
+	saledata = { "count" : history.state.sale_count };
 	$.ajax({
 		type:"get",
 		url:"/home/hash/sale",
@@ -1302,7 +1360,7 @@ function hashsale(){
 }
 //전체 목록의 뷰페이지에서 뒤로가기 했을 때
 function hashall(){
-		var arr = sessionStorage.getItem("all_select").split(",");
+		var arr = history.state.all_select.split(",");
 		var charater = arr[1];
 		var option = arr[0];
 		
@@ -1315,7 +1373,7 @@ function hashall(){
 		$('#charater_btn').html($('#all_select_charater_box').children('button[value='+charater+']').children('span').html());
 		$('#all_select_charater').attr("value", $('#all_select_charater_box').children('button[value='+charater+']').attr("value"));
 		/*console.log(charater+option);*/
-		alldata = { "count" : sessionStorage.getItem("all_count"), "charater" : charater, "option" : option };
+		alldata = { "count" : history.state.all_count, "charater" : charater, "option" : option };
 		$.ajax({
 			type:"get",
 			url:"/home/hash/all",
@@ -1367,7 +1425,7 @@ function productshome(here){
 	$('#contents_home_box').css('height','auto');
 	$('#top_contents_box').css('left','0px');
 	$('#home_contents_box').css('left','0px');
-	$( 'html, body' ).stop().animate( { scrollTop : sessionStorage.getItem("home_scroll") })
+	$( 'html, body' ).stop().animate( { scrollTop : sessionStorage.getItem("card_scroll") })
 }
 function productsnew(here){
 	btneffect(here);
@@ -1405,24 +1463,43 @@ function btneffect(here){
 	$('#mini_bar').children('button').css('border-bottom', "none");
 	$(here).css('border-bottom', "2px solid black");
 	$('.mini_contents_box').css('height','700px');
+	scrollmove();
 }
 
 
-function pagingeffect(standard){
-    timeout = setTimeout(function(){ //다시 휠 이벤트 발생  0.1초후
+function pagingeffect(){
+    timeout = setTimeout(function(){ //다시 휠 이벤트 발생  0.2초후
 		if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
 			if($('#home_contents_box').css('left')=='0px'){
-					pagingcard();	//카드 목록만 selectcard가 아닌 pagingcard로 처리
+					pagingcard();	//카드 목록은 loadcards가 아닌 pagingcards로 처리
 			}else if($('#home_contents_box').css('left')=='-1080px'){
-					pagingnew();
+					loadnew();
 			}else if($('#home_contents_box').css('left')=='-2160px'){
-					pagingvogue();
+					loadvogue();
 			}else if($('#home_contents_box').css('left')=='-3240px'){
-					pagingsale();
+					loadsale();
 			}else if($('#home_contents_box').css('left')=='-4320px'){
-					pagingall();	//불필요한 변수 처리가 있어 전체 메뉴만 스크롤 대응 함수를 따로 만듬
+					pagingall();	//기존에 불필요한 변수 처리가 있어 전체 메뉴 스크롤 대응 함수를 따로 만듬
 			}
 		}
+    }, 200);
+};
+
+function scrolleffect(){
+    timeout = setTimeout(function(){ //다시 휠 이벤트 발생  0.2초후
+		var scroll = Math.floor( $(window).scrollTop() );
+		
+		if($('#home_contents_box').css('left')=='0px'){
+			sessionStorage.setItem("card_scroll", scroll);
+		}else if($('#home_contents_box').css('left')=='-1080px'){
+			sessionStorage.setItem("new_scroll", scroll);
+		}else if($('#home_contents_box').css('left')=='-2160px'){
+			sessionStorage.setItem("vogue_scroll", scroll);
+		}else if($('#home_contents_box').css('left')=='-3240px'){
+			sessionStorage.setItem("sale_scroll", scroll);
+		}else if($('#home_contents_box').css('left')=='-4320px'){
+			sessionStorage.setItem("all_scroll", scroll);
+		}	
     }, 200);
 };
 
@@ -1624,6 +1701,7 @@ function pagingcard(){
 					var str = $('#home_div1').css('height');
 					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
 					div1_hei = (Number(str.replace("px", ""))+247);
+					
 				}else if(div2_hei < div1_hei && div2_hei <= div3_hei){
 					//두번째 div에 넣어준다.
 					div = $('#contents_home_box').children('div:nth-child(2)');
