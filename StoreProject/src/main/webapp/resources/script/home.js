@@ -21,6 +21,10 @@ $(window).scroll(function(){
     pagingeffect();	//스크롤이 일정 수준에 도달하면 작동
 });
 
+window.addEventListener('popstate', () => {
+	onpopstate();
+});
+
 function scrollmove(){
 	var str_hash = document.location.hash;
 	var index_num = str_hash.indexOf("_");
@@ -71,22 +75,23 @@ var timeout;	//스크롤 이벤트 변수
 
 function checkhash(){
 	if(location.hash){
-		//history pushstate 활용
-	    //alert("location: " + document.location + ", state: " + JSON.stringify(history.state));
-		//console.log(history.state.card_count);
+			//history pushstate 활용
+		    //alert("location: " + document.location + ", state: " + JSON.stringify(history.state));
+			//console.log(history.state.card_count);
+			
+			sessionStorage.setItem("card_count", history.state.card_count); //홈 조회 시 불러온 제품 개수
+			sessionStorage.setItem("new_count", history.state.new_count); //신규 조회 시 불러온 제품 개수
+			sessionStorage.setItem("vogue_count", history.state.vogue_count); //인기도 순 조회 시 불러온 제품 개수
+			sessionStorage.setItem("sale_count", history.state.sale_count); //세일 조회 시 불러온 제품 개수
+			sessionStorage.setItem("all_count", history.state.all_count); //전체 조회 시 불러온 제품 개수
+			sessionStorage.setItem("all_select", history.state.all_select); //전체 조회 시 처음 불러온 옵션들 판매량순+캐릭터전체
+			//미니 메뉴의 각 항목별 스크롤 위치
+			sessionStorage.setItem("card_scroll", history.state.card_scroll);
+			sessionStorage.setItem("new_scroll", history.state.new_scroll);
+			sessionStorage.setItem("vogue_scroll", history.state.vogue_scroll);
+			sessionStorage.setItem("sale_scroll", history.state.sale_scroll);
+			sessionStorage.setItem("all_scroll", history.state.all_scroll);
 		
-		sessionStorage.setItem("card_count", history.state.card_count); //홈 조회 시 불러온 제품 개수
-		sessionStorage.setItem("new_count", history.state.new_count); //신규 조회 시 불러온 제품 개수
-		sessionStorage.setItem("vogue_count", history.state.vogue_count); //인기도 순 조회 시 불러온 제품 개수
-		sessionStorage.setItem("sale_count", history.state.sale_count); //세일 조회 시 불러온 제품 개수
-		sessionStorage.setItem("all_count", history.state.all_count); //전체 조회 시 불러온 제품 개수
-		sessionStorage.setItem("all_select", history.state.all_select); //전체 조회 시 처음 불러온 옵션들 판매량순+캐릭터전체
-		//미니 메뉴의 각 항목별 스크롤 위치
-		sessionStorage.setItem("card_scroll", history.state.card_scroll);
-		sessionStorage.setItem("new_scroll", history.state.new_scroll);
-		sessionStorage.setItem("vogue_scroll", history.state.vogue_scroll);
-		sessionStorage.setItem("sale_scroll", history.state.sale_scroll);
-		sessionStorage.setItem("all_scroll", history.state.all_scroll);
 		
 		//뒤로가기로 불러와서 해시가 있을 경우
 		var str_hash = document.location.hash;
@@ -130,10 +135,6 @@ function checkhash(){
 			
 		}
 		
-		
-
-	
-		
 	}else{
 		//페이지를 새로 불러오거나 해시가 없는 경우
 		//불러온 제품 개수
@@ -158,6 +159,70 @@ function checkhash(){
 	}
 }
 
+//pushstate 내에서 페이지 이동 시
+function onpopstate(){
+	if(location.hash){
+		//history pushstate 활용
+	    //alert("location: " + document.location + ", state: " + JSON.stringify(history.state));
+		//console.log(history.state.card_count);
+		
+		sessionStorage.setItem("card_count", history.state.card_count); //홈 조회 시 불러온 제품 개수
+		sessionStorage.setItem("new_count", history.state.new_count); //신규 조회 시 불러온 제품 개수
+		sessionStorage.setItem("vogue_count", history.state.vogue_count); //인기도 순 조회 시 불러온 제품 개수
+		sessionStorage.setItem("sale_count", history.state.sale_count); //세일 조회 시 불러온 제품 개수
+		sessionStorage.setItem("all_count", history.state.all_count); //전체 조회 시 불러온 제품 개수
+		sessionStorage.setItem("all_select", history.state.all_select); //전체 조회 시 처음 불러온 옵션들 판매량순+캐릭터전체
+		//미니 메뉴의 각 항목별 스크롤 위치
+		sessionStorage.setItem("card_scroll", history.state.card_scroll);
+		sessionStorage.setItem("new_scroll", history.state.new_scroll);
+		sessionStorage.setItem("vogue_scroll", history.state.vogue_scroll);
+		sessionStorage.setItem("sale_scroll", history.state.sale_scroll);
+		sessionStorage.setItem("all_scroll", history.state.all_scroll);
+		
+		
+		//뒤로가기로 불러와서 해시가 있을 경우
+		var str_hash = document.location.hash;
+		var index_num = str_hash.indexOf("_");
+		var a_name = str_hash.substring(1);
+		var menu_name = a_name.substring(0, index_num-1);
+		
+		/* 포커스 해줘야하는 메뉴 이펙트 및 블럭 처리 */
+		$('#mini_bar').children('button').css('border-bottom', "none");	//마지막에 선택한 버튼 효과만 보이기위해 다른 메뉴 효과 감추기
+		$('.mini_contents_box').css('height','700px');	//마지막에 선택한 메뉴 외에는 스크롤 길이가 추가되지 않도록 고정
+		/*console.log(menu_name);	*/
+		if(menu_name=='home'){
+			$('#top_contents_box').css('left','0');
+			$('#contents_home_box').css('height','auto');
+			$('#home_contents_box').css('left','0px');
+			$('#mini_bar').children('button:nth-child(1)').css('border-bottom', "2px solid black");
+		}else if(menu_name=='new'){
+			$('#top_contents_box').css('left','-1080px');
+			$('#contents_new_box').css('height','auto');
+			$('#home_contents_box').css('left','-1080px');
+			$('#mini_bar').children('button:nth-child(2)').css('border-bottom', "2px solid black");
+		}else if(menu_name=='vogue'){
+			$('#top_contents_box').css('left','-2160px');
+			$('#contents_vogue_box').css('height','auto');
+			$('#home_contents_box').css('left','-2160px');
+			$('#mini_bar').children('button:nth-child(3)').css('border-bottom', "2px solid black");
+		}else if(menu_name=='sale'){
+			$('#top_contents_box').css('left','-3240px');
+			$('#contents_sale_box').css('height','auto');
+			$('#home_contents_box').css('left','-3240px');
+			$('#mini_bar').children('button:nth-child(4)').css('border-bottom', "2px solid black");
+		}else if(menu_name=='all'){
+			$('#top_contents_box').css('left','-4320px');
+			$('#contents_all_box').css('height','auto');
+			$('#home_contents_box').css('left','-4320px');
+			$('#mini_bar').children('button:nth-child(5)').css('border-bottom', "2px solid black");
+		}else{
+			
+		}
+	}else{
+		var url = window.location.href;
+		location.href = url;
+	}
+}
 
 /* ------------------------------------------------------------------------------------------------ */
 /* 페이지를 처음 혹은 메인으로 돌아왔을때 제품 정보 호출 */
