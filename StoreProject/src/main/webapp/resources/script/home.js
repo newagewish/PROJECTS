@@ -7,10 +7,7 @@ window.onload = function(){
 			/*location.href = "/"+str_hash;*/
 			/*window.scrollBy(0, -134);*/
 			hashscroll();
-    	}, 500);
-		setTimeout(function (){
-			history.pushState(null, null, "https://61.76.251.66:8442/");
-		}, 510);
+    	}, 1000);
 		
 	}
 }
@@ -20,7 +17,7 @@ $(document).ready(function(){
 
 $(window).scroll(function(){
 	clearTimeout(timeout);  //이전 휠 이벤트 제거
-    scrolleffect(90);	//스크롤이 일정 수준에 도달하면 작동
+    pagingeffect(99);	//스크롤이 일정 수준에 도달하면 작동
 });
 
 function hashscroll(){
@@ -30,15 +27,25 @@ function hashscroll(){
 	var a_name = str_hash.substring(1);
 	var menu_name = a_name.substring(0, index_num-1);
 	if(menu_name=='home'){
-		window.scrollTo(0, sessionStorage.getItem('home_scroll'));
+		//window.scrollTo(0, sessionStorage.getItem('home_scroll'));
+		var no = document.location.href.split("?");
+		location.href = no;
 	}else if(menu_name=='new'){
-		window.scrollTo(0, sessionStorage.getItem('new_scroll'));
+		//window.scrollTo(0, sessionStorage.getItem('new_scroll'));
+		var no = document.location.href.split("?");
+		location.href = no;
 	}else if(menu_name=='vogue'){
-		window.scrollTo(0, sessionStorage.getItem('vogue_scroll'));
+		//window.scrollTo(0, sessionStorage.getItem('vogue_scroll'));
+		var no = document.location.href.split("?");
+		location.href = no;
 	}else if(menu_name=='sale'){
-		window.scrollTo(0, sessionStorage.getItem('sale_scroll'));
+		//window.scrollTo(0, sessionStorage.getItem('sale_scroll'));
+		var no = document.location.href.split("?");
+		location.href = no;
 	}else if(menu_name=='all'){
-		window.scrollTo(0, sessionStorage.getItem('all_scroll'));
+		//window.scrollTo(0, sessionStorage.getItem('all_scroll'));
+		var no = document.location.href.split("?");
+		location.href = no;
 	}
 	
 }
@@ -108,9 +115,9 @@ function checkhash(){
 		sessionStorage.setItem("all_scroll", 0); //전체 조회 시 불러온 제품 개수
 		
 		selectcard();
-		selectnew();
-		selectvogue();
-		selectsale();
+		pagingnew();
+		pagingvogue();
+		pagingsale();
 		selectall();
 	}
 }
@@ -134,12 +141,13 @@ function selectcard(){
 			}else{
 				//가져온 카드가 없으면 세션 카운트를 올리지 않는다.
 			}
-			var div1_hei = 10;
-			var div2_hei = 10;
-			var div3_hei = 10;
+			var div1_hei = Number( $('#home_div1').css('height').replace("px", "") );
+			var div2_hei = Number( $('#home_div2').css('height').replace("px", "") );
+			var div3_hei = Number( $('#home_div3').css('height').replace("px", "") );
+			
 			var div;
 			for(var i=0; i<result.length; i++){
-				/*console.log(div1_hei+" / "+div2_hei+" / "+div3_hei);*/
+				//console.log(result[i].card_NO+" / "+div1_hei+" / "+div2_hei+" / "+div3_hei+" / ");
 				if(div1_hei <= div2_hei && div1_hei <= div3_hei){
 					//첫번째 div에 넣어준다.
 					div = $('#contents_home_box').children('div:nth-child(1)');
@@ -148,67 +156,58 @@ function selectcard(){
 						//카드 이미지형일 때는 이미지만 박스에 추가
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "intro"){
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "list"){
 						div.append(
-							"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-							+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
 							+	"</a>"
-							+	"<div class='contents_card_title'>"
-							+		result[i].card_Title
-							+	"</div>"
-							+	"<div class='contents_card_intro'>"
-							+		result[i].card_Intro
-							+	"</div>"
-							+	"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
-							+	"</div>"
-							+"</div>"
 						);
+						
 						var str_id = "card_choice_"+result[i].card_NO;
 						var no_arr = (result[i].card_Choice).split(",");
 	
@@ -225,7 +224,7 @@ function selectcard(){
 									/*alert(pds_image_name[0]);*/
 									$('#'+str_id).append(
 										"<div class='choice_box'>"
-										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"'>"
+										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"' name='"+result2.pds_NO+"' onclick='inserthash(this)'>"
 										+		"<span class='choice_img_cover'></span>"
 										+		"<span>"
 										+			"<img class='choice_contents_image' src='/resources/upload/products/images/"+result2.pds_Reg_Date+"/"+result2.pds_NO+"/"+pds_image_name[0]+"' />"
@@ -254,9 +253,11 @@ function selectcard(){
 							})
 						}
 					}
-					var str = $('#contents_home_box').children('div:nth-child(1)').css('height');
-					div1_hei = Number(str.replace("px", ""));
-				}else if(div2_hei <= div1_hei && div2_hei <= div3_hei){
+					var str = $('#home_div1').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					var img_hei = ($('#home_div1').children('a').length) * 247;
+					div1_hei = (Number(str.replace("px", ""))+img_hei);
+				}else if(div2_hei < div1_hei && div2_hei <= div3_hei){
 					//두번째 div에 넣어준다.
 					div = $('#contents_home_box').children('div:nth-child(2)');
 					//카드 종류가 3종류 이기 때문에 조건문으로 나눔)
@@ -264,66 +265,56 @@ function selectcard(){
 						//카드 이미지형일 때는 이미지만 박스에 추가
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "intro"){
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
-								+	"</a>"
-								+	"<div class='contents_card_title'>"
+								+		"<div class='contents_card_title'>"
 								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
 								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
+								+		"</div>"
+								+	"</a>"
 							);
 						}
 					}else if(result[i].card_Type == "list"){
 						div.append(
-							"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-							+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
 							+	"</a>"
-							+	"<div class='contents_card_title'>"
-							+		result[i].card_Title
-							+	"</div>"
-							+	"<div class='contents_card_intro'>"
-							+		result[i].card_Intro
-							+	"</div>"
-							+	"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
-							+	"</div>"
-							+"</div>"
 						);
 						var str_id = "card_choice_"+result[i].card_NO;
 						var no_arr = (result[i].card_Choice).split(",");
@@ -341,7 +332,7 @@ function selectcard(){
 									/*alert(pds_image_name[0]);*/
 									$('#'+str_id).append(
 										"<div class='choice_box'>"
-										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"'>"
+										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"' name='"+result2.pds_NO+"' onclick='inserthash(this)'>"
 										+		"<span class='choice_img_cover'></span>"
 										+		"<span>"
 										+			"<img class='choice_contents_image' src='/resources/upload/products/images/"+result2.pds_Reg_Date+"/"+result2.pds_NO+"/"+pds_image_name[0]+"' />"
@@ -370,9 +361,11 @@ function selectcard(){
 							})
 						}
 					}
-					var str = $('#contents_home_box').children('div:nth-child(2)').css('height');
-					div2_hei = Number(str.replace("px", ""));
-				}else if(div3_hei <= div1_hei && div3_hei <= div2_hei){
+					var str = $('#home_div2').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					var img_hei = ($('#home_div2').children('a').length) * 247;
+					div2_hei = (Number(str.replace("px", ""))+img_hei);
+				}else if(div3_hei < div1_hei && div3_hei < div2_hei){
 					//세번째 div에 넣어준다.
 					div = $('#contents_home_box').children('div:nth-child(3)');
 					//카드 종류가 3종류 이기 때문에 조건문으로 나눔)
@@ -380,66 +373,56 @@ function selectcard(){
 						//카드 이미지형일 때는 이미지만 박스에 추가
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "intro"){
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
-								+	"</a>"
-								+	"<div class='contents_card_title'>"
+								+		"<div class='contents_card_title'>"
 								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
+								+	"</a>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "list"){
 						div.append(
-							"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-							+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
 							+	"</a>"
-							+	"<div class='contents_card_title'>"
-							+		result[i].card_Title
-							+	"</div>"
-							+	"<div class='contents_card_intro'>"
-							+		result[i].card_Intro
-							+	"</div>"
-							+	"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
-							+	"</div>"
-							+"</div>"
 						);
 						var str_id = "card_choice_"+result[i].card_NO;
 						var no_arr = (result[i].card_Choice).split(",");
@@ -457,7 +440,7 @@ function selectcard(){
 									/*alert(pds_image_name[0]);*/
 									$('#'+str_id).append(
 										"<div class='choice_box'>"
-										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"'>"
+										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"' name='"+result2.pds_NO+"' onclick='inserthash(this)'>"
 										+		"<span class='choice_img_cover'></span>"
 										+		"<span>"
 										+			"<img class='choice_contents_image' src='/resources/upload/products/images/"+result2.pds_Reg_Date+"/"+result2.pds_NO+"/"+pds_image_name[0]+"' />"
@@ -486,8 +469,10 @@ function selectcard(){
 							})
 						}
 					}
-					var str = $('#contents_home_box').children('div:nth-child(3)').css('height');
-					div3_hei = Number(str.replace("px", ""));
+					var str = $('#home_div3').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					var img_hei = ($('#home_div3').children('a').length) * 247;
+					div3_hei = (Number(str.replace("px", ""))+img_hei);
 				}
 			}
 		},error:function(jqXHR, textStatus, errorThrown){
@@ -496,7 +481,7 @@ function selectcard(){
 	});
 }
 
-function selectnew(){
+function pagingnew(){
 	newdata = { "count" : sessionStorage.getItem("new_count") };
 	$.ajax({
 		type:"get",
@@ -516,7 +501,7 @@ function selectnew(){
 				/*alert(pds_image_name[0]);*/
 				$('#contents_new_box').append(
 					"<div class='contents_new_div'>"
-					+	"<a class='new_a_tag' id='new_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+					+	"<a class='new_a_tag' id='new_"+result[i].pds_NO+"' name='new_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 					+		"<span class='img_cover'></span>"
 					+		"<span>"
 					+			"<img class='contents_image' src='/resources/upload/products/images/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name[0]+"' />"
@@ -547,7 +532,7 @@ function selectnew(){
 		}
 	})
 }
-function selectvogue(){
+function pagingvogue(){
 	voguedata = { "count" : sessionStorage.getItem("vogue_count") };
 	$.ajax({
 		type:"get",
@@ -566,7 +551,7 @@ function selectvogue(){
 				/*alert(pds_image_name[0]);*/
 				$('#contents_vogue_box').append(
 					"<div class='contents_vogue_div'>"
-					+"<a id='vogue_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+					+"<a id='vogue_"+result[i].pds_NO+"' name='vogue_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 					+	"<span>"
 					+		"<img class='contents_image' src='/resources/upload/products/vogue/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name+"' />"
 					+	"</span>"
@@ -580,7 +565,7 @@ function selectvogue(){
 		}
 	})
 }
-function selectsale(){
+function pagingsale(){
 	saledata = { "count" : sessionStorage.getItem("sale_count") };
 	$.ajax({
 		type:"get",
@@ -603,7 +588,7 @@ function selectsale(){
 				/*alert(pds_image_name[0]);*/
 				$('#contents_sale_box').append(
 					"<div class='contents_sale_div'>"
-					+"<a id='sale_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+					+"<a id='sale_"+result[i].pds_NO+"' name='sale_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 					+	"<span class='img_cover'></span>"
 					+	"<span>"
 					+		"<img class='contents_image' src='/resources/upload/products/images/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name[0]+"' />"
@@ -669,7 +654,7 @@ function selectall(){
 					/*alert(pds_image_name[0]);*/
 					$('#all_select_box').append(
 						"<div class='contents_all_div'>"
-						+"<a class='all_a_tag' id='all_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+						+"<a class='all_a_tag' id='all_"+result[i].pds_NO+"' name='all_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 						+	"<span class='img_cover'></span>"
 						+	"<span>"
 						+		"<img class='contents_image' src='/resources/upload/products/images/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name[0]+"' />"
@@ -742,7 +727,7 @@ function selectall(){
 					/*alert(pds_image_name[0]);*/
 					$('#all_select_box').append(
 						"<div class='contents_new_div'>"
-						+"<a class='all_a_tag' id='all_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+						+"<a class='all_a_tag' id='all_"+result[i].pds_NO+"' name='all_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 						+	"<span class='img_cover'></span>"
 						+	"<span>"
 						+		"<img class='contents_image' src='/resources/upload/products/images/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name[0]+"' />"
@@ -773,7 +758,7 @@ function selectall(){
 		});
 	}
 
-function allscroll(here){
+function pagingall(here){
 		var charater = $('#all_select_charater').attr('value');
 		var option = $('#all_select_option').attr('value');
 		/*console.log(charater+option);*/
@@ -798,7 +783,7 @@ function allscroll(here){
 					/*alert(pds_image_name[0]);*/
 					$('#all_select_box').append(
 						"<div class='contents_new_div'>"
-						+"<a class='all_a_tag' id='all_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+						+"<a class='all_a_tag' id='all_"+result[i].pds_NO+"' name='all_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 						+	"<span class='img_cover'></span>"
 						+	"<span>"
 						+		"<img class='contents_image' src='/resources/upload/products/images/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name[0]+"' />"
@@ -830,30 +815,32 @@ function allscroll(here){
 	}
 /* ------------------------------------------------------------------------------------------------ */
 /* ------------------------------------------------------------------------------------------------ */
-
 function inserthashcard(here){
-	var no = $(here).parents('div').attr('value');
-	var str_hash = "#home_"+no;
+	var no = $(here).attr('name');
+	var str_hash = no;
 	window.location.hash = str_hash;
 }
 
 function inserthash(here){
-	var no = $(here).attr('name');
+	var pro_str = $(here).attr('name');
 	var contents_name = $(here).attr('id');
 	var str_hash = "#" + contents_name;
+	
+	var no = pro_str.substring( pro_str.indexOf("_", 0), pro_str.length );
+	
 	window.location.hash = str_hash;
 	location.href = "/view?NO="+no;
 }
 
 function selecthash(){
-	selecthashcard();
-	selecthashnew();
-	selecthashvogue();
-	selecthashsale();
-	selecthashall();
+	hashcard();
+	hashnew();
+	hashvogue();
+	hashsale();
+	hashall();
 }
 
-function selecthashcard(){
+function hashcard(){
 	carddata = { "count" : sessionStorage.getItem("card_count") }
 	$.ajax({
 		type:"get",
@@ -875,66 +862,56 @@ function selecthashcard(){
 						//카드 이미지형일 때는 이미지만 박스에 추가
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "intro"){
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "list"){
 						div.append(
-							"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-							+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
 							+	"</a>"
-							+	"<div class='contents_card_title'>"
-							+		result[i].card_Title
-							+	"</div>"
-							+	"<div class='contents_card_intro'>"
-							+		result[i].card_Intro
-							+	"</div>"
-							+	"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
-							+	"</div>"
-							+"</div>"
 						);
 						var str_id = "card_choice_"+result[i].card_NO;
 						var no_arr = (result[i].card_Choice).split(",");
@@ -981,9 +958,12 @@ function selecthashcard(){
 							})
 						}
 					}
-					var str = $('#contents_home_box').children('div:nth-child(1)').css('height');
-					div1_hei = Number(str.replace("px", ""));
-				}else if(div2_hei <= div1_hei && div2_hei <= div3_hei){
+					var str = $('#home_div1').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					var img_hei = ($('#home_div1').children('a').length) * 247;
+					div1_hei = (Number(str.replace("px", ""))+img_hei);
+					
+				}else if(div2_hei < div1_hei && div2_hei <= div3_hei){
 					//두번째 div에 넣어준다.
 					div = $('#contents_home_box').children('div:nth-child(2)');
 					//카드 종류가 3종류 이기 때문에 조건문으로 나눔)
@@ -991,66 +971,56 @@ function selecthashcard(){
 						//카드 이미지형일 때는 이미지만 박스에 추가
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "intro"){
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "list"){
 						div.append(
-							"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-							+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
 							+	"</a>"
-							+	"<div class='contents_card_title'>"
-							+		result[i].card_Title
-							+	"</div>"
-							+	"<div class='contents_card_intro'>"
-							+		result[i].card_Intro
-							+	"</div>"
-							+	"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
-							+	"</div>"
-							+"</div>"
 						);
 						var str_id = "card_choice_"+result[i].card_NO;
 						var no_arr = (result[i].card_Choice).split(",");
@@ -1097,9 +1067,12 @@ function selecthashcard(){
 							})
 						}
 					}
-					var str = $('#contents_home_box').children('div:nth-child(2)').css('height');
-					div2_hei = Number(str.replace("px", ""));
-				}else if(div3_hei <= div1_hei && div3_hei <= div2_hei){
+					var str = $('#home_div2').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					var img_hei = ($('#home_div2').children('a').length) * 247;
+					div2_hei = (Number(str.replace("px", ""))+img_hei);
+					
+				}else if(div3_hei < div1_hei && div3_hei <= div2_hei){
 					//세번째 div에 넣어준다.
 					div = $('#contents_home_box').children('div:nth-child(3)');
 					//카드 종류가 3종류 이기 때문에 조건문으로 나눔)
@@ -1107,66 +1080,56 @@ function selecthashcard(){
 						//카드 이미지형일 때는 이미지만 박스에 추가
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
 								+	"</a>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "intro"){
 						if(result[i].card_Url != null){
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}else{
 							div.append(
-								"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-								+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
 								+	"</a>"
-								+	"<div class='contents_card_title'>"
-								+		result[i].card_Title
-								+	"</div>"
-								+	"<div class='contents_card_intro'>"
-								+		result[i].card_Intro
-								+	"</div>"
-								+"</div>"
 							);
 						}
 					}else if(result[i].card_Type == "list"){
 						div.append(
-							"<div class='contents_card_div' value='"+result[i].card_NO+"'>"
-							+	"<a class='card_img_btn' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
 							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
 							+	"</a>"
-							+	"<div class='contents_card_title'>"
-							+		result[i].card_Title
-							+	"</div>"
-							+	"<div class='contents_card_intro'>"
-							+		result[i].card_Intro
-							+	"</div>"
-							+	"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
-							+	"</div>"
-							+"</div>"
 						);
 						var str_id = "card_choice_"+result[i].card_NO;
 						var no_arr = (result[i].card_Choice).split(",");
@@ -1213,8 +1176,10 @@ function selecthashcard(){
 							})
 						}
 					}
-					var str = $('#contents_home_box').children('div:nth-child(3)').css('height');
-					div3_hei = Number(str.replace("px", ""));
+					var str = $('#home_div3').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					var img_hei = ($('#home_div3').children('a').length) * 247;
+					div3_hei = (Number(str.replace("px", ""))+img_hei);
 				}
 			}
 		},error:function(jqXHR, textStatus, errorThrown){
@@ -1224,7 +1189,7 @@ function selecthashcard(){
 }
 
 //신규 목록의 뷰페이지에서 뒤로가기 했을 때
-function selecthashnew(){
+function hashnew(){
 	alldata = { "count" : sessionStorage.getItem("new_count") };
 	$.ajax({
 		type:"get",
@@ -1238,7 +1203,7 @@ function selecthashnew(){
 				/*alert(pds_image_name[0]);*/
 				$('#contents_new_box').append(
 					"<div class='contents_new_div'>"
-					+"<a class='new_a_tag' id='new_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+					+"<a class='new_a_tag' id='new_"+result[i].pds_NO+"' name='new_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 					+	"<span class='img_cover'></span>"
 					+	"<span>"
 					+		"<img class='contents_image' src='/resources/upload/products/images/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name[0]+"' />"
@@ -1269,7 +1234,7 @@ function selecthashnew(){
 	})
 }
 //인기 목록의 뷰페이지에서 뒤로가기 했을 때
-function selecthashvogue(){
+function hashvogue(){
 	alldata = { "count" : sessionStorage.getItem("vogue_count") };
 	$.ajax({
 		type:"get",
@@ -1283,7 +1248,7 @@ function selecthashvogue(){
 				/*alert(pds_image_name[0]);*/
 				$('#contents_vogue_box').append(
 					"<div class='contents_vogue_div'>"
-					+"<a id='vogue_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+					+"<a id='vogue_"+result[i].pds_NO+"' name='vogue_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 					+	"<span>"
 					+		"<img class='contents_image' src='/resources/upload/products/vogue/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name+"' />"
 					+	"</span>"
@@ -1298,7 +1263,7 @@ function selecthashvogue(){
 	})
 }
 //세일 목록의 뷰페이지에서 뒤로가기 했을 때
-function selecthashsale(){
+function hashsale(){
 	saledata = { "count" : sessionStorage.getItem("sale_count") };
 	$.ajax({
 		type:"get",
@@ -1316,7 +1281,7 @@ function selecthashsale(){
 				/*alert(pds_image_name[0]);*/
 				$('#contents_sale_box').append(
 					"<div class='contents_sale_div'>"
-					+"<a id='sale_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+					+"<a id='sale_"+result[i].pds_NO+"' name='sale_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 					+	"<span class='img_cover'></span>"
 					+	"<span>"
 					+		"<img class='contents_image' src='/resources/upload/products/images/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name[0]+"' />"
@@ -1336,7 +1301,7 @@ function selecthashsale(){
 	})
 }
 //전체 목록의 뷰페이지에서 뒤로가기 했을 때
-function selecthashall(){
+function hashall(){
 		var arr = sessionStorage.getItem("all_select").split(",");
 		var charater = arr[1];
 		var option = arr[0];
@@ -1364,7 +1329,7 @@ function selecthashall(){
 					/*alert(pds_image_name[0]);*/
 					$('#all_select_box').append(
 						"<div class='contents_all_div'>"
-						+"<a class='all_a_tag' id='all_"+result[i].pds_NO+"' name='"+result[i].pds_NO+"' onclick='inserthash(this)'>"
+						+"<a class='all_a_tag' id='all_"+result[i].pds_NO+"' name='all_"+result[i].pds_NO+"' onclick='inserthash(this)'>"
 						+	"<span class='img_cover'></span>"
 						+	"<span>"
 						+		"<img class='contents_image' src='/resources/upload/products/images/"+result[i].pds_Reg_Date+"/"+result[i].pds_NO+"/"+pds_image_name[0]+"' />"
@@ -1443,38 +1408,21 @@ function btneffect(here){
 }
 
 
-function scrolleffect(standard){
+function pagingeffect(standard){
     timeout = setTimeout(function(){ //다시 휠 이벤트 발생  0.1초후
-		var scrollPosition = window.scrollY || document.documentElement.scrollTop;
-		var percent = Math.floor( ($(window).scrollTop() / ($(document).height() - $(window).height())) * 100 );
-		var scroll = Math.floor( $(window).scrollTop() );	//현재 스크롤 위치 기록
-		//console.log(percent);
-		if($('#home_contents_box').css('left')=='0px'){
-			sessionStorage.setItem("home_scroll", scroll)
-			if( percent >= standard){
-				selectcard();
+		if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+			if($('#home_contents_box').css('left')=='0px'){
+					pagingcard();	//카드 목록만 selectcard가 아닌 pagingcard로 처리
+			}else if($('#home_contents_box').css('left')=='-1080px'){
+					pagingnew();
+			}else if($('#home_contents_box').css('left')=='-2160px'){
+					pagingvogue();
+			}else if($('#home_contents_box').css('left')=='-3240px'){
+					pagingsale();
+			}else if($('#home_contents_box').css('left')=='-4320px'){
+					pagingall();	//불필요한 변수 처리가 있어 전체 메뉴만 스크롤 대응 함수를 따로 만듬
 			}
-		}else if($('#home_contents_box').css('left')=='-1080px'){
-			sessionStorage.setItem("new_scroll", scroll);
-			if( percent >= standard){
-				selectnew();
-			}
-		}else if($('#home_contents_box').css('left')=='-2160px'){
-			sessionStorage.setItem("vogue_scroll", scroll);
-			if( percent >= standard){
-				selectvogue();
-			}
-		}else if($('#home_contents_box').css('left')=='-3240px'){
-			sessionStorage.setItem("sale_scroll", scroll);
-			if( percent >= standard){
-				selectsale();
-			}
-		}else if($('#home_contents_box').css('left')=='-4320px'){
-			sessionStorage.setItem("all_scroll", scroll);
-			if( percent >= standard){
-				allscroll();	//불필요한 변수 처리가 있어 전체 메뉴만 스크롤 대응 함수를 따로 만듬
-			}
-		}	
+		}
     }, 200);
 };
 
@@ -1528,4 +1476,372 @@ function serchcount(){
 function cardReplacePrice(here){
 	var str = here.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	return str;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//카드 목록 페이징 처리
+//div1,2,3 에 높이 순서에 따라 순차 적으로 들어가야 하는 부분에서 마지막 높이 계산 처리에서 이전 컨텐츠 높이가 중복 계산되는 문제로 따로 떨어트려 놓았다.
+function pagingcard(){
+	carddata = { "count" : sessionStorage.getItem("card_count") }
+	$.ajax({
+		type:"get",
+		url:"/home/card",
+		data:carddata,
+		success:function(result){
+			//카드를 최신 순으로 조회
+			if(result.length!=0){
+				//가져온 카드 정보가 있으면 불러온 카드 수만큼 세션 카운트에 플러스.
+				sessionStorage.setItem("card_count", Number(sessionStorage.getItem("card_count"))+(result.length));
+			}else{
+				//가져온 카드가 없으면 세션 카운트를 올리지 않는다.
+			}
+			var div1_hei = Number( $('#home_div1').css('height').replace("px", "") );
+			var div2_hei = Number( $('#home_div2').css('height').replace("px", "") );
+			var div3_hei = Number( $('#home_div3').css('height').replace("px", "") );
+			
+			var div;
+			for(var i=0; i<result.length; i++){
+				//console.log(result[i].card_NO+" / "+div1_hei+" / "+div2_hei+" / "+div3_hei+" / ");
+				if(div1_hei <= div2_hei && div1_hei <= div3_hei){
+					//첫번째 div에 넣어준다.
+					div = $('#contents_home_box').children('div:nth-child(1)');
+					//카드 종류가 3종류 이기 때문에 조건문으로 나눔)
+					if(result[i].card_Type == "image"){
+						//카드 이미지형일 때는 이미지만 박스에 추가
+						if(result[i].card_Url != null){
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+	"</a>"
+							);
+						}else{
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+	"</a>"
+							);
+						}
+					}else if(result[i].card_Type == "intro"){
+						if(result[i].card_Url != null){
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
+								+	"</a>"
+							);
+						}else{
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
+								+	"</a>"
+							);
+						}
+					}else if(result[i].card_Type == "list"){
+						div.append(
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
+							+	"</a>"
+						);
+						
+						var str_id = "card_choice_"+result[i].card_NO;
+						var no_arr = (result[i].card_Choice).split(",");
+	
+						for(var b=0; b<no_arr.length; b++){
+							var choicedata = { "NO": no_arr[b] };
+							$.ajax({
+								type:"get",
+								url:"admin/card/select/product",
+								data:choicedata,
+								async: false,
+								success:function(result2){
+									var price = cardReplacePrice(result2.pds_Price);
+									var pds_image_name = result2.pds_Image.split(",");
+									/*alert(pds_image_name[0]);*/
+									$('#'+str_id).append(
+										"<div class='choice_box'>"
+										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"'>"
+										+		"<span class='choice_img_cover'></span>"
+										+		"<span>"
+										+			"<img class='choice_contents_image' src='/resources/upload/products/images/"+result2.pds_Reg_Date+"/"+result2.pds_NO+"/"+pds_image_name[0]+"' />"
+										+		"</span>"
+										+		"<p class='choice_mini_name'>"+result2.pds_NM+"</p>"
+										+		"<p class='choice_mini_price'>"+price+"원</p>"
+										+	"</a>"
+										+"</div>"
+									);
+									// 세일이 있을 경우 처리
+									if(result2.pds_Sale != 0){
+										var sale = cardReplacePrice(result2.pds_Sale);
+										var percent = 100 - Math.floor( result2.pds_Sale / (result2.pds_Price / 100) );
+										$('#choice_'+result2.pds_NO).children('p:nth-child(3)').after(
+											'<p class="choice_mini_percent">'+percent+'%</p>'
+										);
+										$('#choice_'+result2.pds_NO).children('p:nth-child(4)').after(
+											'<p class="choice_mini_sale">'+sale+'원</p>'
+										);
+										$('.choice_a_tag').children('p:nth-child(6)').css('text-decoration','line-through');
+										$('.choice_a_tag').children('p:nth-child(6)').css('color', 'rgb(154, 154, 158)');
+									}
+								},error:function(jqXHR, textStatus, errorThrown){
+									
+								}
+							})
+						}
+					}
+					var str = $('#home_div1').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					div1_hei = (Number(str.replace("px", ""))+247);
+				}else if(div2_hei < div1_hei && div2_hei <= div3_hei){
+					//두번째 div에 넣어준다.
+					div = $('#contents_home_box').children('div:nth-child(2)');
+					//카드 종류가 3종류 이기 때문에 조건문으로 나눔)
+					if(result[i].card_Type == "image"){
+						//카드 이미지형일 때는 이미지만 박스에 추가
+						if(result[i].card_Url != null){
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+	"</a>"
+							);
+						}else{
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+	"</a>"
+							);
+						}
+					}else if(result[i].card_Type == "intro"){
+						if(result[i].card_Url != null){
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
+								+	"</a>"
+							);
+						}else{
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+		result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+		result[i].card_Intro
+								+		"</div>"
+								+	"</a>"
+							);
+						}
+					}else if(result[i].card_Type == "list"){
+						div.append(
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
+							+	"</a>"
+						);
+						var str_id = "card_choice_"+result[i].card_NO;
+						var no_arr = (result[i].card_Choice).split(",");
+	
+						for(var b=0; b<no_arr.length; b++){
+							var choicedata = { "NO": no_arr[b] };
+							$.ajax({
+								type:"get",
+								url:"admin/card/select/product",
+								data:choicedata,
+								async: false,
+								success:function(result2){
+									var price = cardReplacePrice(result2.pds_Price);
+									var pds_image_name = result2.pds_Image.split(",");
+									/*alert(pds_image_name[0]);*/
+									$('#'+str_id).append(
+										"<div class='choice_box'>"
+										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"'>"
+										+		"<span class='choice_img_cover'></span>"
+										+		"<span>"
+										+			"<img class='choice_contents_image' src='/resources/upload/products/images/"+result2.pds_Reg_Date+"/"+result2.pds_NO+"/"+pds_image_name[0]+"' />"
+										+		"</span>"
+										+		"<p class='choice_mini_name'>"+result2.pds_NM+"</p>"
+										+		"<p class='choice_mini_price'>"+price+"원</p>"
+										+	"</a>"
+										+"</div>"
+									);
+									// 세일이 있을 경우 처리
+									if(result2.pds_Sale != 0){
+										var sale = cardReplacePrice(result2.pds_Sale);
+										var percent = 100 - Math.floor( result2.pds_Sale / (result2.pds_Price / 100) );
+										$('#choice_'+result2.pds_NO).children('p:nth-child(3)').after(
+											'<p class="choice_mini_percent">'+percent+'%</p>'
+										);
+										$('#choice_'+result2.pds_NO).children('p:nth-child(4)').after(
+											'<p class="choice_mini_sale">'+sale+'원</p>'
+										);
+										$('.choice_a_tag').children('p:nth-child(6)').css('text-decoration','line-through');
+										$('.choice_a_tag').children('p:nth-child(6)').css('color', 'rgb(154, 154, 158)');
+									}
+								},error:function(jqXHR, textStatus, errorThrown){
+									
+								}
+							})
+						}
+					}
+					var str = $('#home_div2').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					div2_hei = (Number(str.replace("px", ""))+247);
+				}else if(div3_hei < div1_hei && div3_hei < div2_hei){
+					//세번째 div에 넣어준다.
+					div = $('#contents_home_box').children('div:nth-child(3)');
+					//카드 종류가 3종류 이기 때문에 조건문으로 나눔)
+					if(result[i].card_Type == "image"){
+						//카드 이미지형일 때는 이미지만 박스에 추가
+						if(result[i].card_Url != null){
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+	"</a>"
+							);
+						}else{
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+	"</a>"
+							);
+						}
+					}else if(result[i].card_Type == "intro"){
+						if(result[i].card_Url != null){
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/view?NO="+result[i].card_Url+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+		result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
+								+	"</a>"
+							);
+						}else{
+							div.append(
+									"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+								+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+								+		"<div class='contents_card_title'>"
+								+			result[i].card_Title
+								+		"</div>"
+								+		"<div class='contents_card_intro'>"
+								+			result[i].card_Intro
+								+		"</div>"
+								+	"</a>"
+							);
+						}
+					}else if(result[i].card_Type == "list"){
+						div.append(
+								"<a class='card_img_btn' name='home_"+result[i].card_NO+"' onclick='inserthashcard(this)' href='/card?NO="+result[i].card_NO+"'>"
+							+		"<img src='/resources/upload/card/images/"+result[i].card_Reg_Date+"/"+result[i].card_NO+"/"+result[i].card_Img+"'></img>"
+							+		"<div class='contents_card_title'>"
+							+			result[i].card_Title
+							+		"</div>"
+							+		"<div class='contents_card_intro'>"
+							+			result[i].card_Intro
+							+		"</div>"
+							+		"<div class='contents_card_Choice' id='card_choice_"+result[i].card_NO+"'>"
+							+		"</div>"
+							+	"</a>"
+						);
+						var str_id = "card_choice_"+result[i].card_NO;
+						var no_arr = (result[i].card_Choice).split(",");
+	
+						for(var b=0; b<no_arr.length; b++){
+							var choicedata = { "NO": no_arr[b] };
+							$.ajax({
+								type:"get",
+								url:"admin/card/select/product",
+								data:choicedata,
+								async: false,
+								success:function(result2){
+									var price = cardReplacePrice(result2.pds_Price);
+									var pds_image_name = result2.pds_Image.split(",");
+									/*alert(pds_image_name[0]);*/
+									$('#'+str_id).append(
+										"<div class='choice_box'>"
+										+	"<a class='choice_a_tag' id='choice_"+result2.pds_NO+"'>"
+										+		"<span class='choice_img_cover'></span>"
+										+		"<span>"
+										+			"<img class='choice_contents_image' src='/resources/upload/products/images/"+result2.pds_Reg_Date+"/"+result2.pds_NO+"/"+pds_image_name[0]+"' />"
+										+		"</span>"
+										+		"<p class='choice_mini_name'>"+result2.pds_NM+"</p>"
+										+		"<p class='choice_mini_price'>"+price+"원</p>"
+										+	"</a>"
+										+"</div>"
+									);
+									// 세일이 있을 경우 처리
+									if(result2.pds_Sale != 0){
+										var sale = cardReplacePrice(result2.pds_Sale);
+										var percent = 100 - Math.floor( result2.pds_Sale / (result2.pds_Price / 100) );
+										$('#choice_'+result2.pds_NO).children('p:nth-child(3)').after(
+											'<p class="choice_mini_percent">'+percent+'%</p>'
+										);
+										$('#choice_'+result2.pds_NO).children('p:nth-child(4)').after(
+											'<p class="choice_mini_sale">'+sale+'원</p>'
+										);
+										$('.choice_a_tag').children('p:nth-child(6)').css('text-decoration','line-through');
+										$('.choice_a_tag').children('p:nth-child(6)').css('color', 'rgb(154, 154, 158)');
+									}
+								},error:function(jqXHR, textStatus, errorThrown){
+									
+								}
+							})
+						}
+					}
+					var str = $('#home_div3').css('height');
+					//이미지가 불러오기전에 높이를 계산하기 때문에 따로 계산
+					div3_hei = (Number(str.replace("px", ""))+247);
+				}
+			}
+		},error:function(jqXHR, textStatus, errorThrown){
+			
+		}
+	});
 }
