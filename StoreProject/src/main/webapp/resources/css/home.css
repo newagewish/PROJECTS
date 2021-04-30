@@ -79,7 +79,6 @@ p{
 						float:left;
 						width:360px;
 						min-height: 10px;
-						overflow:hidden;
 					}
 		.box_info1{
 			display:block;
@@ -337,18 +336,20 @@ p{
 	border:1px solid #cccccc;
 	border-radius: 11px;
 	overflow:hidden;
+	box-shadow: 0px 1px 5px 2px #c4c4c4;
 }
 .card_img_btn{
-	position:relative;
+	float:left;
 	width: 329px;
-	height: 247px;
-	padding:0;
-	border:0;
+	margin:14px;
+	border-radius: 11px;
+	overflow:hidden;
+	box-shadow: 0px 1px 5px 2px #c4c4c4;
 }
 	.card_img_btn > img{
 		width: 329px;
-	    height: 247px;
 	    padding:0;
+	    display:block;
 	}
 .contents_card_title{
 	font-size: 27px;

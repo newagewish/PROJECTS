@@ -31,9 +31,9 @@
 		<div id="home_contents_cover">
 			<div id="home_contents_box">
 				<div class="mini_contents_box" id="contents_home_box">
-					<div></div>
-					<div></div>
-					<div></div>
+					<div id="home_div1"></div>
+					<div id="home_div2"></div>
+					<div id="home_div3"></div>
 				</div>
 				<div class="mini_contents_box" id="contents_new_box">
 					<span class="box_info1">
