@@ -1,15 +1,14 @@
 /**
  * 
  */
+
+/* --------------------------------------------------------- */
+/* 전역 변수 */
+var timeout;	//스크롤 이벤트 변수
+/* --------------------------------------------------------- */
+
 window.onload = function(){
-	if(document.location.hash){
-		setTimeout(function (){
-			/*location.href = "/"+str_hash;*/
-			/*window.scrollBy(0, -134);*/
-			hashscroll();
-    	}, 1500);
-		
-	}
+
 }
 $(document).ready(function(){
 	checkhash();
@@ -43,11 +42,13 @@ function scrollmove(){
 		window.scrollTo(0, sessionStorage.getItem('all_scroll'));
 	}
 };
+/*
 function hashscroll(){
+	//앵커 방식
 	var no = document.location.href.split("?");
 	location.href = no;
-	
 };
+*/
 
 function movemenu(){
 	//뒤로가기로 불러와서 해시가 있을 경우
@@ -88,37 +89,36 @@ function movemenu(){
 	}else{
 		
 	}
+	
 }
-/* --------------------------------------------------------- */
-/* 전역 변수 */
-var timeout;	//스크롤 이벤트 변수
-/* --------------------------------------------------------- */
+
+function loadhistory(){
+	sessionStorage.setItem("card_count", history.state.card_count); //홈 조회 시 불러온 제품 개수
+	sessionStorage.setItem("new_count", history.state.new_count); //신규 조회 시 불러온 제품 개수
+	sessionStorage.setItem("vogue_count", history.state.vogue_count); //인기도 순 조회 시 불러온 제품 개수
+	sessionStorage.setItem("sale_count", history.state.sale_count); //세일 조회 시 불러온 제품 개수
+	sessionStorage.setItem("all_count", history.state.all_count); //전체 조회 시 불러온 제품 개수
+	sessionStorage.setItem("all_select", history.state.all_select); //전체 조회 시 처음 불러온 옵션들 판매량순+캐릭터전체
+	//미니 메뉴의 각 항목별 스크롤 위치
+	sessionStorage.setItem("card_scroll", history.state.card_scroll);
+	sessionStorage.setItem("new_scroll", history.state.new_scroll);
+	sessionStorage.setItem("vogue_scroll", history.state.vogue_scroll);
+	sessionStorage.setItem("sale_scroll", history.state.sale_scroll);
+	sessionStorage.setItem("all_scroll", history.state.all_scroll);
+}
 
 function checkhash(){
+	//일반 적인 뒤로 가기 페이지 호출 시 - hitory내에서 뒤로가기는 onpopstate() 사용
 	if(location.hash){
-		//history pushstate 활용
-	    //alert("location: " + document.location + ", state: " + JSON.stringify(history.state));
-		//console.log(history.state.card_count);
-		
-		sessionStorage.setItem("card_count", history.state.card_count); //홈 조회 시 불러온 제품 개수
-		sessionStorage.setItem("new_count", history.state.new_count); //신규 조회 시 불러온 제품 개수
-		sessionStorage.setItem("vogue_count", history.state.vogue_count); //인기도 순 조회 시 불러온 제품 개수
-		sessionStorage.setItem("sale_count", history.state.sale_count); //세일 조회 시 불러온 제품 개수
-		sessionStorage.setItem("all_count", history.state.all_count); //전체 조회 시 불러온 제품 개수
-		sessionStorage.setItem("all_select", history.state.all_select); //전체 조회 시 처음 불러온 옵션들 판매량순+캐릭터전체
-		//미니 메뉴의 각 항목별 스크롤 위치
-		sessionStorage.setItem("card_scroll", history.state.card_scroll);
-		sessionStorage.setItem("new_scroll", history.state.new_scroll);
-		sessionStorage.setItem("vogue_scroll", history.state.vogue_scroll);
-		sessionStorage.setItem("sale_scroll", history.state.sale_scroll);
-		sessionStorage.setItem("all_scroll", history.state.all_scroll);
-		
+		console.log("test1");
+		loadhistory();
 		//세션 스토리지에 불러왔던 제품 개수를 가지고 제품을 각 항목 별로 불러온다.
-		selecthash();
+		loadhash();
 		
 		movemenu();
-		
-		
+		setTimeout(function (){
+			scrollmove();
+		}, 1000);
 	}else{
 		//페이지를 새로 불러오거나 해시가 없는 경우
 		//불러온 제품 개수
@@ -145,22 +145,15 @@ function checkhash(){
 
 //pushstate 내에서 페이지 이동 시
 function onpopstate(){
-		//checkhash() 내용과 중복 이긴 하지만 hashstate 내에서 이동 할때 처리가 꼭 필요하기 때문에 작동
+	console.log("test2");
+		//checkhash() 내용과 중복 이긴 하지만 history 내에서 이동 할때 처리가 꼭 필요하기 때문에 넣어준다.
 		if(location.hash){
-			sessionStorage.setItem("card_count", history.state.card_count); //홈 조회 시 불러온 제품 개수
-			sessionStorage.setItem("new_count", history.state.new_count); //신규 조회 시 불러온 제품 개수
-			sessionStorage.setItem("vogue_count", history.state.vogue_count); //인기도 순 조회 시 불러온 제품 개수
-			sessionStorage.setItem("sale_count", history.state.sale_count); //세일 조회 시 불러온 제품 개수
-			sessionStorage.setItem("all_count", history.state.all_count); //전체 조회 시 불러온 제품 개수
-			sessionStorage.setItem("all_select", history.state.all_select); //전체 조회 시 처음 불러온 옵션들 판매량순+캐릭터전체
-			//미니 메뉴의 각 항목별 스크롤 위치
-			sessionStorage.setItem("card_scroll", history.state.card_scroll);
-			sessionStorage.setItem("new_scroll", history.state.new_scroll);
-			sessionStorage.setItem("vogue_scroll", history.state.vogue_scroll);
-			sessionStorage.setItem("sale_scroll", history.state.sale_scroll);
-			sessionStorage.setItem("all_scroll", history.state.all_scroll);
-	
+			loadhistory();
 			movemenu();
+			setTimeout(function (){
+				scrollmove();
+			}, 1000);
+			
 		}
 }
 
@@ -894,7 +887,7 @@ function inserthash(here){
 	location.href = "/view?NO="+no;
 }
 
-function selecthash(){
+function loadhash(){
 	hashcard();
 	hashnew();
 	hashvogue();
