@@ -267,18 +267,18 @@ js에서 ajax를 통하여 바로 해당하는 상품들을 가져올 수 있게
 
 <br/>
 
-![자동 스크롤 1](https://user-images.githubusercontent.com/76409244/116768818-8b9a3700-aa74-11eb-9b8e-347544536a6c.gif)
-
 ### 스크롤 위치 기억
+
+![자동 스크롤 1](https://user-images.githubusercontent.com/76409244/116768818-8b9a3700-aa74-11eb-9b8e-347544536a6c.gif)
 
 세션 스토리지에 각 소메뉴 별로 불러온 상품 개수와 각각 스크롤 위치를 담고 있습니다.  
 이를 활용하여 소메뉴 내에서 이동 시 항상 마지막으로 위치했던 스크롤 위치에 자동으로 이동하도록 했습니다.  
 
 <br/>
 
-![자동 스크롤 2](https://user-images.githubusercontent.com/76409244/116769202-5e01bd80-aa75-11eb-9b7f-57e47c1d01d4.gif)
-
 ### 세션스토리지, history.state 사용과 이유
+
+![자동 스크롤 2](https://user-images.githubusercontent.com/76409244/116769202-5e01bd80-aa75-11eb-9b7f-57e47c1d01d4.gif)
 
 이 정보를 저장한 이유는 페이지 전환 후 뒤로가기로 돌아왔을 때  
 사용자가 보고있던 상품 노출을 위하여 페이지 변경 전의 위치를 그대로 보여주기 위함입니다.
