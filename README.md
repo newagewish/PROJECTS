@@ -179,36 +179,11 @@ JavaScript와 Jqeury를 주로 사용 하고 있으며 window.onload, doument.re
 예)  
 ```  
 window.onload = function(){
-	document.querySelectorAll( 'oembed[url]' ).forEach( element => {
-        iframely.load( element, element.attributes.url.value );
-    } );
+	...
 }
 $(document).ready(function(){
-	$('html').scrollTop(0);
-	reviewselect();
-	pushview();
-	recentlyview();
-	slideviewimg();
-	viewstarpoint();
-	openrecentlybox();
+	...
 });
-//최근 본 상품이 있을때 노출 on/off
-function openrecentlybox(){
-	var local = localStorage.getItem("recently_view_NO");
-	var arr = JSON.parse(local);
-	if(arr.length > 1){
-		$('#view_recently_box').css('display', 'block');
-	}
-}
-// 추천 제품 8개 정보 가져오기
-function pushview(){
-	var alldata = { "NO": NO };
-	$.ajax({
-		type:"get",
-		url:"/view/select/push",
-		data:alldata,
-		success:function(result){
-		...
 ```  
 <br/>
 <br/>
