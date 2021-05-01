@@ -35,20 +35,7 @@ public class HomeController {
 
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home(HttpServletRequest request) {
-		String ip = request.getHeader("X-FORWARDED-FOR");
-
-        if (ip == null || ip.length() == 0) {
-            ip = request.getHeader("Proxy-Client-IP");
-        }
-
-        if (ip == null || ip.length() == 0) {
-            ip = request.getHeader("WL-Proxy-Client-IP");  // 웹로직
-        }
-
-        if (ip == null || ip.length() == 0) {
-            ip = request.getRemoteAddr() ;
-        }
-		logger.info(ip+" : 스토어 프로젝트를 시작합니다.");
+		//logger.info(" : 스토어 프로젝트를 시작합니다.");
 		
 		return "home";
 	}
