@@ -101,7 +101,7 @@
 
 ## 1-4. 프로젝트 작동구조
 
-  Spring MVC패턴을 적용하여 MVC패턴 구조를 그대로 사용하고 있습니다.
+ Spring MVC패턴을 적용하여 MVC패턴 구조를 그대로 사용하고 있습니다.
 ![스프링 MVC패턴 사진](https://user-images.githubusercontent.com/76409244/108963493-81973900-76bd-11eb-9cf9-303116e41b86.png)  
 프론트엔드와 백엔드 통신에는 주로 ajax 비동기 통신을 사용하며 파라미터로 데이터를 전달하는 방식을 사용하며 서버는 myBatis를 이용하여 mapper에 등록된 mapping interface에 해당하는 sql 문을 이용하여 DB에서 필요한 정보를 가져오고 JSON 형태로 데이터를 주고 받고 있습니다.
 <br/>
@@ -116,7 +116,7 @@
 
 ## 2-1. 프론트엔드 구조
 
-  일반적인 Spring Framework 구조를 가지고 있으며 Front-end 구조를 간단하게 표현하면 아래와 같습니다.
+ 일반적인 Spring Framework 구조를 가지고 있으며 Front-end 구조를 간단하게 표현하면 아래와 같습니다.
 > src
 > > main
 > > > webapp
@@ -135,7 +135,7 @@
 
 ### 2-1-1. jsp  
 
-jsp 최상단에서는 스크립트 요소를 생성해주고  
+ jsp 최상단에서는 스크립트 요소를 생성해주고  
 head부분에 지시어를 통하여 다른 문서를 포함  
 body에는 필요에 따라 액션태그 혹은 스크립트를 주로 사용하고 있습니다.  
 
@@ -173,7 +173,7 @@ body에는 필요에 따라 액션태그 혹은 스크립트를 주로 사용하
 
 ### 2-1-2. js
 
-JavaScript와 Jqeury를 주로 사용 하고 있으며 window.onload, doument.ready를 사용 하여 문서의 로드시점에 맞게 이벤트를 동작하고 있습니다.
+ JavaScript와 Jqeury를 주로 사용 하고 있으며 window.onload, doument.ready를 사용 하여 문서의 로드시점에 맞게 이벤트를 동작하고 있습니다.
 통신은 주로 ajax 비동기 통신을 사용 합니다.  
 
 예)  
@@ -206,7 +206,7 @@ $(document).ready(function(){
 	
 <img width="843" alt="headbar" src="https://user-images.githubusercontent.com/76409244/115557383-a0483380-a2ec-11eb-9697-cfcc37942e40.png">
 
-페이지의 top 부분에는 메뉴바를 2개 고정했습니다.  
+ 페이지의 top 부분에는 메뉴바를 2개 고정했습니다.  
 첫 번째 메뉴바에는 '카테고리, 매장 안내, 고객센터, 로고, 검색, 사용자, 장바구니' 버튼이 자리하고 있습니다.  
 어떤 페이지를 가도 첫 번째 메뉴바가 보이도록 include로 각 페이지의 상단에 포함하여 사용하고 있습니다.  
 
@@ -219,7 +219,7 @@ $(document).ready(function(){
 
 ![홈이미지1](https://user-images.githubusercontent.com/76409244/116383553-e99b0480-a851-11eb-94db-62e8012628e1.gif)
 
-각 소 메뉴 버튼 클릭 시 콘텐츠 박스의 margin을 조절하여 가로로 나열된 div를 하나씩 노출 되도록 했습니다.  
+ 각 소 메뉴 버튼 클릭 시 콘텐츠 박스의 margin을 조절하여 가로로 나열된 div를 하나씩 노출 되도록 했습니다.  
 
 <br/>
 
@@ -227,7 +227,7 @@ $(document).ready(function(){
 
 ![홈이미지2](https://user-images.githubusercontent.com/76409244/116383568-edc72200-a851-11eb-88e9-1aca4385c109.gif)
 
-각 소 메뉴마다 스크롤이 바닥에 근접하면 자동으로 다음 페이지를 불러오는 형식을 가지고 있습니다.  
+ 각 소 메뉴마다 스크롤이 바닥에 근접하면 자동으로 다음 페이지를 불러오는 형식을 가지고 있습니다.  
 ajax 통신으로 가져온 상품 데이터를 가지고 주로 append 메서드를 사용하여 처리합니다.  
 
 <br/>
@@ -236,7 +236,7 @@ ajax 통신으로 가져온 상품 데이터를 가지고 주로 append 메서�
 
 ![조건 조회 1](https://user-images.githubusercontent.com/76409244/116383582-ef90e580-a851-11eb-865a-c7fd36a0f68e.gif)
 
-위 이미지는 첫 번째 조건+캐릭터 전체를 선택했을 때의 반응입니다.  
+ 위 이미지는 첫 번째 조건+캐릭터 전체를 선택했을 때의 반응입니다.  
 전체 소 메뉴에서는 상품을 일정 조건에 맞게 조회할 수 있도록 했습니다.  
 첫 번째 조건에는 판매량순(기본)-신상품순-낮은가격순-높은가격순 을 지정할 수 있습니다.  
 
@@ -244,7 +244,7 @@ ajax 통신으로 가져온 상품 데이터를 가지고 주로 append 메서�
 
 ![조건 조회 2](https://user-images.githubusercontent.com/76409244/116383591-f0297c00-a851-11eb-9631-a1daa7322d6c.gif)
 
-위 이미지는 첫 번째 조건 + 캐릭터 별 선택지에 대한 반응입니다.  
+ 위 이미지는 첫 번째 조건 + 캐릭터 별 선택지에 대한 반응입니다.  
 두 번재 조건에는 카카오 프렌즈 캐릭터를 각각 선택할 수 있도록 했으며,   
 기존 공홈에는 없는 니니즈 캐릭터를 선택할 수 있도록 추가했습니다.  
 
@@ -271,7 +271,7 @@ js에서 ajax를 통하여 바로 해당하는 상품들을 가져올 수 있게
 
 ![자동 스크롤 1](https://user-images.githubusercontent.com/76409244/116768818-8b9a3700-aa74-11eb-9b8e-347544536a6c.gif)
 
-세션 스토리지에 각 소메뉴 별로 불러온 상품 개수와 각각 스크롤 위치를 담고 있습니다.  
+ 세션 스토리지에 각 소메뉴 별로 불러온 상품 개수와 각각 스크롤 위치를 담고 있습니다.  
 이를 활용하여 소메뉴 내에서 이동 시 항상 마지막으로 위치했던 스크롤 위치에 자동으로 이동하도록 했습니다.  
 
 <br/>
@@ -280,30 +280,29 @@ js에서 ajax를 통하여 바로 해당하는 상품들을 가져올 수 있게
 
 ![자동 스크롤 2](https://user-images.githubusercontent.com/76409244/116769202-5e01bd80-aa75-11eb-9b7f-57e47c1d01d4.gif)
 
-이 정보를 저장한 이유는 페이지 전환 후 뒤로가기로 돌아왔을 때  
+ 이 정보를 저장한 이유는 페이지 전환 후 뒤로가기로 돌아왔을 때  
 사용자가 보고있던 상품 노출을 위하여 페이지 변경 전의 위치를 그대로 보여주기 위함입니다.
 
 anchor를 사용하면 fix된 메뉴바 등의 가림과 이전 스크롤 위치와 틀려지는 문제가 있었습니다.  
 세션은 초기화 되더라도 history 이벤트로 페이지 호출 시 항상 이전 값을 불러오기 위해  
 세션 스토리지 값을 state에 넣어서 사용하고 있습니다.  
 
+history.state 사용 이유는 페이징 처리가 스크롤형식으로 처리되기 때문에 페이지 전환시 마지막에 보고 있던 화면을  
+다시 보여주기가 어려웠습니다. 이를 해결하기위해 검색을 통해 history.pushState()를 알게 되었고  
+상품 페이지를 가기 전에 history를 한번 거치면서 보고 있던 정보들을 state를 활용하여 기록 하게 되면서  
+해결하게 되었습니다.  
+
 <br/>
 
 ### 문제점
 
-히스토리 내에서 페이지 이동은 앞뒤 모두 잘 작동하지만 메인 페이지에서 세션, 불러온 상품 등을 초기화한 후  
+ 히스토리 내에서 페이지 이동은 앞뒤 모두 잘 작동하지만 메인 페이지에서 세션, 불러온 상품 등을 초기화 후  
 앞으로 가기로 history 페이지 호출 시 onpopstate 이벤트에서 상품 호출을 하지 않기 때문에  
 뒤로 가기처럼 원하는 상품 노출을 시켜 줄 수 없었습니다.  
-그렇다고 onpopstate에 상품을 불러오면 히스토리 내에서 이동할 때마다 중복으로 상품을 불러오는 문제가 있습니다.    
+그렇다고 onpopstate에 상품을 불러오면 히스토리를 2번 이상 연속으로 이동할 때마다 중복으로 상품을 불러오는 문제가 있습니다.    
 
-이 부분은 사용자 측면에서 앞으로 가기를 할 경우가 많지 않다는 점 때문에 그대로 두는 것으로 했습니다.
-
-<br/>
-
-### 칭찬할점
-
-히스토리 내에서 이동 시 항상 그때그때 모든 소 메뉴 위치가 기록되어 자동으로 이동시켜 주기 때문에  
-앞뒤로 가기 후 다른 소 메뉴 이동 시 항상 처음부터 스크롤을 내리지 않아도 된다는 점입니다.  
+아직은 해결할 방법이 떠오르지 않아 현재는 해결하지 못했고
+이 부분은 사용자 측면에서 앞으로 가기를 할 경우가 많지 않다는 점 때문에 다른 기능을 개발한 다음 짬짬이 개선해 보려 합니다.  
 
 <br/>
 <br/>
@@ -330,7 +329,7 @@ anchor를 사용하면 fix된 메뉴바 등의 가림과 이전 스크롤 위치
 <img width="140" alt="view1-1" src="https://user-images.githubusercontent.com/76409244/116335203-68238200-a811-11eb-8418-ce1b3849b988.png">
 
 페이지 어디서든 상품 클릭 시 URL+파라미터(상품번호)가 담긴 페이지를 호출합니다.  
-상품 페이지에서는 이 파라미터를 가지고 상품 정보를 가져와서 처리합니다.  
+상품 페이지에서는 이 파라미터를 가지고 ajax로 상품 정보를 가져와서 처리합니다.  
 
 <br/>
 
@@ -380,7 +379,7 @@ DB에 해당 부분은 boolean으로 0과 1로 저장되어 있고 0일 경우 �
 
 ```
 
-상품 페이지에서는 EL을 사용합니다.  
+상품 페이지 정보를 가져오기 위해 EL을 사용합니다.  
 상품 설명, 세부사항, 배송정보 등 컨트롤러에서 모델에 저장한 값들을 불러옵니다.
 
 <br/>
@@ -482,9 +481,9 @@ html에 해당 내용이 들어가도록 하였습니다.
 옵션 선택 시 가격 위에 선택한 옵션과 수량을 표시해 주며 수량 조절 시 가격을 합산하여 보여주도록 했습니다.  
 옵션은 'X' 버튼을 누르면 삭제가능합니다.  
 
+<br/>
+<br/>
 
-<br/>
-<br/>
 
 ------------
 <br/>
@@ -516,268 +515,33 @@ html에 해당 내용이 들어가도록 하였습니다.
 
 ### 3-2. 스프링 설정 파일 구성  
 
-#### 3-2-1. Web.xml  
-Deploy할 때 Servlet의 정보를 설정합니다.  
--DispatcherServlet  
--ContextLoaderListener  
--encodingFilter  
-```  
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+#### 3-2-1. Web.xml, Servlet-context.xml, root-context.xml, security-context.xml
 
-	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			/WEB-INF/spring/root-context.xml
-			/WEB-INF/spring/security-context.xml	
-		</param-value>
-	</context-param>
++ Web.xml 링크  
+	- Web.xml : [Web.xml](./StoreProject/src/main/webapp/WEB-INF/web.xml)  
+ 	Deploy할 때 Servlet의 정보를 설정합니다.  
 	
-	<!-- Creates the Spring Container shared by all Servlets and Filters -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	- Servlet-context.xml : [Servlet-context.xml](./StoreProject/src/main/webapp/WEB-INF/spring/servlet-context.xml)  
+	DispatcherServlet의 인프라를 정의합니다. 관련 설정을 내용으로 담고 있습니다.  
+	어노테이션을 사용 가능하게 설정 및 뷰의 경로 접두어, 접미어를 설정 합니다.  
+	파일 업로드 크기 관련 설정도 처리 하고 있습니다.  
 	
-	<!-- Processes application requests -->
-	<servlet>
-		<servlet-name>appServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/servlet-context.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+	- root-context.xml : [root-context.xml](./StoreProject/src/main/webapp/WEB-INF/spring/root-context.xml)  
+	View 지원을 제외한 bean 설정을 담고 있습니다.  
+	jdbc, log4j, Hikari, mybatis, transaction, DB, Service, VO 등 주로 View 지원을 제외한 bean 설정을 다루고 있습니다.  
+	
+	- security-context.xml : [security-context.xml](./StoreProject/src/main/webapp/WEB-INF/spring/security-context.xml)  
+	스프링 시큐리티 사용으로 페이지 사용 권한에 대해 설정을 다루고 있으며 암호화를 위해 bcryptPasswordEncoder를 사용 가능하게 설정하는 내용을 가지고 있습니다.
 
-	<servlet-mapping>
-		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-	
-	<!-- 스프링 시큐리티 -->
-	<filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	<!-- 한글 깨짐 -->
-	<filter> 
-	   <filter-name>encodingFilter</filter-name> 
-	   <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class> 
-	   <init-param> 
-	      <param-name>encoding</param-name> 
-	      <param-value>UTF-8</param-value> 
-	   </init-param> 
-	   <init-param> 
-	      <param-name>forceEncoding</param-name> 
-	      <param-value>true</param-value> 
-	   </init-param> 
-	</filter> 
-	<filter-mapping> 
-	   <filter-name>encodingFilter</filter-name> 
-	   <url-pattern>/*</url-pattern> 
-	</filter-mapping>
-</web-app>
-```  
-<br/>
-<br/>
+#### 3-2-2.   
 
-#### 3-2-2. Servlet-context.xml  
-DispatcherServlet의 인프라를 정의합니다. 관련 설정을 내용으로 담고 있습니다.  
--어노테이션을 사용 가능하게 설정 및 뷰의 경로 접두어, 접미어를 설정 합니다.
--파일 업로드 크기 관련 설정도 처리 하고 있습니다.
-```  
-<?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-		">
-
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
-	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />
-
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
-	<resources mapping="/resources/**" location="/resources/" />
-
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
-	
-	<!-- multipartResolver -->
-	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-	    <beans:property name="maxUploadSize" value="10485760" />		<!-- 10MB --><!-- 10*1024*1024 -->
-	    <beans:property name="maxUploadSizePerFile" value="10485760" />	<!-- 10MB -->
-	    <beans:property name="maxInMemorySize" value="0" />
-	</beans:bean>
-	
-	<context:component-scan base-package="com.storeproject.controller" />
-</beans:beans>
-```  
-<br/>
-<br/>
-
-#### 3-2-3. root-context.xml  
-View 지원을 제외한 bean 설정을 담고 있습니다.  
--jdbc, log4j, Hikari, mybatis, transaction, DB, Service, VO 등 주로 View 지원을 제외한 bean 설정을 다루고 있습니다.  
-
-
-```  
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
-		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
-		http://www.springframework.org/schema/aop
-        http://www.springframework.org/schema/aop/spring-aop.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- Hikari -->
-	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<!-- log4j -->
-		 <!-- 
-		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/ex?serverTimezone=UTC"></property>
-		<property name="username" value="root"></property>
-		<property name="password" value="dyffh0115"></property> 
-		 -->
-
-		<!-- log4j2 -->
- 	 	<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/storeproject?serverTimezone=UTC"></property>
-		<property name="username" value="newagewish"></property>
-		<property name="password" value="dnltl0115!@"></property>
-	</bean>
-	
-	<!-- HikariCP configuration -->
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
-		<constructor-arg ref="hikariConfig"></constructor-arg>
-	</bean>
-	
-	<bean id="dataSource1" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-        <constructor-arg ref="dataSource" />
-        <property name="logFormatter">
-            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
-                <property name="loggingType" value="MULTI_LINE" />
-                <property name="sqlPrefix" value="SQL         :  "/>
-            </bean>
-        </property>
-    </bean>
-	
-	<!-- SQLSessionFactory -->
- 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-	
-	<!-- 트랜잭션 -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-	
-	<tx:annotation-driven></tx:annotation-driven>
-	
-	<!-- mybatis -->
-	<mybatis-spring:scan base-package="com.storeproject.mapper"></mybatis-spring:scan>
-	
-	<!-- Gmail -->
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.gmail.com" />
-		<property name="port" value="587" />
-		<property name="username" value="newagewish@gmail.com" />
-		<property name="password" value="dnltl0115!@" />
-		<property name="javaMailProperties">
-		<props>
-			<prop key="mail.smtp.auth">true</prop>
-			<prop key="mail.smtp.starttls.enable">true</prop>
-		</props>
-		</property>
-	</bean>
-	
-	<context:component-scan base-package="com.storeproject.service"></context:component-scan>
-	<context:component-scan base-package="com.storeproject.aop"></context:component-scan>
-	
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-</beans>
-
-```  
-<br/>
-<br/>
-
-#### 3-2-4. security-context.xml  
-스프링 시큐리티 사용으로 페이지 사용 권한에 대해 설정을 다루고 있으며 암호화를 위해 bcryptPasswordEncoder를 사용 가능하게 설정하는 내용을 가지고 있습니다.
-
-```  
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:security="http://www.springframework.org/schema/security"
-	xsi:schemaLocation="http://www.springframework.org/schema/security 
-						http://www.springframework.org/schema/security/spring-security.xsd
-						http://www.springframework.org/schema/beans 
-						http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-	<bean id="customAccessDenied" class="com.storeproject.security.CustomAccessDeniedHandler"></bean>
-	<bean id="customLoginSuccess" class="com.storeproject.security.CustomLoginSuccessHandler"></bean>
-	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
-	<bean id="customUserDetailsService" class="com.storeproject.security.CustomUserDetailsService"></bean>
-	
-	<security:http>
-		<!-- 홈페이지 url 권한 -->
-		<security:intercept-url pattern="/" access="permitAll"/>
-		<security:intercept-url pattern="/info/**" access="permitAll"/>
-		<security:intercept-url pattern="/home/**" access="permitAll"/>
-		<security:intercept-url pattern="/view/**" access="permitAll"/>
-		<security:intercept-url pattern="/help/**" access="permitAll"/>
-		<security:intercept-url pattern="/login/**" access="permitAll"/>
-		<security:intercept-url pattern="/mypage/**" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/admin/**" access="permitAll"/> <!-- 임시로 개방 -->
-		<security:intercept-url pattern="/api/**" access="hasRole('ROLE_ADMIN')"/>
-		<!-- 크롤링 url 권한 -->
-		<security:intercept-url pattern="/crawler/storeinfo" access="hasRole('ROLE_ADMIN')"/>
-		<!-- 시큐리티 테스트 url 권한 -->
-		<security:intercept-url pattern="/security/all" access="permitAll"/>
-		<security:intercept-url pattern="/security/account" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/security/administer" access="hasRole('ROLE_ADMIN')"/>
-		<!-- 시큐리티 커스텀 설정 -->
-		<security:access-denied-handler ref="customAccessDenied"/>
-		<security:form-login login-page="/login/loginPage" username-parameter="email" password-parameter="password" authentication-success-handler-ref="customLoginSuccess"/>
-		<security:logout logout-success-url="/login/loginPage" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID"/>
-	</security:http>
-    
-	<security:authentication-manager>
- 		<security:authentication-provider user-service-ref="customUserDetailsService">
-			<security:password-encoder ref="bcryptPasswordEncoder"/>	
-		</security:authentication-provider>
-	</security:authentication-manager>
-</beans>
-
-```  
 <br/>
 <br/>
 
 ### 3-3. Controller 구성  
+
++ Controller 링크  
+	- Controller : [Controller](./StoreProject/src/main/java/com/storeproject/controller)  
 대부분 Ajax 비동기 통신을 위한 요청을 처리하는 메소드들로 구성되어 있습니다.  
 이를 위해 REST API를 적용하고 있으며 일부 HTTP Method를 사용하는 경우도 있습니다.
 
