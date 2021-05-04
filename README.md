@@ -541,7 +541,6 @@ html에 해당 내용이 들어가도록 하였습니다.
 	- Controller : [Controller](./StoreProject/src/main/java/com/storeproject/controller)  
 	- Service : [Service](./StoreProject/src/main/java/com/storeproject/service)  
 	- DTO (Data Transfer Object) : [DTO](./StoreProject/src/main/java/com/storeproject/domain)  
-	- DAO (Data Access Object) : [DAO](./StoreProject/src/main/java/com/storeproject/mapper)  
 	- MyBatis : [MyBatis](./StoreProject/src/main/resources/com/storeproject/mapper)  
 
 #### Controller
@@ -558,10 +557,6 @@ html에 해당 내용이 들어가도록 하였습니다.
 
  Service interface 생성과 Impl에서 비즈니스 로직을 처리합니다.  
  
-#### DAO
-
- 커넥션을 통해 DB에 접근하고 사용자의 여러 요청을 처리합니다.  
- 
 #### MyBatis
 
  관계형 데이터베이스를 보다 쉽게 사용하게 해줍니다. SQL문장과 프로그램 코드를 분리하여 구분합니다.  
@@ -569,6 +564,8 @@ html에 해당 내용이 들어가도록 하였습니다.
 #### DTO
 
  데이터 객체 입니다. getter와 setter 메소드만 가진 클래스입니다.  
+
+
 
 <br/>
 
