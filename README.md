@@ -17,7 +17,7 @@
       
   2. [프론트엔드](#2-프론트엔드)  
       2-1. [프론트엔드 구조](#2-1-프론트엔드-구조)  
-      2-2. [FE 페이지 설명](#2-2-FE-페이지-설명)  
+      2-2. [프론트엔드 개발 및 생각](#2-2-프론트엔드-개발-및-생각)  
 
 
   3. [백엔드](#3-백엔드)  
@@ -188,7 +188,7 @@ $(document).ready(function(){
 <br/>
 <br/>
 
-## 2-2. FE 페이지 설명
+## 2-2. 프론트엔드 개발 및 생각
  
 ### 2-2-1. 메인 페이지
 
@@ -543,7 +543,7 @@ html에 해당 내용이 들어가도록 하였습니다.
 	- DTO (Data Transfer Object) : [DTO](./StoreProject/src/main/java/com/storeproject/domain)  
 	- DAO (Data Access Object) : [DAO](./StoreProject/src/main/java/com/storeproject/mapper)  
 	- MyBatis : [MyBatis](./StoreProject/src/main/resources/com/storeproject/mapper)  
-	- 
+
 #### Controller
 
  대부분 Ajax 비동기 통신을 위한 요청을 처리하는 메소드들로 구성되어 있습니다.  
@@ -554,29 +554,22 @@ html에 해당 내용이 들어가도록 하였습니다.
 이후 interface를 통해 serviceImpl -> mapper.xml 로 이동하면서 데이터 처리 및 SQL 문을 처리하게 됩니다.  
 처리하고 난 뒤 front-end에 반환할 값이 있다면 @ResponseBody 어노테이션을 통해 Map으로 저장하여 json 형태로 전달하는 역할도 가지고 있습니다.  
 
-<br/>
-
 #### Service
 
  Service interface 생성과 Impl에서 비즈니스 로직을 처리합니다.  
  
-<br/>
-
 #### DAO
 
  커넥션을 통해 DB에 접근하고 사용자의 여러 요청을 처리합니다.  
- 
-<br/>
  
 #### MyBatis
 
  관계형 데이터베이스를 보다 쉽게 사용하게 해줍니다. SQL문장과 프로그램 코드를 분리하여 구분합니다.  
 
-<br/>
-
 #### DTO
 
  데이터 객체 입니다. getter와 setter 메소드만 가진 클래스입니다.  
 
+<br/>
 
- 
+### 3-4. 백엔드 모델별 설명
