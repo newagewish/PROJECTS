@@ -517,7 +517,7 @@ html에 해당 내용이 들어가도록 하였습니다.
 
 #### 3-2-1. Web.xml, Servlet-context.xml, root-context.xml, security-context.xml
 
-+ Web.xml 링크  
++ 링크 & 요약
 	- Web.xml : [Web.xml](./StoreProject/src/main/webapp/WEB-INF/web.xml)  
  	Deploy할 때 Servlet의 정보를 설정합니다.  
 	
@@ -532,66 +532,51 @@ html에 해당 내용이 들어가도록 하였습니다.
 	
 	- security-context.xml : [security-context.xml](./StoreProject/src/main/webapp/WEB-INF/spring/security-context.xml)  
 	스프링 시큐리티 사용으로 페이지 사용 권한에 대해 설정을 다루고 있으며 암호화를 위해 bcryptPasswordEncoder를 사용 가능하게 설정하는 내용을 가지고 있습니다.
-
-#### 3-2-2.   
-
 <br/>
 <br/>
 
-### 3-3. Controller 구성  
+### 3-3. Spring MVC
 
-+ Controller 링크  
++ 링크 & 요약
 	- Controller : [Controller](./StoreProject/src/main/java/com/storeproject/controller)  
-대부분 Ajax 비동기 통신을 위한 요청을 처리하는 메소드들로 구성되어 있습니다.  
-이를 위해 REST API를 적용하고 있으며 일부 HTTP Method를 사용하는 경우도 있습니다.
+	- Service : [Service](./StoreProject/src/main/java/com/storeproject/service)  
+	- DTO (Data Transfer Object) : [DTO](./StoreProject/src/main/java/com/storeproject/domain)  
+	- DAO (Data Access Object) : [DAO](./StoreProject/src/main/java/com/storeproject/mapper)  
+	- MyBatis : [MyBatis](./StoreProject/src/main/resources/com/storeproject/mapper)  
+	- 
+#### Controller
 
- 각각의 Ajax 통신은 데이터를 json을 이용한 parameter를 넘기고 받으며 데이터는 주로 vo에 저장하여 읽고 쓰며  
- 필요에 따라 controller 내에서 데이터를 가공하거나 처리하는 경우도 있습니다.  
- 이후 interface를 통해 serviceImpl -> mapper.xml 로 이동하면서 데이터 처리 및 SQL문을 처리하게 됩니다.  
- 처리하고 난뒤 front-end에 반환할 값이 있다면 @ResponseBody 어노테이션을 통해 Map으로 저장하여 json형태로 전달 하는 역할도 가지고 있습니다.
+ 대부분 Ajax 비동기 통신을 위한 요청을 처리하는 메소드들로 구성되어 있습니다.  
+이를 위해 REST API를 적용하고 있으며 일부 HTTP Method를 사용하는 경우도 있습니다.  
 
-예)
-```  
-@Log4j
-@Controller
-@AllArgsConstructor
-@RequestMapping("/")
-public class HomeController {
-	
-	private HomeService homeservice;
-	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+각각의 Ajax 통신은 데이터를 json을 이용한 parameter를 넘기고 컨트롤러에서 받으며 데이터는 vo에 저장하고 씁니다.  
+필요에 따라 controller 내에서 데이터를 가공하거나 처리하는 경우도 있습니다.  
+이후 interface를 통해 serviceImpl -> mapper.xml 로 이동하면서 데이터 처리 및 SQL 문을 처리하게 됩니다.  
+처리하고 난 뒤 front-end에 반환할 값이 있다면 @ResponseBody 어노테이션을 통해 Map으로 저장하여 json 형태로 전달하는 역할도 가지고 있습니다.  
 
-	@RequestMapping(value = "", method = RequestMethod.GET)
-	public String home(HttpServletRequest request) {
-		logger.info(ip+" : 스토어 프로젝트를 시작합니다.");
-		
-		return "home";
-	}
-	/* ----------------ajax 관련 호출---------------- */
-	@GetMapping(value = "/home/card")
-	@ResponseBody
-	public List<CardVO> selectProductsCard(HttpServletRequest request)throws Exception {
-		/* log.info("컨트롤러 selectProductsCard 호출"); */
-		int count = Integer.parseInt(request.getParameter("count"));
-		List<CardVO> pdsList = homeservice.selectProductsCard(count);
-		return pdsList;
-	}
-	@GetMapping(value = "/home/new")
-	@ResponseBody
-	public List<ProductsInfoVO> selectProductsNew(HttpServletRequest request)throws Exception {
-		/* log.info("컨트롤러 selectProductsNew 호출"); */
-		int count = Integer.parseInt(request.getParameter("count"));
-		List<ProductsInfoVO> pdsList = homeservice.selectProductsNew(count);
-		return pdsList;
-	}
-	@GetMapping(value = "/home/vogue")
-	@ResponseBody
-	public List<ProductsInfoVO> selectProductsVogue(HttpServletRequest request)throws Exception {
-		/* log.info("컨트롤러 selectProductsVogue 호출"); */
-		int count = Integer.parseInt(request.getParameter("count"));
-		List<ProductsInfoVO> pdsList = homeservice.selectProductsVogue(count);
-		return pdsList;
-	}
-	...
-```  
+<br/>
+
+#### Service
+
+ Service interface 생성과 Impl에서 비즈니스 로직을 처리합니다.  
+ 
+<br/>
+
+#### DAO
+
+ 커넥션을 통해 DB에 접근하고 사용자의 여러 요청을 처리합니다.  
+ 
+<br/>
+ 
+#### MyBatis
+
+ 관계형 데이터베이스를 보다 쉽게 사용하게 해줍니다. SQL문장과 프로그램 코드를 분리하여 구분합니다.  
+
+<br/>
+
+#### DTO
+
+ 데이터 객체 입니다. getter와 setter 메소드만 가진 클래스입니다.  
+
+
+ 
