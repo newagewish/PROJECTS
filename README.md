@@ -5,7 +5,6 @@
 ---
 
 배포 : www.shop-portfolio.site  
-박경립  
 연락처 010-5533-3222 / newagewish@gmail.com  
 
 ## 목차
